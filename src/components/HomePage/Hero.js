@@ -2,7 +2,7 @@ import { MoveUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex flex-col  items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center py-12">
+    <section className="relative z-10 flex flex-col  items-center justify-center min-h-[700px] px-4 sm:px-6 lg:px-8 text-center py-12">
       {/* Main Heading */}
       <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] sm:leading-tight max-w-sm xs:max-w-md sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
         Crafting Intuitive

@@ -1,5 +1,7 @@
 import Navbar from "@/components/Global/Navbar";
+import Brand from "@/components/HomePage/Brand";
 import Hero from "@/components/HomePage/Hero";
+import RecentWork from "@/components/HomePage/RecentWork";
 
 
 export default function Page() {
@@ -17,6 +19,8 @@ export default function Page() {
       />
       <Navbar />
       <Hero />
+      <Brand />
+      <RecentWork />
     </main>
   )
 }
