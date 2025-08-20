@@ -25,11 +25,11 @@ const RecentWork = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center justify-center px-6 py-2 mb-6 text-sm font-medium text-gray-300 border border-gray-600 rounded-full bg-transparent">
+          <div className="inline-flex items-center justify-center px-6 py-2 mb-6 border-[#D1FF52] text-sm font-medium text-gray-300 border  rounded-full bg-transparent">
             Recent Work
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl  font-semibold text-white leading-tight max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl  font-medium text-white leading-tight max-w-4xl mx-auto">
             Showcasing Innovative &
             <br />
             <span className="inline-block mt-1">Impactful Digital Experiences</span>
@@ -93,7 +93,7 @@ const RecentWork = () => {
 
         {/* See More Works Button */}
         <div className="hidden md:flex items-center space-x-4 mt-10 justify-center">
-        <button className="border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black bg-transparent px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium">
+        <button className="border border-[#D1FF52] bg-[#D1FF52] text-black   px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium">
           See More Works
         </button>
         <button className="border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 hover:rotate-45 group">

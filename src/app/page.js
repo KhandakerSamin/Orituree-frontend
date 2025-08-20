@@ -1,7 +1,9 @@
 import Navbar from "@/components/Global/Navbar";
 import Brand from "@/components/HomePage/Brand";
+import CaseStudies from "@/components/HomePage/CaseStudies";
 import Hero from "@/components/HomePage/Hero";
 import RecentWork from "@/components/HomePage/RecentWork";
+import Services from "@/components/HomePage/Services";
 
 
 export default function Page() {
@@ -21,6 +23,8 @@ export default function Page() {
       <Hero />
       <Brand />
       <RecentWork />
+      <CaseStudies />
+      <Services />
     </main>
   )
 }
