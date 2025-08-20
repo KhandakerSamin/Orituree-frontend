@@ -2,9 +2,9 @@ import { MoveUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center py-12">
+    <section className="relative z-10 flex flex-col  items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center py-12">
       {/* Main Heading */}
-      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] sm:leading-tight max-w-sm xs:max-w-md sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
+      <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] sm:leading-tight max-w-sm xs:max-w-md sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
         Crafting Intuitive
         <br />
         <span className="inline-block mt-1 sm:mt-0">& Scalable Digital</span>
@@ -13,7 +13,7 @@ export default function Hero() {
       </h1>
 
       {/* Subtitle */}
-      <p className="text-gray-300 text-base xs:text-lg sm:text-xl md:text-2xl max-w-sm xs:max-w-md sm:max-w-xl md:max-w-3xl mt-6 sm:mt-8 md:mt-10 leading-relaxed px-2 sm:px-4">
+      <p className="text-gray-200 text-base font-normal xs:text-lg sm:text-xl md:text-2xl max-w-sm xs:max-w-md sm:max-w-xl md:max-w-3xl mt-6 sm:mt-8 md:mt-10 leading-relaxed px-2 sm:px-4">
         A Global UI/UX Design Agency Delivering User-Centric, High-Impact
         <span className="block sm:inline"> Digital Solutions.</span>
       </p>
@@ -29,7 +29,7 @@ export default function Hero() {
       </div>
 
       {/* CTA Button - Mobile */}
-      <div className="md:hidden mt-8">
+      <div className="md:hidden mt-8 mb-30">
         <button className="flex items-center justify-center border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black active:bg-[#D1FF52] active:text-black bg-transparent px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium min-w-[160px]">
           Contact Us
           <MoveUpRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
