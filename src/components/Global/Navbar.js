@@ -59,12 +59,12 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center space-x-3">
-          <button className="border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black bg-transparent px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20">
+        <div className="hidden md:flex items-center space-x-3 group ">
+          <button className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent px-6 py-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 cursor-pointer">
             Hire Us
           </button>
-          <button className="border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black bg-transparent p-2 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 hover:rotate-45">
-            <MoveUpRight className="w-5 h-5 text-[#D1FF52] hover:text-black" />
+          <button className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
+            <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
           </button>
         </div>
 

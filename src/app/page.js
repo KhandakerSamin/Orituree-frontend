@@ -1,9 +1,12 @@
 import Navbar from "@/components/Global/Navbar";
+import BlogSection from "@/components/HomePage/BlogSection";
 import Brand from "@/components/HomePage/Brand";
 import CaseStudies from "@/components/HomePage/CaseStudies";
+import FAQSection from "@/components/HomePage/FAQSection";
 import Hero from "@/components/HomePage/Hero";
 import RecentWork from "@/components/HomePage/RecentWork";
 import Services from "@/components/HomePage/Services";
+import TestimonialSection from "@/components/HomePage/TestimonialSection";
 
 
 export default function Page() {
@@ -25,6 +28,9 @@ export default function Page() {
       <RecentWork />
       <CaseStudies />
       <Services />
+      <TestimonialSection />
+      <BlogSection />
+      <FAQSection />
     </main>
   )
 }

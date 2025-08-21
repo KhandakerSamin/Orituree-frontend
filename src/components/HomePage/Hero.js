@@ -19,11 +19,11 @@ export default function Hero() {
       </p>
 
       {/* CTA Buttons - Desktop */}
-      <div className="hidden md:flex items-center space-x-4 mt-10">
-        <button className="border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black bg-transparent px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium">
+      <div className="hidden md:flex items-center space-x-4 mt-10 group">
+        <button className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-lg font-medium cursor-pointer">
           Contact Us
         </button>
-        <button className="border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 hover:rotate-45 group">
+        <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
           <MoveUpRight className="w-6 h-6 transition-colors duration-300" />
         </button>
       </div>

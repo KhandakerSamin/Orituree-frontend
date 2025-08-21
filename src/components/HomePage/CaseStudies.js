@@ -1,14 +1,11 @@
 "use client"
-import React, { useState, useRef, useEffect } from 'react';
-import { ArrowUpRight, MoveUpRight } from 'lucide-react';
+import React from 'react';
+import { MoveUpRight } from 'lucide-react';
 import Image from 'next/image';
 
 const CaseStudies = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef(null);
-
   // Dummy data - this will come from backend later
-  const caseStudies = [
+  const allCaseStudies = [
     {
       id: 1,
       image: '/CS-1.png',
@@ -29,139 +26,94 @@ const CaseStudies = () => {
     }
   ];
 
-  // Duplicate array for seamless infinite loop
-  const infiniteCaseStudies = [...caseStudies, ...caseStudies];
-  const maxSlides = caseStudies.length;
-
-  // Auto slide every 6 seconds (very slow)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => {
-        const next = prev + 1;
-        if (next >= maxSlides) {
-          return 0;
-        }
-        return next;
-      });
-    }, 6000); // Slower movement - 6 seconds
-
-    return () => clearInterval(interval);
-  }, [maxSlides]);
+  // Get only the two most recent case studies
+  const recentCaseStudies = allCaseStudies.slice(-2);
 
   return (
-    <section 
-      className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    <section
+      className="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
       style={{
-        background: 'linear-gradient(180deg, #17181B 0%, #000000 54.39%)'
-      }}
+  background: "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)"
+}}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center justify-center border-[#D1FF52] px-6 py-2 mb-6 text-sm font-medium text-gray-300 border rounded-full bg-transparent">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center justify-center border-[#D1FF52] px-4 sm:px-6 py-2 mb-4 sm:mb-6 text-xs sm:text-sm font-medium text-gray-300 border rounded-full bg-transparent">
             Case Studies
           </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl  font-medium text-white leading-tight max-w-4xl mx-auto">
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight max-w-4xl mx-auto px-4">
             Real Results: Our Case Studies
             <br />
             <span className="inline-block mt-1">& Success Stories</span>
           </h2>
         </div>
 
-        {/* Case Studies Slider */}
-        <div className="relative mb-12 sm:mb-16">
-          {/* Left margin, no right margin - cards extend beyond container */}
-          <div className="ml-4 sm:ml-8 lg:ml-16 overflow-hidden">
+        {/* Case Studies Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
+          {recentCaseStudies.map((study) => (
             <div
-              className="flex transition-transform duration-1000 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 50}%)` }}
-              ref={sliderRef}
+              key={study.id}
+              className="group relative rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
             >
-              {/* Use duplicated array to ensure always 2+ cards visible */}
-              {infiniteCaseStudies.map((study, index) => (
-                <div 
-                  key={`${study.id}-${Math.floor(index / caseStudies.length)}`}
-                  className="flex-shrink-0 w-full sm:w-1/2 pr-4 sm:pr-6"
+              {/* Case Study Image */}
+              <div className="relative h-48 sm:h-64 lg:h-72 xl:h-96 overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
+                <Image
+                  src={study.image}
+                  alt={study.title}
+                  fill
+                  className="w-full h-full  object-cover transition-transform duration-700 group-hover:scale-110"
+                  style={{ objectFit: 'cover' }}
+                  onError={(e) => {
+                    // Fallback to placeholder if image doesn't load
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+
+                {/* Image Placeholder */}
+                <div
+                  className="w-full h-full bg-gray-700 flex items-center justify-center text-gray-400 text-sm hidden rounded-t-2xl sm:rounded-t-3xl"
                 >
-                  <div className="group relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10">
-                    {/* Case Study Image */}
-                    <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden rounded-t-3xl">
-
-                      <Image
-                        src={study.image}
-                        alt={study.title}
-                        fill
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        style={{ objectFit: 'cover' }}
-                        onError={(e) => {
-                          // Fallback to placeholder if image doesn't load
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                        priority={currentSlide === index % caseStudies.length}
-                      />
-               
-
-                      {/* Image Placeholder */}
-                      <div 
-                        className="w-full h-full bg-gray-700 flex items-center justify-center text-gray-400 text-sm hidden rounded-t-3xl"
-                      >
-                        Case Study Image
-                      </div>
-                    </div>
-
-                    {/* Case Study Details - Direct on section background */}
-                    <div className="p-6 sm:p-8 rounded-b-3xl">
-                      <div className="inline-block px-3 py-1 mb-4 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-gray-600">
-                        {study.category}
-                      </div>
-                      
-                      <h3 className="text-lg sm:text-xl font-semibold text-white leading-tight group-hover:text-[#D1FF52] transition-colors duration-300">
-                        {study.title}
-                      </h3>
-                    </div>
-
-                    {/* Hover Overlay only on image */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-t-3xl"></div>
-                  </div>
+                  Case Study Image
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
+              </div>
 
-        {/* Slide Indicators */}
-        <div className="flex justify-center mb-8 space-x-2">
-          {caseStudies.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-700 ${
-                currentSlide === index 
-                  ? 'bg-[#D1FF52] w-8' 
-                  : 'bg-gray-600 hover:bg-gray-500'
-              }`}
-            />
+              {/* Case Study Details */}
+              <div className="p-4 sm:p-6 lg:p-8 rounded-b-2xl sm:rounded-b-3xl">
+                <div className="inline-block px-3 py-1 mb-3 sm:mb-4 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-gray-600">
+                  {study.category}
+                </div>
+
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-white leading-tight group-hover:text-[#D1FF52] transition-colors duration-300">
+                  {study.title}
+                </h3>
+              </div>
+
+              {/* Hover Overlay only on image */}
+              <div className="absolute inset-x-0 top-0 h-48 sm:h-64 lg:h-72 xl:h-96 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+            </div>
           ))}
         </div>
 
         {/* See More Case Studies Button */}
-        <div className="hidden md:flex items-center space-x-4 mt-10 justify-center">
-          <button className="border border-[#D1FF52]  bg-[#D1FF52] text-black  px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium">
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 group max-w-[350px] mx-auto">
+          <button className="w-full sm:w-auto border border-[#D1FF52] bg-[#D1FF52] text-black px-6 sm:px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-base sm:text-lg font-medium cursor-pointer">
             See More Case Studies
           </button>
-          <button className="border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 hover:rotate-45 group">
-            <MoveUpRight className="w-6 h-6 transition-colors duration-300" />
+          <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45  cursor-pointer">
+            <MoveUpRight className="w-5 sm:w-6 h-5 sm:h-6 transition-colors duration-300" />
           </button>
         </div>
       </div>
 
       {/* Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#D1FF52]/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-40 sm:w-80 h-40 sm:h-80 bg-[#D1FF52]/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 sm:w-80 h-40 sm:h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
     </section>
   );

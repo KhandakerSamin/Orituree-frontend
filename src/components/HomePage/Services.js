@@ -58,7 +58,7 @@ export default function Services() {
               </div>
 
               {/* Service Title */}
-              <h3 className="text-white text-xl font-semibold mb-6">{service.title}</h3>
+              <h3 className="text-white text-xl font-medium mb-6">{service.title}</h3>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-6">

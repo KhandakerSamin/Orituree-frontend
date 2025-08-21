@@ -48,7 +48,7 @@ const RecentWork = () => {
 
               {/* Card Content */}
               <div className="relative  h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col">
-                <div className="flex-1 rounded-2xl overflow-hidden bg-gray-800 relative">
+                <div className="flex-1 rounded-2xl overflow-hidden bg-gray-800 relative hover:cursor-pointer">
                   <img
                     src={work.image || "/placeholder.svg"}
                     alt={work.title}
@@ -92,14 +92,14 @@ const RecentWork = () => {
         </div>
 
         {/* See More Works Button */}
-        <div className="hidden md:flex items-center space-x-4 mt-10 justify-center">
-        <button className="border border-[#D1FF52] bg-[#D1FF52] text-black   px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium">
-          See More Works
-        </button>
-        <button className="border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 hover:rotate-45 group">
-          <MoveUpRight className="w-6 h-6 transition-colors duration-300" />
-        </button>
-      </div>
+        <div className="hidden md:flex items-center space-x-4 mt-10 justify-center group max-w-[310px] mx-auto">
+          <button className="border border-[#D1FF52] bg-[#D1FF52] text-black   px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-lg font-medium cursor-pointer">
+            See More Works
+          </button>
+          <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
+            <MoveUpRight className="w-6 h-6 transition-colors duration-300 group-hover:text-black" />
+          </button>
+        </div>
 
       </div>
     </section>
