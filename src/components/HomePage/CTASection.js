@@ -27,7 +27,7 @@ const CTASection = () => {
         </h2>
 
         {/* Contact Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 group max-w-[350px] mx-auto">
+        <div className="flex items-center justify-center sm:space-y-0 space-x-4 group max-w-[350px] mx-auto">
           <button className="w-full sm:w-auto border border-[#D1FF52] bg-[#D1FF52] text-black px-6 sm:px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-base sm:text-lg font-medium cursor-pointer">
             Contact Us
           </button>

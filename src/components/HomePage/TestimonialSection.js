@@ -56,7 +56,7 @@ const TestimonialSection = () => {
                     background: "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)"
                }}
           >
-               <div className="max-w-[1920px] mx-auto">
+               <div className="max-w-[1920px] mx-auto hidden md:block">
                     {/* Left Green Shape */}
                     <div className="absolute left-23 top-130 -translate-y-1/2 -translate-x-1/4 w-48 sm:w-64 lg:w-90 h-64 sm:h-80 lg:h-[1400px] ">
                          <Image src="/FeedBackL.png" alt="" fill className="object-contain" />

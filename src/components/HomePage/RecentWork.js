@@ -92,7 +92,7 @@ const RecentWork = () => {
         </div>
 
         {/* See More Works Button */}
-        <div className="hidden md:flex items-center space-x-4 mt-10 justify-center group max-w-[310px] mx-auto">
+        <div className=" flex items-center space-x-4 mt-10 justify-center group max-w-[310px] mx-auto">
           <button className="border border-[#D1FF52] bg-[#D1FF52] text-black   px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-lg font-medium cursor-pointer">
             See More Works
           </button>
