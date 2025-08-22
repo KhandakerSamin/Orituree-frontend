@@ -47,8 +47,8 @@ const RecentWork = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${work.bgColor} opacity-20`}></div>
 
               {/* Card Content */}
-              <div className="relative  h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col">
-                <div className="flex-1 rounded-2xl overflow-hidden bg-gray-800 relative hover:cursor-pointer">
+              <div className="relative h-[400px] sm:h-[450px] lg:h-[500px] flex flex-col">
+                <div className="flex-1 rounded-2xl overflow-hidden bg-gray-800 relative cursor-pointer">
                   <img
                     src={work.image || "/placeholder.svg"}
                     alt={work.title}
@@ -64,26 +64,28 @@ const RecentWork = () => {
                     Project Image
                   </div>
 
-                  {/* Hover Overlay with custom gradient */}
+                  {/* Always visible overlay with gradient on mobile, hover on desktop */}
                   <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: "linear-gradient(180deg, rgba(1, 2, 6, 0) 0%, #09122F 100%)",
+                      background: "linear-gradient(180deg, rgba(1, 2, 6, 0) 0%, rgba(9, 18, 47, 0.8) 70%, #09122F 100%)",
                     }}
                   ></div>
 
-                  {/* Hover Arrow Button */}
-                  <button className="absolute bottom-10 right-10 flex items-center justify-center w-10 h-10 border   border-[#D1FF52] bg-[#D1FF52] text-black  hover:text-black backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 group/arrow">
+                  {/* Arrow Button - Always visible on mobile, hover on desktop */}
+                  <button className="absolute top-4 right-4 md:bottom-10 md:right-10 md:top-auto flex items-center justify-center w-10 h-10 border border-[#D1FF52] bg-[#D1FF52] text-black hover:text-black backdrop-blur-sm rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 group/arrow">
                     <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover/arrow:rotate-45" />
                   </button>
 
-                  {/* Hover Content at Bottom */}
-                  <div className="absolute bottom-8 left-8 right-30 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                    <div className="inline-block px-3 border-[#D1FF52]  py-1 mb-2 text-xs font-medium text-white/80 bg-white/5 backdrop-blur-sm rounded-full border ">
+                  {/* Content - Always visible on mobile, hover on desktop */}
+                  <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-16 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
+                    <div className="inline-block px-3 border-[#D1FF52] py-1 mb-2 text-xs font-medium text-white/90 bg-white/10 backdrop-blur-sm rounded-full border">
                       {work.category}
                     </div>
 
-                    <h3 className="text-lg sm:text-xl mx-w-[100px] font-semibold text-white leading-tight">{work.title}</h3>
+                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white leading-tight pr-4">
+                      {work.title}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -91,14 +93,23 @@ const RecentWork = () => {
           ))}
         </div>
 
-        {/* See More Works Button */}
-        <div className=" flex items-center space-x-4 mt-10 justify-center group max-w-[310px] mx-auto">
-          <button className="border border-[#D1FF52] bg-[#D1FF52] text-black   px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-lg font-medium cursor-pointer">
-            See More Works
+        {/* See More Works Button - Combined for mobile, separate for desktop */}
+        <div className="flex items-center justify-center mt-10">
+          {/* Mobile: Single combined button */}
+          <button className="md:hidden flex items-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer">
+            <span>See More Works</span>
+            <MoveUpRight className="w-5 h-5" />
           </button>
-          <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
-            <MoveUpRight className="w-6 h-6 transition-colors duration-300 group-hover:text-black" />
-          </button>
+
+          {/* Desktop: Two separate buttons */}
+          <div className="hidden md:flex items-center space-x-4 group max-w-[310px]">
+            <button className="border border-[#D1FF52] bg-[#D1FF52] text-black px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-lg font-medium cursor-pointer">
+              See More Works
+            </button>
+            <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
+              <MoveUpRight className="w-6 h-6 transition-colors duration-300 group-hover:text-black" />
+            </button>
+          </div>
         </div>
 
       </div>
