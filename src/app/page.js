@@ -20,25 +20,7 @@ export default function Page() {
           background: 'linear-gradient(180deg, #0A1332 0%, #000000 54.39%)'
         }}
       >
-        {/* Vector Images - positioned for both Navbar and Hero */}
-        <div className="absolute top-20 sm:top-24 md:top-28 left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
-          <div className="relative">
-            {/* Vector 1 - positioned slightly left */}
-            <img 
-              src="/vector1.svg" 
-              alt="Vector decoration 1" 
-              className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-60 absolute -left-8 sm:-left-12 md:-left-16 top-0 animate-pulse"
-              style={{ animationDuration: '3s' }}
-            />
-            {/* Vector 2 - positioned slightly right */}
-            <img 
-              src="/vector2.svg" 
-              alt="Vector decoration 2" 
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 opacity-40 absolute left-8 sm:left-12 md:left-16 top-4 sm:top-6 animate-pulse"
-              style={{ animationDuration: '4s', animationDelay: '1s' }}
-            />
-          </div>
-        </div>
+        
 
         <Navbar />
         <Hero />

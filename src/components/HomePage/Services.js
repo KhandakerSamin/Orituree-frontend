@@ -9,19 +9,19 @@ export default function Services() {
     {
       id: 2,
       title: "Branding",
-      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce"],
+      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce", "Web", "Mobile"],
       price: "$400",
     },
     {
       id: 3,
       title: "SaaS Design",
-      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce"],
+      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce", "Web", "Mobile"],
       price: "$400",
     },
     {
       id: 4,
       title: "Web Design",
-      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce"],
+      tags: ["SaaS", "FinTech", "App", "B2B", "MedTech", "Retail", "E-Commerce", "Web", "Mobile"],
       price: "$400",
     },
   ]
@@ -78,7 +78,7 @@ export default function Services() {
                   <span className="text-gray-400 text-sm">Start from</span>
                   <div className="text-[#D1FF52] text-3xl font-medium">{service.price}</div>
                 </div>
-                <button className="bg-[#D1FF52] text-black px-4 py-2 mt-2 rounded-full font-normal transition-all duration-300">
+                <button className="bg-[#D1FF52] cursor-pointer text-black px-4 py-2 mt-2 rounded-full font-normal transition-all duration-300">
                   Learn More
                 </button>
               </div>

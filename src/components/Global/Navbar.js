@@ -32,21 +32,21 @@ export default function Navbar() {
   return (
     <>
       <nav className="relative z-[60] flex items-center justify-between px-6 py-6 lg:px-12 max-w-[1400px] mx-auto">
+        
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Image
-            src="/favicon.svg"
+            src="/logo.png"
             alt="Orituree Logo"
-            width={32}
-            height={32}
-            className="w-8 h-8"
+            width={200}
+            height={200}
+            className="w-45 h-11"
           />
-          <span className="text-[#D1FF52] text-xl font-bold">Orituree</span>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {["About", "Portfolio", "Blog", "Contact"].map((item) => (
+          {["About","Services", "Portfolio", "Blog", "Contact"].map((item) => (
             <a
               key={item}
               href="#"
