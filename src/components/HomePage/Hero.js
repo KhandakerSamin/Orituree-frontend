@@ -2,20 +2,20 @@ import { MoveUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center min-h-[700px] px-4 sm:px-6 lg:px-8 text-center py-12 overflow-hidden">
+    <section className="relative z-10 flex flex-col items-center justify-center min-h-[85vh] sm:min-h-[700px] px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12 mb-7 sm:mb-0 overflow-hidden">
       {/* Vector Images */}
       <div className="absolute top-8 sm:top-12 md:top-16 left-1/2 transform -translate-x-1/2 z-0">
         <div className="relative">
           {/* Vector 1 - positioned slightly left */}
           <img 
-            src="/vector1.png" 
+            src="/vector1.svg" 
             alt="Vector decoration 1" 
             className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 opacity-60 absolute -left-8 sm:-left-12 md:-left-16 top-0 animate-pulse"
             style={{ animationDuration: '3s' }}
           />
           {/* Vector 2 - positioned slightly right */}
           <img 
-            src="/vector2.png" 
+            src="/vector2.svg" 
             alt="Vector decoration 2" 
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 opacity-40 absolute left-8 sm:left-12 md:left-16 top-4 sm:top-6 animate-pulse"
             style={{ animationDuration: '4s', animationDelay: '1s' }}
@@ -49,15 +49,15 @@ export default function Hero() {
       </div>
 
       {/* CTA Button - Mobile */}
-      <div className="relative z-10 md:hidden mt-8 mb-30">
+      <div className="relative z-10 md:hidden mt-6 mb-16">
         <button className="flex items-center justify-center border border-[#D1FF52] text-gray-300 hover:bg-[#D1FF52] hover:text-black active:bg-[#D1FF52] active:text-black bg-transparent px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-lg font-medium min-w-[160px] hover:scale-105 active:scale-95">
           Contact Us
           <MoveUpRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
       </div>
 
-      {/* Scroll Indicator - All Devices */}
-      <div className="relative z-10 absolute bottom-25 sm:bottom-8 md:hidden left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll Indicator - Mobile Only */}
+      <div className="absolute bottom-10  md:hidden left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <div className="flex flex-col items-center space-y-2 text-gray-400">
           <span className="text-xs uppercase tracking-wider font-medium">Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-[#D1FF52] via-gray-400 to-transparent opacity-70"></div>
