@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import {
      ArrowUpRight,
      Facebook,
@@ -49,7 +48,7 @@ const Footer = () => {
 
      return (
           <footer
-               className="relative z-10 pt-16 pb-8 px-4 sm:px-6 lg:px-8"
+               className="relative z-10 pt-12 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8"
                style={{
                     background:
                          "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)",
@@ -57,17 +56,14 @@ const Footer = () => {
           >
                <div className="max-w-7xl mx-auto">
                     {/* Main Footer Content */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-8 sm:mb-12">
                          {/* Company Info */}
-                         <div className="lg:col-span-1">
+                         <div>
                               {!logoError ? (
-                                   <Image
+                                   <img
                                         src="/Logo.png"
                                         alt="Orituree Logo"
-                                        width={100}
-                                        height={100}
-                                        className="h-13 w-auto mr-3"
-                                        priority
+                                        className="h-12 sm:h-13 w-auto mr-3"
                                         onError={() => setLogoError(true)}
                                    />
                               ) : (
@@ -75,82 +71,94 @@ const Footer = () => {
                                         <span className="text-black font-bold text-sm">O</span>
                                    </div>
                               )}
-                              {/* <span className="text-xl font-semibold text-white">Orituree</span> */}
 
                               <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm mt-4">
                                    Beyond being an innovative UI UX design hub, we&apos;re your
                                    one-stop for research, wireframing, design, and development!
                               </p>
 
-                              <div className="flex items-center justify-start gap-4 group max-w-[350px] mx-auto">
-                                   <button className="w-full sm:w-auto border border-[#D1FF52] bg-[#D1FF52] text-black px-6 sm:px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-base sm:text-lg font-medium cursor-pointer">
-                                        Contact Us
+                              {/* Contact Button - Mobile: Single, Desktop: Two buttons */}
+                              <div className="flex items-center justify-start">
+                                   {/* Mobile: Single combined button */}
+                                   <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-xs">
+                                        <span>Contact Us</span>
+                                        <MoveUpRight className="w-5 h-5" />
                                    </button>
-                                   <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45  cursor-pointer">
-                                        <MoveUpRight className="w-5 sm:w-6 h-5 sm:h-6 transition-colors duration-300" />
-                                   </button>
+
+                                   {/* Desktop: Two separate buttons */}
+                                   <div className="hidden md:flex items-center gap-4 group max-w-[350px]">
+                                        <button className="flex-1 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 lg:px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-base lg:text-lg font-medium cursor-pointer">
+                                             Contact Us
+                                        </button>
+                                        <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer flex-shrink-0">
+                                             <MoveUpRight className="w-5 lg:w-6 h-5 lg:h-6 transition-colors duration-300" />
+                                        </button>
+                                   </div>
                               </div>
                          </div>
 
-                         {/* Services */}
-                         <div>
-                              <h3 className="text-lg font-semibold text-white mb-6">Services</h3>
-                              <ul className="space-y-3">
-                                   {servicesLinks.map((link) => (
-                                        <li key={link.name}>
-                                             <a
-                                                  href={link.href}
-                                                  className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm"
-                                             >
-                                                  {link.name}
-                                             </a>
-                                        </li>
-                                   ))}
-                              </ul>
-                         </div>
+                         {/* Services, Company, Review in one column */}
+                         <div className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+                              {/* Services */}
+                              <div>
+                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Services</h3>
+                                   <ul className="space-y-2 sm:space-y-3">
+                                        {servicesLinks.map((link) => (
+                                             <li key={link.name}>
+                                                  <a
+                                                       href={link.href}
+                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
+                                                  >
+                                                       {link.name}
+                                                  </a>
+                                             </li>
+                                        ))}
+                                   </ul>
+                              </div>
 
-                         {/* Company */}
-                         <div>
-                              <h3 className="text-lg font-semibold text-white mb-6">Company</h3>
-                              <ul className="space-y-3">
-                                   {companyLinks.map((link) => (
-                                        <li key={link.name}>
-                                             <a
-                                                  href={link.href}
-                                                  className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm"
-                                             >
-                                                  {link.name}
-                                             </a>
-                                        </li>
-                                   ))}
-                              </ul>
-                         </div>
+                              {/* Company */}
+                              <div>
+                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Company</h3>
+                                   <ul className="space-y-2 sm:space-y-3">
+                                        {companyLinks.map((link) => (
+                                             <li key={link.name}>
+                                                  <a
+                                                       href={link.href}
+                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
+                                                  >
+                                                       {link.name}
+                                                  </a>
+                                             </li>
+                                        ))}
+                                   </ul>
+                              </div>
 
-                         {/* Review */}
-                         <div>
-                              <h3 className="text-lg font-semibold text-white mb-6">Review</h3>
-                              <ul className="space-y-3">
-                                   {reviewLinks.map((link) => (
-                                        <li key={link.name}>
-                                             <a
-                                                  href={link.href}
-                                                  className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm"
-                                             >
-                                                  {link.name}
-                                             </a>
-                                        </li>
-                                   ))}
-                              </ul>
+                              {/* Review */}
+                              <div>
+                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Review</h3>
+                                   <ul className="space-y-2 sm:space-y-3">
+                                        {reviewLinks.map((link) => (
+                                             <li key={link.name}>
+                                                  <a
+                                                       href={link.href}
+                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
+                                                  >
+                                                       {link.name}
+                                                  </a>
+                                             </li>
+                                        ))}
+                                   </ul>
+                              </div>
                          </div>
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="border-t border-gray-700 pt-8">
-                         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div className="border-t border-gray-700 pt-6 sm:pt-8">
+                         <div className="flex flex-col space-y-4 sm:space-y-6 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
                               {/* Company Deck */}
-                              <div className="flex items-center">
+                              <div className="flex items-center justify-center sm:justify-start">
                                    <div className="w-10 h-10 bg-[#D1FF52] rounded-full flex items-center justify-center mr-3">
-                                        <span className="text-black font-bold text-sm"><Download /></span>
+                                        <Download className="w-5 h-5 text-black" />
                                    </div>
                                    <div>
                                         <h4 className="text-white font-medium text-sm">Company Deck</h4>
@@ -158,15 +166,15 @@ const Footer = () => {
                                    </div>
                               </div>
 
-                              {/* Copyright */}
-                              <div className="text-center">
-                                   <p className="text-gray-500 text-sm">
+                              {/* Copyright - Center on desktop, top on mobile */}
+                              <div className="text-center order-first lg:order-none">
+                                   <p className="text-gray-500 text-xs sm:text-sm">
                                         © 2024-2025, Orituree. All Rights Reserved.
                                    </p>
                               </div>
 
                               {/* Social Links */}
-                              <div className="flex items-center space-x-3 mr-15">
+                              <div className="flex items-center justify-center space-x-3">
                                    {socialLinks.map((social) => {
                                         const IconComponent = social.icon;
                                         return (
