@@ -84,7 +84,7 @@ const CaseStudies = () => {
 
               {/* Case Study Details */}
               <div className="p-4 sm:p-6 lg:p-8 rounded-b-2xl sm:rounded-b-3xl">
-                <div className="inline-block px-3 py-1 mb-3 sm:mb-4 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-gray-600">
+                <div className="inline-block px-3 py-1 mb-3 sm:mb-4 text-xs font-medium text-gray-300 bg-gray-800/50 rounded-full border border-[#D1FF52]">
                   {study.category}
                 </div>
 

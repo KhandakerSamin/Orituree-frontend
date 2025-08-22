@@ -83,7 +83,7 @@ const BlogSection = () => {
               {/* Blog Content */}
               <div className="p-6 sm:p-8 bg-black">
 
-               <span className="inline-block px-3 py-1 text-xs font-medium mb-5 text-gray-200 bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-600">
+               <span className="inline-block px-3 py-1 text-xs font-medium mb-5 text-gray-200 bg-gray-800/80 backdrop-blur-sm rounded-full border border-[#D1FF52]">
                     {post.category}
                   </span>
 
@@ -94,7 +94,7 @@ const BlogSection = () => {
                 <div className="flex items-center justify-between text-sm text-gray-400">
                   <span>{post.date}</span>
                   <div className="flex items-center space-x-1">
-                    <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#D1FF52] rounded-full "></div>
                     <span>{post.readTime}</span>
                   </div>
                 </div>

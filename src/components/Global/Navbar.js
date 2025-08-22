@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Image
-            src="/logo.png"
+            src="/Logo.png"
             alt="Orituree Logo"
             width={200}
             height={200}
