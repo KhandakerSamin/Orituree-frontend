@@ -1,10 +1,30 @@
 "use client"
 import { MoveUpRight, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { useState, useEffect } from "react"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Navigation items with their routes
+  const navigationItems = [
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/works" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" }
+  ]
+
+  // Mobile navigation items (includes Home)
+  const mobileNavigationItems = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/works" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" }
+  ]
 
   // Close menu on escape key press
   useEffect(() => {
@@ -35,24 +55,26 @@ export default function Navbar() {
         
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Image
-            src="/Logo.png"
-            alt="Orituree Logo"
-            width={200}
-            height={200}
-            className="w-45 h-11"
-          />
+          <Link href="/" />
+            <Image
+              src="/Logo.png"
+              alt="Orituree Logo"
+              width={200}
+              height={200}
+              className="w-45 h-11"
+            />
+
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {["About","Services", "Portfolio", "Blog", "Contact"].map((item) => (
+          {navigationItems.map((item) => (
             <a
-              key={item}
-              href="#"
+              key={item.name}
+              href={item.href}
               className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
             >
-              {item}
+              {item.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D1FF52] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
@@ -60,12 +82,18 @@ export default function Navbar() {
 
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center space-x-3 group ">
-          <button className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent px-6 py-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 cursor-pointer">
+          <a 
+            href="/contact"
+            className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent px-6 py-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 cursor-pointer"
+          >
             Hire Us
-          </button>
-          <button className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer">
+          </a>
+          <a 
+            href="/contact"
+            className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer"
+          >
             <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -144,10 +172,10 @@ export default function Navbar() {
           {/* Navigation Grid */}
           <div className="px-6 py-10">
             <div className="grid grid-cols-2 gap-4 mb-8">
-              {["About", "Portfolio", "Blog", "Contact"].map((item, index) => (
+              {mobileNavigationItems.map((item, index) => (
                 <a
-                  key={item}
-                  href="#"
+                  key={item.name}
+                  href={item.href}
                   className={`group relative p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700/30 hover:border-[#D1FF52]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/10 ${
                     isMenuOpen ? 'animate-slideUp' : ''
                   }`}
@@ -156,7 +184,7 @@ export default function Navbar() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300 group-hover:text-[#D1FF52] font-medium transition-colors duration-300">
-                      {item}
+                      {item.name}
                     </span>
                     <MoveUpRight className="w-4 h-4 text-gray-500 group-hover:text-[#D1FF52] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                   </div>
@@ -167,12 +195,13 @@ export default function Navbar() {
 
             {/* CTA Section */}
             <div className={`space-y-4 ${isMenuOpen ? 'animate-slideUp' : ''}`} style={{ animationDelay: '600ms' }}>
-              <button 
-                className="w-full bg-gradient-to-r from-[#D1FF52] to-[#B8E63F] text-black px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#D1FF52]/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              <a
+                href="/contact"
+                className="block w-full bg-gradient-to-r from-[#D1FF52] to-[#B8E63F] text-black px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#D1FF52]/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Hire Us
-              </button>
+              </a>
               
               {/* Contact Info */}
               <div className="flex items-center justify-center space-x-6 py-4 text-sm">
