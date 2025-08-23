@@ -1,4 +1,6 @@
+import Navbar from "@/components/Global/Navbar"
 import "./globals.css"
+import Footer from "@/components/Global/Footer"
 
 export const metadata = {
   title: "Orituree - Digital Agency",
@@ -15,7 +17,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+    </body>
     </html>
   )
 }

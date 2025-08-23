@@ -31,7 +31,7 @@ const CaseStudies = () => {
 
   return (
     <section
-      className="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
+      className="relative z-10 py-20 sm:py-24 md:py-35 lg:py-50 px-4 sm:px-6 lg:px-8"
       style={{
         background: "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)"
       }}
@@ -100,7 +100,7 @@ const CaseStudies = () => {
         {/* See More Case Studies Button */}
         <div className="flex items-center justify-center">
           {/* Mobile: Single combined button */}
-          <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-xs">
+          <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-2xs">
             <span>See More Case Studies</span>
             <MoveUpRight className="w-5 h-5" />
           </button>

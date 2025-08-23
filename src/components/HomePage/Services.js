@@ -27,7 +27,7 @@ export default function Services() {
   ]
 
   return (
-    <section className="py-20 px-4 bg-black">
+    <section className="py-20 sm:py-24 md:py-35 lg:py-50 px-4 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Services Badge */}
         <div className="flex justify-center mb-8 ">

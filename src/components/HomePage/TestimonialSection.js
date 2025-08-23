@@ -51,7 +51,7 @@ const TestimonialSection = () => {
 
      return (
           <section
-               className="relative py-30 px-6 overflow-hidden "
+               className="relative py-20 sm:py-24 md:py-35 lg:py-50 px-6 overflow-hidden "
                style={{
                     background: "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)"
                }}
@@ -70,7 +70,7 @@ const TestimonialSection = () => {
 
                <div className="max-w-3xl mx-auto text-center relative z-10">
                     {/* Header */}
-                    <div className="mb-30">
+                    <div className="mb-15 sm:mb-20 md:mb-25 lg:mb-30">
                          <div className="inline-flex items-center border border-[#D1FF52] text-white px-6 py-2 mb-10 text-sm font-medium rounded-full">
                               What Clients Say
                          </div>

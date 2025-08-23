@@ -11,6 +11,7 @@ import {
      MoveUpRight,
      Download,
 } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
      const [logoError, setLogoError] = useState(false);
@@ -48,7 +49,7 @@ const Footer = () => {
 
      return (
           <footer
-               className="relative z-10 pt-12 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8"
+               className="relative z-10 pt-15 sm:pt-20 md:pt-25 lg:pt-30 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8"
                style={{
                     background:
                          "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)",
@@ -60,12 +61,17 @@ const Footer = () => {
                          {/* Company Info */}
                          <div>
                               {!logoError ? (
-                                   <img
+                                   <Image
                                         src="/Logo.png"
                                         alt="Orituree Logo"
                                         className="h-12 sm:h-13 w-auto mr-3"
+                                        width={500}
+                                        height={200}
                                         onError={() => setLogoError(true)}
+                                        priority
                                    />
+                                   
+
                               ) : (
                                    <div className="w-8 h-8 bg-[#D1FF52] rounded-full flex items-center justify-center mr-3">
                                         <span className="text-black font-bold text-sm">O</span>
@@ -78,12 +84,12 @@ const Footer = () => {
                               </p>
 
                               {/* Contact Button - Mobile: Single, Desktop: Two buttons */}
-                              <div className="flex items-center justify-start">
+                              <div className="flex items-center justify-center md:justify-start">
                                    {/* Mobile: Single combined button */}
-                                   <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-xs">
+                                   {/* <button className="md:hidden flex items-center justify-center gap-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-3 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-[220px]">
                                         <span>Contact Us</span>
                                         <MoveUpRight className="w-5 h-5" />
-                                   </button>
+                                   </button> */}
 
                                    {/* Desktop: Two separate buttons */}
                                    <div className="hidden md:flex items-center gap-4 group max-w-[350px]">

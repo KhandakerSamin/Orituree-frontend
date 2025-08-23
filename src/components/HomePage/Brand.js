@@ -26,7 +26,7 @@ const BrandsShowcase = () => {
   ];
 
   return (
-    <section className="relative z-10 py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden max-w-[1350px] mx-auto px-4 sm:px-6">
+    <section className="relative z-10 py-8 sm:py-12 md:py-16 lg:py-35 overflow-hidden max-w-[1350px] mx-auto px-4 sm:px-6">
       {/* Optional Section Header for Mobile */}
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-gray-400 text-sm sm:text-base font-medium tracking-wider uppercase mb-2">

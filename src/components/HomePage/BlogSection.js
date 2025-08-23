@@ -33,7 +33,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="py-20 sm:py-24 md:py-35 lg:py-50  px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
@@ -104,7 +104,7 @@ const BlogSection = () => {
         {/* See All Blogs Button */}
         <div className="flex items-center justify-center">
           {/* Mobile: Single combined button */}
-          <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-xs">
+          <button className="md:hidden flex items-center justify-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-[220px]">
             <span>See All Blogs</span>
             <MoveUpRight className="w-5 h-5" />
           </button>

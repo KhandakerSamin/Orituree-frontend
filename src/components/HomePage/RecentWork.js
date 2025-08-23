@@ -21,7 +21,7 @@ const RecentWork = () => {
   ]
 
   return (
-    <section className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="relative z-10 py-20 sm:py-24 md:py-30 md:pb-40 lg:py-35 lg:pb-50 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
@@ -96,7 +96,7 @@ const RecentWork = () => {
         {/* See More Works Button - Combined for mobile, separate for desktop */}
         <div className="flex items-center justify-center mt-10">
           {/* Mobile: Single combined button */}
-          <button className="md:hidden flex items-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer">
+          <button className="md:hidden flex items-center space-x-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-5 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer">
             <span>See More Works</span>
             <MoveUpRight className="w-5 h-5" />
           </button>

@@ -45,7 +45,7 @@ const FAQSection = () => {
 
   return (
     <section
-      className="py-16 sm:py-20 lg:py-30 px-4 sm:px-6 lg:px-8"
+      className="py-20 sm:py-24 md:py-35 lg:py-50 px-4 sm:px-6 lg:px-8"
       style={{
         background:
           "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)",
