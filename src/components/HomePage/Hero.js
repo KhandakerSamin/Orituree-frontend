@@ -134,13 +134,13 @@ export default function Hero() {
         {/* Row 1 — brands 1–7 */}
         <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4 mb-5 max-w-5xl mx-auto">
           {row1.map((n) => (
-            <div key={n} className="flex items-center justify-center h-8 sm:h-9">
+            <div key={n} className="flex items-center justify-center h-7 sm:h-8">
               <Image
                 src={`/brand${n}.png`}
                 alt={`Brand ${n}`}
-                width={120}
-                height={36}
-                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[120px]"
+                width={105}
+                height={35}
+                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
               />
             </div>
           ))}
@@ -149,13 +149,13 @@ export default function Hero() {
         {/* Row 2 — brands 8–13 */}
         <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4 max-w-4xl mx-auto">
           {row2.map((n) => (
-            <div key={n} className="flex items-center justify-center h-8 sm:h-9">
+            <div key={n} className="flex items-center justify-center h-7 sm:h-8">
               <Image
                 src={`/brand${n}.png`}
                 alt={`Brand ${n}`}
-                width={120}
-                height={36}
-                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[120px]"
+                width={105}
+                height={35}
+                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
               />
             </div>
           ))}

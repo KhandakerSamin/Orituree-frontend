@@ -3,7 +3,7 @@ import "./globals.css"
 
 
 export const metadata = {
-  title: "Orituree - Digital Agency",
+  title: "Oriture - Digital Agency",
   description: "Professional digital agency services for modern businesses",
   generator: "v0.app",
 }
