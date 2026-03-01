@@ -12,7 +12,7 @@ import TestimonialSection from "@/components/HomePage/TestimonialSection";
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen bg-black overflow-hidden">
       {/* Hero Section Background (includes Navbar and Brand) */}
       <div 
         className="relative"

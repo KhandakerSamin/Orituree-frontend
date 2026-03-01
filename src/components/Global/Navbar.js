@@ -1,7 +1,7 @@
 "use client"
 import { MoveUpRight, X } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 
 export default function Navbar() {
@@ -51,76 +51,91 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="relative z-[60] flex items-center justify-between px-6 py-6 lg:px-12 max-w-[1400px] mx-auto">
+      {/* Full-width navbar background wrapper */}
+      <div className="relative w-full  bg-black/80">
+        {/* Base gradient layer */}
         
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Link href="/" />
+
+        
+        {/* Grain texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            mixBlendMode: "overlay",
+          }}
+        />
+
+        {/* Content container */}
+        <nav className="relative z-[60] flex items-center justify-between px-6 py-5 lg:px-12 max-w-[1400px] border-l border-r border-b rounded-b-2xl border-white/10 mx-auto">
+          {/* Logo */}
+          <Link href="/" className="relative z-10 flex items-center group">
             <Image
-              src="/Logo.png"
-              alt="Orituree Logo"
-              width={200}
-              height={200}
-              className="w-45 h-11"
+              src="/LOGO.svg"
+              alt="Oriture Logo"
+              width={180}
+              height={40}
+              quality={100}
+              priority
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
+          </Link>
 
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation */}
+          <div className="relative z-10 hidden md:flex items-center space-x-10">
           {navigationItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
+              className="text-white/85 hover:text-white transition-colors duration-300 text-[16px] font-light "
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D1FF52] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
-        </div>
-
-        {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center space-x-3 group ">
-          <a 
-            href="/contact"
-            className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent px-6 py-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 cursor-pointer"
-          >
-            Hire Us
-          </a>
-          <a 
-            href="/contact"
-            className="border border-[#D1FF52] text-gray-300 group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-2 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer"
-          >
-            <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
-          </a>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden relative z-[70] text-gray-300 hover:text-white transition-colors duration-300"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className="w-6 h-6 relative">
-            <span
-              className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                isMenuOpen ? 'top-3 rotate-45' : 'top-1'
-              }`}
-            />
-            <span
-              className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out top-3 ${
-                isMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-            <span
-              className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                isMenuOpen ? 'top-3 -rotate-45' : 'top-5'
-              }`}
-            />
           </div>
-        </button>
-      </nav>
+
+         
+                <div className="relative z-10 hidden md:flex items-center space-x-3 group">
+                <a 
+                href="/contact"
+                className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent px-6 py-2.5 rounded-full transition-all duration-300 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] cursor-pointer text-[15px] font-medium"
+                >
+                Hire Us
+                </a>
+                <a 
+                href="/contact"
+                className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent p-2.5 rounded-full transition-all duration-300 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer"
+                >
+                <MoveUpRight className="w-5 h-5" />
+                </a>
+                </div>
+
+                {/* Mobile Menu Button */}
+          <button
+            className="md:hidden relative z-[70] text-white hover:text-white/80 transition-colors duration-300"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-6 relative">
+              <span
+                className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'top-3 rotate-45' : 'top-1'
+                }`}
+              />
+              <span
+                className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out top-3 ${
+                  isMenuOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'top-3 -rotate-45' : 'top-5'
+                }`}
+              />
+            </div>
+          </button>
+        </nav>
+      </div>
 
       {/* Mobile Menu Modal/Dropdown */}
       <div
@@ -151,22 +166,6 @@ export default function Navbar() {
         >
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-6  border-gray-700/30">
-            {/* <div className="flex items-center space-x-2">
-              <Image
-                src="/favicon.svg"
-                alt="Orituree Logo"
-                width={28}
-                height={28}
-                className="w-7 h-7"
-              />
-              <span className="text-[#D1FF52] text-xl font-bold">Orituree</span>
-            </div> */}
-            {/* <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-full transition-all duration-300"
-            >
-              <X className="w-5 h-5" />
-            </button> */}
           </div>
 
           {/* Navigation Grid */}
