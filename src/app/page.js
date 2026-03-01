@@ -9,6 +9,7 @@ import Hero from "@/components/HomePage/Hero";
 import RecentWork from "@/components/HomePage/RecentWork";
 import Services from "@/components/HomePage/Services";
 import TestimonialSection from "@/components/HomePage/TestimonialSection";
+import WhyChoose from "@/components/HomePage/WhyChoose";
 
 export default function Page() {
   return (
@@ -24,6 +25,7 @@ export default function Page() {
 
         <Navbar />
         <Hero />
+        <WhyChoose />
         {/* <Brand /> */}
       </div>
       {/* <div
