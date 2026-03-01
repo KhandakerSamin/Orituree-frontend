@@ -1,6 +1,6 @@
 import Navbar from "@/components/Global/Navbar"
 import "./globals.css"
-import Footer from "@/components/Global/Footer"
+
 
 export const metadata = {
   title: "Orituree - Digital Agency",
@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-black">
+      <body className="bg-black" suppressHydrationWarning>
         {children}
     </body>
     </html>

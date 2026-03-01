@@ -24,11 +24,9 @@ export default function Page() {
 
         <Navbar />
         <Hero />
-        <Brand />
+        {/* <Brand /> */}
       </div>
-
-      {/* Rest of the page with different background */}
-      <div
+      {/* <div
         className="relative"
         style={{
           background: `
@@ -45,7 +43,7 @@ export default function Page() {
         <FAQSection />
         <CTASection />
         <Footer />
-      </div>
+      </div> */}
     </main>
   )
 }

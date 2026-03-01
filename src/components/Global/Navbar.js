@@ -1,11 +1,11 @@
-"use client"
-import { MoveUpRight, X } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { useState, useEffect } from "react"
+"use client";
+import { MoveUpRight, X } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Navigation items with their routes
   const navigationItems = [
@@ -13,8 +13,8 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/works" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" }
-  ]
+    { name: "Contact", href: "/contact" },
+  ];
 
   // Mobile navigation items (includes Home)
   const mobileNavigationItems = [
@@ -23,40 +23,38 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/works" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" }
-  ]
+    { name: "Contact", href: "/contact" },
+  ];
 
   // Close menu on escape key press
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false)
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
       }
-    }
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [])
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isMenuOpen])
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
       {/* Full-width navbar background wrapper */}
       <div className="relative w-full  bg-black/80">
         {/* Base gradient layer */}
-        
 
-        
         {/* Grain texture overlay */}
         <div
           className="absolute inset-0 opacity-[0.35]"
@@ -83,34 +81,33 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="relative z-10 hidden md:flex items-center space-x-10">
-          {navigationItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-white/85 hover:text-white transition-colors duration-300 text-[16px] font-light "
-            >
-              {item.name}
-            </a>
-          ))}
+            {navigationItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-white/85 hover:text-white transition-colors duration-300 text-[16px] font-light "
+              >
+                {item.name}
+              </a>
+            ))}
           </div>
 
-         
-                <div className="relative z-10 hidden md:flex items-center space-x-3 group">
-                <a 
-                href="/contact"
-                className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent px-6 py-2.5 rounded-full transition-all duration-300 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] cursor-pointer text-[15px] font-medium"
-                >
-                Hire Us
-                </a>
-                <a 
-                href="/contact"
-                className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent p-2.5 rounded-full transition-all duration-300 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer"
-                >
-                <MoveUpRight className="w-5 h-5" />
-                </a>
-                </div>
+          <div className="relative z-10 hidden md:flex items-center transition-normal space-x-3 group">
+            <a
+              href="/contact"
+              className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent px-6 py-2.5 rounded-full transition-all duration-300 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] cursor-pointer text-[15px] font-medium"
+            >
+              Hire Us
+            </a>
+            <a
+              href="/contact"
+              className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent p-2.5 rounded-full transition-all duration-500 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer"
+            >
+              <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
+            </a>
+          </div>
 
-                {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden relative z-[70] text-white hover:text-white/80 transition-colors duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -119,17 +116,17 @@ export default function Navbar() {
             <div className="w-6 h-6 relative">
               <span
                 className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'top-3 rotate-45' : 'top-1'
+                  isMenuOpen ? "top-3 rotate-45" : "top-1"
                 }`}
               />
               <span
                 className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out top-3 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
+                  isMenuOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
                 className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'top-3 -rotate-45' : 'top-5'
+                  isMenuOpen ? "top-3 -rotate-45" : "top-5"
                 }`}
               />
             </div>
@@ -140,33 +137,33 @@ export default function Navbar() {
       {/* Mobile Menu Modal/Dropdown */}
       <div
         className={`fixed inset-0 z-50 transition-all duration-500 ease-out md:hidden ${
-          isMenuOpen 
-            ? 'opacity-100 pointer-events-auto' 
-            : 'opacity-0 pointer-events-none'
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         {/* Backdrop */}
-        <div 
+        <div
           className={`absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-500 ${
-            isMenuOpen ? 'opacity-100' : 'opacity-0'
+            isMenuOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setIsMenuOpen(false)}
         />
-        
+
         {/* Dropdown Content */}
         <div
           className={`relative bg-slate-900/95 backdrop-blur-xl border-b border-gray-700/30 shadow-2xl transition-all duration-500 ease-out ${
-            isMenuOpen 
-              ? 'translate-y-0 opacity-100' 
-              : '-translate-y-full opacity-0'
+            isMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-full opacity-0"
           }`}
           style={{
-            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)'
+            background:
+              "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)",
           }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-6  border-gray-700/30">
-          </div>
+          <div className="flex items-center justify-between px-6 py-6  border-gray-700/30"></div>
 
           {/* Navigation Grid */}
           <div className="px-6 py-10">
@@ -176,7 +173,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={`group relative p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700/30 hover:border-[#D1FF52]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/10 ${
-                    isMenuOpen ? 'animate-slideUp' : ''
+                    isMenuOpen ? "animate-slideUp" : ""
                   }`}
                   style={{ animationDelay: `${index * 100 + 200}ms` }}
                   onClick={() => setIsMenuOpen(false)}
@@ -193,7 +190,10 @@ export default function Navbar() {
             </div>
 
             {/* CTA Section */}
-            <div className={`space-y-4 ${isMenuOpen ? 'animate-slideUp' : ''}`} style={{ animationDelay: '600ms' }}>
+            <div
+              className={`space-y-4 ${isMenuOpen ? "animate-slideUp" : ""}`}
+              style={{ animationDelay: "600ms" }}
+            >
               <a
                 href="/contact"
                 className="block w-full bg-gradient-to-r from-[#D1FF52] to-[#B8E63F] text-black px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#D1FF52]/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] text-center"
@@ -201,7 +201,7 @@ export default function Navbar() {
               >
                 Hire Us
               </a>
-              
+
               {/* Contact Info */}
               <div className="flex items-center justify-center space-x-6 py-4 text-sm">
                 <div className="flex items-center space-x-2 text-gray-400">
@@ -209,7 +209,9 @@ export default function Navbar() {
                   <span>Available for projects</span>
                 </div>
                 <div className="w-px h-4 bg-gray-600"></div>
-                <span className="text-gray-400">Let&apos;s create something amazing</span>
+                <span className="text-gray-400">
+                  Let&apos;s create something amazing
+                </span>
               </div>
             </div>
           </div>
@@ -228,12 +230,12 @@ export default function Navbar() {
             transform: translateY(0);
           }
         }
-        
+
         .animate-slideUp {
           animation: slideUp 0.4s ease-out forwards;
           opacity: 0;
         }
       `}</style>
     </>
-  )
+  );
 }
