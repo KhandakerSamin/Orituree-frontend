@@ -35,18 +35,42 @@ export default function WhyChoose() {
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 100%)`,
+          background: `linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.88) 75%, #000000 100%)`,
         }}
       />
 
-      {/* Noise grain */}
+      {/* Bottom-right purple glow — sits above the black fade */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          opacity: 0.45,
+          background: `
+            radial-gradient(ellipse 90% 65% at 80% 90%, #7B5FD4 0%, #4A2E9E 25%, #2B1860 50%, transparent 80%),
+            radial-gradient(ellipse 70% 55% at 90% 100%, #5A3EAA 0%, #3B2A7A 30%, transparent 65%),
+            radial-gradient(ellipse 50% 45% at 70% 95%, #6B4FC4 0%, #341E70 40%, transparent 70%)
+          `,
+          opacity: 1,
+        }}
+      />
+
+      {/* Noise grain — matching Hero */}
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          opacity: 0.55,
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
           backgroundSize: "200px 200px",
           mixBlendMode: "overlay",
+        }}
+      />
+
+      {/* Finer grain second pass — matching Hero */}
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          opacity: 0.30,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n2)'/%3E%3C/svg%3E")`,
+          backgroundSize: "80px 80px",
+          mixBlendMode: "soft-light",
         }}
       />
 
@@ -54,8 +78,8 @@ export default function WhyChoose() {
       <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
 
         {/* Heading — centered */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="font-newsreader text-3xl sm:text-4xl lg:text-5xl font-normal italic leading-[1.2] text-white">
+        <div className="text-start mx-8 mb-12 sm:mb-16">
+          <h2 className="font-newsreader text-3xl sm:text-4xl lg:text-5xl font-normal  leading-[1.2] text-white">
             <span className="not-italic" style={{ color: "#D1FF52" }}>Oriture</span>{" "}
             is your
             <br />
@@ -64,25 +88,24 @@ export default function WhyChoose() {
         </div>
 
         {/* Cards — single column, centered */}
-        <div className="flex flex-col items-center gap-5 sm:gap-6">
-          {reasons.map((item, i) => (
-            <div
-              key={i}
-              className="group relative w-full max-w-xl rounded-2xl px-6 py-5 transition-all duration-300"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                backdropFilter: "blur(12px)",
-              }}
-            >
-              {/* Icon + Text */}
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex-shrink-0 mt-1 w-8 h-8 rounded-full flex items-center justify-center"
-                  style={{ background: "#D1FF52" }}
-                >
-                  <MoveUpRight className="w-4 h-4 text-black" />
-                </div>
+          <div className="flex flex-col items-center gap-5  sm:gap-6">
+            {reasons.map((item, i) => (
+              <div
+                key={i}
+                className="group  relative w-full max-w-xl overflow-hidden rounded-t-2xl px-6 py-5 transition-all duration-300"
+                style={{
+            background: "linear-gradient(360deg, rgba(3, 2, 7, 0) 0%, rgba(255, 255, 255, 0.1) 100%)",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderLeft: "1px solid rgba(255,255,255,0.08)",
+            borderRight: "1px solid rgba(255,255,255,0.08)",
+            borderBottom: "none",
+                }}
+              >
+                {/* Icon + Text */}
+              <div className="relative z-10 flex items-start gap-4">
+               
+                <img src="/LogoIcon.svg" alt="icon" className="w-5 h-5" />
+                
 
                 <div>
                   <h3 className="font-newsreader text-xl sm:text-2xl font-normal text-white leading-snug mb-2 whitespace-pre-line">
@@ -93,14 +116,6 @@ export default function WhyChoose() {
                   </p>
                 </div>
               </div>
-
-              {/* Subtle hover glow */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: "linear-gradient(135deg, rgba(209,255,82,0.04) 0%, transparent 60%)",
-                }}
-              />
             </div>
           ))}
         </div>

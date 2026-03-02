@@ -52,7 +52,7 @@ export default function Navbar() {
   return (
     <>
       {/* Full-width navbar background wrapper */}
-      <div className="relative w-full  bg-black/80">
+      <div className="relative w-full border-b  border-white/10  bg-black/80">
         {/* Base gradient layer */}
 
         {/* Grain texture overlay */}
@@ -65,7 +65,7 @@ export default function Navbar() {
         />
 
         {/* Content container */}
-        <nav className="relative z-[60] flex items-center justify-between px-6 py-5 lg:px-12 max-w-[1400px] border-l border-r border-b rounded-b-2xl border-white/10 mx-auto">
+        <nav className="relative z-[60] flex items-center justify-between px-6 py-5 lg:px-12 max-w-[1400px] mx-auto">
           {/* Logo */}
           <Link href="/" className="relative z-10 flex items-center group">
             <Image
