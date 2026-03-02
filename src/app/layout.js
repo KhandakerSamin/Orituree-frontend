@@ -1,4 +1,3 @@
-import Navbar from "@/components/Global/Navbar"
 import "./globals.css"
 
 

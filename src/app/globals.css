@@ -22,9 +22,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
 }
 
 .font-newsreader {
-  font-family: "Newsreader", serif;
+  font-family: "Newsreader";
 }
