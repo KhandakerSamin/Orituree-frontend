@@ -115,52 +115,97 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Mobile scroll indicator */}
-        <div className="absolute bottom-6 md:hidden left-1/2 -translate-x-1/2 z-20 animate-bounce">
-          <div className="flex flex-col items-center gap-1">
-            <span className="text-[10px] uppercase tracking-widest text-white/30">Scroll</span>
-            <div className="w-px h-7 bg-gradient-to-b from-[#D1FF52]/60 via-purple-400/40 to-transparent" />
-          </div>
-        </div>
+        
       </div>
 
       {/* BRAND SECTION */}
-      <div className="relative z-10 w-full pb-14 pt-4 px-4 sm:px-8">
+      <div className="relative z-10 w-full pb-18 pt-4 px-4 sm:px-8">
         <p className="text-center text-sm text-white/70 mb-7 tracking-wide">
           we help to{" "}
           <span className="text-[#D1FF52] font-medium">structure</span>
         </p>
 
-        {/* Row 1 — brands 1–7 */}
-        <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4 mb-5 max-w-5xl mx-auto">
-          {row1.map((n) => (
-            <div key={n} className="flex items-center justify-center h-7 sm:h-8">
-              <Image
-                src={`/brand${n}.png`}
-                alt={`Brand ${n}`}
-                width={105}
-                height={35}
-                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
-              />
-            </div>
-          ))}
+        {/* Row 1 — Right to Left */}
+        <div
+          className="relative mb-5 max-w-5xl mx-auto"
+          style={{
+            overflow: 'hidden',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: '24px',
+              width: 'fit-content',
+              animation: 'scrollRTL 60s linear infinite',
+            }}
+          >
+            {[...row1, ...row1, ...row1, ...row1].map((n, i) => (
+              <div key={`r1-${n}-${i}`} className="flex-shrink-0 flex items-center justify-center h-7 sm:h-8">
+                <Image
+                  src={`/brand${n}.png`}
+                  alt={`Brand ${n}`}
+                  width={105}
+                  height={35}
+                  className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Row 2 — brands 8–13 */}
-        <div className="flex items-center justify-center flex-wrap gap-x-6 gap-y-4 max-w-4xl mx-auto">
-          {row2.map((n) => (
-            <div key={n} className="flex items-center justify-center h-7 sm:h-8">
-              <Image
-                src={`/brand${n}.png`}
-                alt={`Brand ${n}`}
-                width={105}
-                height={35}
-                className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
-              />
-            </div>
-          ))}
+        {/* Row 2 — Left to Right */}
+        <div
+          className="relative max-w-4xl mx-auto"
+          style={{
+            overflow: 'hidden',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: '24px',
+              width: 'fit-content',
+              animation: 'scrollLTR 60s linear infinite',
+            }}
+          >
+            {[...row2, ...row2, ...row2, ...row2].map((n, i) => (
+              <div key={`r2-${n}-${i}`} className="flex-shrink-0 flex items-center justify-center h-7 sm:h-8">
+                <Image
+                  src={`/brand${n}.png`}
+                  alt={`Brand ${n}`}
+                  width={105}
+                  height={35}
+                  className="h-full w-auto object-contain max-w-[100px] sm:max-w-[105px]"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes scrollRTL {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scrollLTR {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
+
+      {/* Mobile scroll indicator */}
+        <div className="absolute bottom-1 md:hidden left-1/2 -translate-x-1/2 z-20 animate-bounce">
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[10px] uppercase tracking-widest text-white/30">Scroll</span>
+            <div className="w-px h-7 bg-gradient-to-b from-[#D1FF52]/60 via-purple-400/40 to-transparent" />
+          </div>
+        </div>
 
     </section>
   );
