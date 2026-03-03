@@ -99,11 +99,11 @@ export default function Hero() {
 
         {/* CTA — Desktop */}
         <div className="hidden md:flex items-center space-x-2 mt-5 group">
-          <button className="bg-[#D1FF52] text-black px-5 py-3 rounded-full text-base font-medium cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/30 hover:scale-105 active:scale-95">
+          <button className="bg-[#D1FF52] text-black px-5 py-3 rounded-full text-base font-medium cursor-pointer ">
             Start Your Project
           </button>
-          <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-full transition-all duration-300 hover:bg-white/10 group-hover:rotate-45 cursor-pointer">
-            <MoveUpRight className="w-5 h-5 text-[#D1FF52]" />
+          <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-full transition-all duration-300 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer">
+            <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
           </button>
         </div>
 
