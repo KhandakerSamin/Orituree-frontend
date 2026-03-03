@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, MoveUpRight, ArrowUpRight } from "lucide-react";
+import { ChevronDown, MoveUpRight, ArrowUpRight, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -76,10 +76,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ─── NAVBAR SHELL ─────────────────────────────────────────── */}
-      <div className="fixed top-0 left-0 w-full z-[100] pointer-events-none">
+      {/* ─── DESKTOP NAVBAR ───────────────────────────────────────── */}
+      <div className="fixed top-0 left-0 w-full z-[100] pointer-events-none hidden md:block">
         <div
-          className={`max-w-[1400px] mx-auto px-6 lg:px-12 transition-all duration-500 ease-in-out ${
+          className={`max-w-[1400px] mx-auto px-6 lg:px-12 transition-all duration-700 ease-in-out ${
             isScrolled ? "pt-3 pb-3" : "pt-0 pb-0"
           }`}
         >
@@ -87,7 +87,7 @@ export default function Navbar() {
 
             {/* ── STANDALONE LOGO — slides out left on scroll ── */}
             <div
-              className={`shrink-0 transition-all duration-500 ease-in-out ${
+              className={`shrink-0 transition-all duration-700 ease-in-out ${
                 isScrolled
                   ? "w-0 opacity-0 -translate-x-6 overflow-hidden pointer-events-none"
                   : "w-auto opacity-100 translate-x-0 py-5"
@@ -106,10 +106,10 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* ── PILL — nav links; logo + CTA slide in when scrolled ── */}
+            {/* ── PILL ── */}
             <div className="flex-1 flex justify-center">
               <div
-                className={`flex items-center transition-all duration-500 ease-in-out ${
+                className={`flex items-center transition-all duration-700 ease-in-out ${
                   isScrolled
                     ? "border border-white/12 bg-black/65 backdrop-blur-2xl rounded-full px-3 py-2 gap-1 shadow-[0_4px_32px_rgba(0,0,0,0.45)]"
                     : "border border-transparent bg-transparent rounded-full px-0 py-5 gap-7"
@@ -117,7 +117,7 @@ export default function Navbar() {
               >
                 {/* Logo enters pill from left */}
                 <div
-                  className={`flex items-center shrink-0 overflow-hidden transition-all duration-500 ease-in-out ${
+                  className={`flex items-center shrink-0 overflow-hidden transition-all duration-700 ease-in-out ${
                     isScrolled
                       ? "max-w-[130px] opacity-100 pr-3 pl-1 mr-1 border-r border-white/10"
                       : "max-w-0 opacity-0 pr-0 pl-0 mr-0 border-r-0"
@@ -147,10 +147,10 @@ export default function Navbar() {
                           setOpenDropdown(null);
                         }
                       }}
-                      className={`flex items-center gap-1 whitespace-nowrap transition-all duration-200 ${
+                      className={`flex items-center gap-1 whitespace-nowrap transition-all duration-300 text-[15px] font-light ${
                         isScrolled
-                          ? "text-[13px] px-3 py-1.5 rounded-full hover:bg-white/8"
-                          : "text-[15px] font-light px-0 py-0"
+                          ? "px-3 py-1.5 rounded-full hover:bg-white/8"
+                          : "px-0 py-0"
                       } ${
                         activeItem === item.name
                           ? "text-[#D1FF52]"
@@ -160,9 +160,9 @@ export default function Navbar() {
                       {item.name}
                       {item.hasDropdown && (
                         <ChevronDown
-                          className={`transition-transform duration-200 ${
-                            isScrolled ? "w-3 h-3" : "w-3.5 h-3.5"
-                          } ${openDropdown === item.name ? "rotate-180" : ""} ${
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                            openDropdown === item.name ? "rotate-180" : ""
+                          } ${
                             activeItem === item.name ? "text-[#D1FF52]" : "text-white/40"
                           }`}
                         />
@@ -196,7 +196,7 @@ export default function Navbar() {
 
                 {/* CTA enters pill from right */}
                 <div
-                  className={`flex items-center shrink-0 overflow-hidden transition-all duration-500 ease-in-out ${
+                  className={`flex items-center shrink-0 overflow-hidden transition-all duration-700 ease-in-out ${
                     isScrolled
                       ? "max-w-[180px] opacity-100 pl-3 ml-1 border-l border-white/10"
                       : "max-w-0 opacity-0 pl-0 ml-0 border-l-0"
@@ -205,7 +205,7 @@ export default function Navbar() {
                   <div className="flex items-center gap-2 pr-1">
                     <a
                       href="/contact"
-                      className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[12px] font-medium whitespace-nowrap"
+                      className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
                     >
                       Hire Us
                     </a>
@@ -219,7 +219,7 @@ export default function Navbar() {
 
             {/* ── STANDALONE CTA — slides out right on scroll ── */}
             <div
-              className={`flex items-center gap-2 shrink-0 group/ctatop transition-all duration-500 ease-in-out ${
+              className={`flex items-center gap-2 shrink-0 group/ctatop transition-all duration-700 ease-in-out ${
                 isScrolled
                   ? "w-0 opacity-0 translate-x-6 overflow-hidden pointer-events-none"
                   : "w-auto opacity-100 translate-x-0 py-5"
@@ -235,86 +235,151 @@ export default function Navbar() {
                 <MoveUpRight className="w-4 h-4 text-[#D1FF52] group-hover/ctatop:rotate-45 group-hover/ctatop:text-black transition-all duration-300" />
               </button>
             </div>
-
-            {/* Mobile burger */}
-            <button
-              className="md:hidden z-[70] text-white hover:text-white/80 transition-colors duration-300 py-5 ml-auto"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <div className="w-6 h-6 relative">
-                <span className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? "top-3 rotate-45" : "top-1"}`} />
-                <span className={`absolute block w-full h-0.5 bg-current transition-all duration-300 top-3 ${isMenuOpen ? "opacity-0" : "opacity-100"}`} />
-                <span className={`absolute block w-full h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? "top-3 -rotate-45" : "top-5"}`} />
-              </div>
-            </button>
           </div>
         </div>
       </div>
 
-      {/* ─── MOBILE MENU ──────────────────────────────────────────── */}
+      {/* ─── MOBILE NAVBAR ────────────────────────────────────────── */}
+      <div className="fixed top-0 left-0 w-full z-[100] md:hidden">
+        <div className="mx-4 mt-3">
+          <div className="flex items-center border border-white/12 bg-black/65 backdrop-blur-2xl rounded-full px-3 py-2 shadow-[0_4px_32px_rgba(0,0,0,0.45)] gap-2">
+
+            {/* Mobile Logo */}
+            <Link href="/" className="flex items-center group flex-shrink-0 pl-1 pr-2 border-r border-white/10 mr-1">
+              <Image
+                src="/LOGO.svg"
+                alt="Oriture Logo"
+                width={100}
+                height={26}
+                quality={100}
+                priority
+                className="h-7 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
+            </Link>
+
+            {/* Menu button — centered */}
+            <div className="flex-1 flex justify-center">
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className="text-white/80 hover:text-white text-[14px] font-light tracking-wide transition-colors duration-200 px-3 py-1"
+              >
+                Menu
+              </button>
+            </div>
+
+            {/* Mobile CTA */}
+            <div className="flex items-center gap-1.5 pl-2 border-l border-white/10 ml-1">
+              <a
+                href="/contact"
+                className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-3.5 py-1.5 rounded-full transition-all duration-300 text-[12px] font-medium whitespace-nowrap"
+              >
+                Hire Us
+              </a>
+              <button className="border border-[#D1FF52]/40 bg-transparent p-1.5 rounded-tr-full rounded-b-full hover:rounded-t-full hover:rounded-bl-none hover:bg-[#D1FF52] transition-all duration-300 shrink-0 group/mobilecta">
+                <MoveUpRight className="w-3 h-3 text-[#D1FF52] group-hover/mobilecta:rotate-45 group-hover/mobilecta:text-black transition-all duration-300" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── MOBILE MENU MODAL ────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-50 transition-all duration-500 ease-out md:hidden ${
+        className={`fixed inset-0 z-[200] flex items-center justify-center md:hidden transition-all duration-400 ease-out ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
+        {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-500 ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-400 ${
+            isMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
           onClick={() => setIsMenuOpen(false)}
         />
+
+        {/* Modal */}
         <div
-          className={`relative backdrop-blur-xl border-b border-gray-700/30 shadow-2xl transition-all duration-500 ease-out ${
-            isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+          className={`relative w-[88vw] max-w-sm bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl shadow-black/80 transition-all duration-400 ease-out overflow-hidden ${
+            isMenuOpen ? "scale-100 opacity-100 translate-y-0" : "scale-90 opacity-0 translate-y-6"
           }`}
-          style={{ background: "linear-gradient(135deg,rgba(15,23,42,.97) 0%,rgba(30,41,59,.97) 100%)" }}
         >
-          <div className="flex items-center justify-between px-6 py-6 border-gray-700/30" />
-          <div className="px-6 py-10">
-            <div className="grid grid-cols-2 gap-4 mb-8">
+          {/* Modal header */}
+          <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/8">
+            <Link href="/" onClick={() => setIsMenuOpen(false)}>
+              <Image
+                src="/LOGO.svg"
+                alt="Oriture Logo"
+                width={100}
+                height={26}
+                quality={100}
+                className="h-6 w-auto"
+              />
+            </Link>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-200"
+            >
+              <X className="w-4 h-4 text-white/60" />
+            </button>
+          </div>
+
+          {/* Nav links grid */}
+          <div className="px-5 py-5">
+            <div className="grid grid-cols-2 gap-2.5">
               {mobileNavigationItems.map((item, index) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`group relative p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700/30 hover:border-[#D1FF52]/30 transition-all duration-300 ${isMenuOpen ? "animate-slideUp" : ""}`}
-                  style={{ animationDelay: `${index * 80 + 150}ms` }}
+                  className={`group relative p-4 bg-white/4 hover:bg-white/8 rounded-2xl border border-white/6 hover:border-[#D1FF52]/25 transition-all duration-300 ${
+                    isMenuOpen ? "animate-modalItemIn" : ""
+                  }`}
+                  style={{ animationDelay: `${index * 50 + 100}ms` }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300 group-hover:text-[#D1FF52] font-medium transition-colors duration-300">{item.name}</span>
-                    <MoveUpRight className="w-4 h-4 text-gray-500 group-hover:text-[#D1FF52] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                    <span className="text-white/75 group-hover:text-[#D1FF52] text-[14px] font-medium transition-colors duration-300">
+                      {item.name}
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#D1FF52] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#D1FF52]/0 to-[#D1FF52]/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
               ))}
             </div>
-            <div className={`space-y-4 ${isMenuOpen ? "animate-slideUp" : ""}`} style={{ animationDelay: "700ms" }}>
+
+            {/* Bottom CTA */}
+            <div
+              className={`mt-4 ${isMenuOpen ? "animate-modalItemIn" : ""}`}
+              style={{ animationDelay: "520ms" }}
+            >
               <a
                 href="/contact"
-                className="block w-full bg-gradient-to-r from-[#D1FF52] to-[#B8E63F] text-black px-6 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#D1FF52]/30 transition-all duration-300 text-center"
+                className="flex items-center justify-center gap-2 w-full bg-[#D1FF52] text-black px-6 py-3.5 rounded-2xl font-semibold text-[14px] hover:bg-[#c8f545] transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Hire Us
+                Start a Project
+                <MoveUpRight className="w-4 h-4" />
               </a>
-              <div className="flex items-center justify-center space-x-6 py-4 text-sm">
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <div className="w-2 h-2 bg-[#D1FF52] rounded-full animate-pulse" />
-                  <span>Available for projects</span>
-                </div>
-                <div className="w-px h-4 bg-gray-600" />
-                <span className="text-gray-400">Let&apos;s create something amazing</span>
-              </div>
+            </div>
+
+            {/* Status */}
+            <div
+              className={`flex items-center justify-center gap-2 mt-4 pb-1 ${isMenuOpen ? "animate-modalItemIn" : ""}`}
+              style={{ animationDelay: "580ms" }}
+            >
+              <div className="w-1.5 h-1.5 bg-[#D1FF52] rounded-full animate-pulse" />
+              <span className="text-white/35 text-[12px]">Available for new projects</span>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px); }
+        @keyframes modalItemIn {
+          from { opacity: 0; transform: translateY(12px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .animate-slideUp {
-          animation: slideUp 0.4s ease-out forwards;
+        .animate-modalItemIn {
+          animation: modalItemIn 0.35s ease-out forwards;
           opacity: 0;
         }
       `}</style>
