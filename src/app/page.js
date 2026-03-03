@@ -1,3 +1,4 @@
+import Footer from "@/components/Global/Footer";
 import Navbar from "@/components/Global/Navbar";
 import ContactSection from "@/components/HomePage/ContactSection";
 import FAQSection from "@/components/HomePage/FAQ";
@@ -25,6 +26,7 @@ export default function Page() {
         <TestimonialSection />
         <FAQSection />
         <ContactSection />
+        <Footer />
       </div>
     </main>
   )

@@ -1,204 +1,362 @@
 "use client";
-
-import React, { useState } from "react";
-import {
-     ArrowUpRight,
-     Facebook,
-     Instagram,
-     Twitter,
-     Youtube,
-     Linkedin,
-     MoveUpRight,
-     Download,
-} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  Download,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Twitter,
+} from "lucide-react";
 
-const Footer = () => {
-     const [logoError, setLogoError] = useState(false);
+const services = [
+  { label: "UI/UX Design", href: "#" },
+  { label: "Branding", href: "#" },
+  { label: "App Design", href: "#" },
+  { label: "Web Design", href: "#" },
+  { label: "SaaS Design", href: "#" },
+];
 
-     const servicesLinks = [
-          { name: "UI/UX Design", href: "#" },
-          { name: "Branding", href: "#" },
-          { name: "App Design", href: "#" },
-          { name: "Web Design", href: "#" },
-          { name: "SaaS Design", href: "#" },
-     ];
+const company = [
+  { label: "Home", href: "/" },
+  { label: "Case Study", href: "/case-studies" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Blog", href: "/blog" },
+];
 
-     const companyLinks = [
-          { name: "Home", href: "#" },
-          { name: "Case Study", href: "#" },
-          { name: "Contact Us", href: "#" },
-          { name: "About Us", href: "#" },
-          { name: "Blog", href: "#" },
-     ];
+const reviews = [
+  { label: "Clutch", href: "#" },
+  { label: "Behance", href: "#" },
+  { label: "Dribbble", href: "#" },
+  { label: "LinkedIn", href: "#" },
+];
 
-     const reviewLinks = [
-          { name: "Clutch", href: "#" },
-          { name: "Behance", href: "#" },
-          { name: "Dribbble", href: "#" },
-          { name: "LinkedIn", href: "#" },
-     ];
+const socials = [
+  { icon: Facebook, href: "#" },
+  { icon: Instagram, href: "#" },
+  { icon: Linkedin, href: "#" },
+  { icon: Youtube, href: "#" },
+  { icon: Twitter, href: "#" },
+];
 
-     const socialLinks = [
-          { name: "Facebook", icon: Facebook, href: "#" },
-          { name: "Instagram", icon: Instagram, href: "#" },
-          { name: "Twitter", icon: Twitter, href: "#" },
-          { name: "Youtube", icon: Youtube, href: "#" },
-          { name: "LinkedIn", icon: Linkedin, href: "#" },
-     ];
+export default function Footer() {
+  return (
+    <footer className="relative w-full overflow-hidden bg-black">
 
-     return (
-          <footer
-               className="relative z-10 pt-15 sm:pt-20 md:pt-25 lg:pt-30 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8"
-               style={{
-                    background:
-                         "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)",
-               }}
-          >
-               <div className="max-w-7xl mx-auto">
-                    {/* Main Footer Content */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-8 sm:mb-12">
-                         {/* Company Info */}
-                         <div>
-                              {!logoError ? (
-                                   <Image
-                                        src="/Logo.png"
-                                        alt="Orituree Logo"
-                                        className="h-12 sm:h-13 w-auto mr-3"
-                                        width={500}
-                                        height={200}
-                                        onError={() => setLogoError(true)}
-                                        priority
-                                   />
-                                   
+      {/* ── GRADIENT LAYERS ── */}
 
-                              ) : (
-                                   <div className="w-8 h-8 bg-[#D1FF52] rounded-full flex items-center justify-center mr-3">
-                                        <span className="text-black font-bold text-sm">O</span>
-                                   </div>
-                              )}
+      {/* Base: pure black foundation */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-black" />
 
-                              <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm mt-4">
-                                   Beyond being an innovative UI UX design hub, we&apos;re your
-                                   one-stop for research, wireframing, design, and development!
-                              </p>
+      {/* 
+        S-CURVE SPLIT:
+        Left of S = black/dark
+        Right of S = dark fading into bright vivid purple (bottom-right)
+        
+        The S-curve is simulated with:
+        1. A dark-left diagonal linear gradient (top-left stays black)
+        2. A bright bloom from bottom-right (right side of S)
+        3. An SVG S-curve path as the transition spine
+      */}
 
-                              {/* Contact Button - Mobile: Single, Desktop: Two buttons */}
-                              <div className="flex items-center justify-center md:justify-start">
-                                   {/* Mobile: Single combined button */}
-                                   {/* <button className="md:hidden flex items-center justify-center gap-3 border border-[#D1FF52] bg-[#D1FF52] text-black px-3 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20 text-base font-medium cursor-pointer w-full max-w-[220px]">
-                                        <span>Contact Us</span>
-                                        <MoveUpRight className="w-5 h-5" />
-                                   </button> */}
+      {/* Dark left side — top-left quadrant stays near black */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(125deg, #000000 0%, #05020f 20%, #0a0520 38%, #12082e 52%, transparent 68%)",
+        }}
+      />
 
-                                   {/* Desktop: Two separate buttons */}
-                                   <div className="hidden md:flex items-center gap-4 group max-w-[350px]">
-                                        <button className="flex-1 border border-[#D1FF52] bg-[#D1FF52] text-black px-6 lg:px-8 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 text-base lg:text-lg font-medium cursor-pointer">
-                                             Contact Us
-                                        </button>
-                                        <button className="border border-[#D1FF52] text-[#D1FF52] group-hover:bg-[#D1FF52] group-hover:text-black bg-transparent p-3 rounded-full transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#D1FF52]/20 group-hover:rotate-45 cursor-pointer flex-shrink-0">
-                                             <MoveUpRight className="w-5 lg:w-6 h-5 lg:h-6 transition-colors duration-300" />
-                                        </button>
-                                   </div>
-                              </div>
-                         </div>
+      {/* Bright right side — bottom-right blooms vivid purple */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 75% 75% at 100% 100%, #7c4ce8 0%, #5530c0 28%, #2e1570 52%, #0d0525 72%, transparent 85%)",
+          opacity: 0.95,
+        }}
+      />
 
-                         {/* Services, Company, Review in one column */}
-                         <div className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
-                              {/* Services */}
-                              <div>
-                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Services</h3>
-                                   <ul className="space-y-2 sm:space-y-3">
-                                        {servicesLinks.map((link) => (
-                                             <li key={link.name}>
-                                                  <a
-                                                       href={link.href}
-                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
-                                                  >
-                                                       {link.name}
-                                                  </a>
-                                             </li>
-                                        ))}
-                                   </ul>
-                              </div>
+      {/* Extra punch — tighter vivid core bottom-right */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 45% 42% at 97% 98%, #9d68f0 0%, #6838d8 30%, transparent 62%)",
+          opacity: 0.8,
+        }}
+      />
 
-                              {/* Company */}
-                              <div>
-                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Company</h3>
-                                   <ul className="space-y-2 sm:space-y-3">
-                                        {companyLinks.map((link) => (
-                                             <li key={link.name}>
-                                                  <a
-                                                       href={link.href}
-                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
-                                                  >
-                                                       {link.name}
-                                                  </a>
-                                             </li>
-                                        ))}
-                                   </ul>
-                              </div>
+      {/* 
+        S-CURVE SVG — this is the KEY element.
+        The S-spine runs from top-center curving down to bottom-center,
+        bowing left at top and right at bottom — exactly like the letter S.
+        Left of the curve = dark. Right of the curve = illuminated.
+        We use a wide soft blurred stroke to create the light-edge transition.
+      */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 900"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ filter: "blur(72px)" }}
+        >
+          <defs>
+            {/* S-curve light edge — glowing purple spine */}
+            <linearGradient id="sCurveGlow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#2a1060" stopOpacity="0" />
+              <stop offset="40%" stopColor="#5530b8" stopOpacity="0.7" />
+              <stop offset="75%" stopColor="#7848e0" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#9060f8" stopOpacity="0.6" />
+            </linearGradient>
 
-                              {/* Review */}
-                              <div>
-                                   <h3 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Review</h3>
-                                   <ul className="space-y-2 sm:space-y-3">
-                                        {reviewLinks.map((link) => (
-                                             <li key={link.name}>
-                                                  <a
-                                                       href={link.href}
-                                                       className="text-gray-400 hover:text-[#D1FF52] transition-colors duration-300 text-sm block"
-                                                  >
-                                                       {link.name}
-                                                  </a>
-                                             </li>
-                                        ))}
-                                   </ul>
-                              </div>
-                         </div>
-                    </div>
+            {/* Dark overlay for left-of-S */}
+            <linearGradient id="darkLeft" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#000000" stopOpacity="0.95" />
+              <stop offset="55%" stopColor="#000000" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+            </linearGradient>
+          </defs>
 
-                    {/* Bottom Section */}
-                    <div className="border-t border-gray-700 pt-6 sm:pt-8">
-                         <div className="flex flex-col space-y-4 sm:space-y-6 lg:flex-row lg:justify-between lg:items-center lg:space-y-0">
-                              {/* Company Deck */}
-                              <div className="flex items-center justify-center sm:justify-start">
-                                   <div className="w-10 h-10 bg-[#D1FF52] rounded-full flex items-center justify-center mr-3">
-                                        <Download className="w-5 h-5 text-black" />
-                                   </div>
-                                   <div>
-                                        <h4 className="text-white font-medium text-sm">Company Deck</h4>
-                                        <p className="text-gray-500 text-xs">PDF - 5MB</p>
-                                   </div>
-                              </div>
+          {/*
+            S-curve path as a thick filled band:
+            - Starts top-right
+            - Curves through center (S inflection)
+            - Ends bottom-left
+            This band = the "spine" of the S where dark meets bright.
+          */}
 
-                              {/* Copyright - Center on desktop, top on mobile */}
-                              <div className="text-center order-first lg:order-none">
-                                   <p className="text-gray-500 text-xs sm:text-sm">
-                                        © 2024-2025, Orituree. All Rights Reserved.
-                                   </p>
-                              </div>
+          {/* The S-curve light band */}
+          <path
+            d="
+              M 1100,0
+              C 900,-20 300,80 200,280
+              C 100,480 900,560 820,760
+              C 740,920 200,960 0,900
+              L 0,820
+              C 200,880 680,860 760,700
+              C 840,540 60,440 160,240
+              C 260,40 860,-40 1060,0
+              Z
+            "
+            fill="url(#sCurveGlow)"
+          />
+        </svg>
+      </div>
 
-                              {/* Social Links */}
-                              <div className="flex items-center justify-center space-x-3">
-                                   {socialLinks.map((social) => {
-                                        const IconComponent = social.icon;
-                                        return (
-                                             <a
-                                                  key={social.name}
-                                                  href={social.href}
-                                                  className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-600 text-white hover:border-[#D1FF52] hover:text-[#D1FF52] transition-all duration-300 hover:shadow-lg hover:shadow-[#D1FF52]/20"
-                                             >
-                                                  <IconComponent className="w-4 h-4" />
-                                             </a>
-                                        );
-                                   })}
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </footer>
-     );
-};
+      {/* Secondary S-reinforcement — tighter unblurred definition */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 900"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ filter: "blur(30px)" }}
+        >
+          <defs>
+            <linearGradient id="sCurveSharp" x1="0.3" y1="0" x2="0.8" y2="1">
+              <stop offset="0%" stopColor="#4020a0" stopOpacity="0" />
+              <stop offset="50%" stopColor="#6040c8" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#8858e8" stopOpacity="0.4" />
+            </linearGradient>
+          </defs>
+          <path
+            d="
+              M 980,0
+              C 820,10 380,100 300,270
+              C 220,440 800,510 760,680
+              C 720,840 280,900 80,900
+              L 0,900
+              L 0,820
+              C 220,820 700,780 740,620
+              C 780,460 200,370 280,200
+              C 360,30 800,-30 960,0
+              Z
+            "
+            fill="url(#sCurveSharp)"
+          />
+        </svg>
+      </div>
 
-export default Footer;
+      {/* Dark mask — reinforces left-of-S stays truly dark */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(115deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 55%, transparent 70%)",
+        }}
+      />
+
+      {/* Black vignette top-left corner */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 55% 50% at 0% 0%, rgba(0,0,0,0.9) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Grain — heavy */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          opacity: 0.45,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: "200px 200px",
+          mixBlendMode: "overlay",
+        }}
+      />
+
+      {/* Grain — fine */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          opacity: 0.22,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n2)'/%3E%3C/svg%3E")`,
+          backgroundSize: "80px 80px",
+          mixBlendMode: "soft-light",
+        }}
+      />
+
+      {/* ── CONTENT ── */}
+      <div className="relative z-10 max-w-[1300px] mx-auto  ">
+
+        {/* ── TOP ROW: Logo + description left, nav columns right ── */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-0 pt-16 pb-10">
+
+          {/* Left — Logo + description + CTA (takes ~1/3 width) */}
+          <div className="flex flex-col gap-6 lg:w-[36%] flex-shrink-0">
+            {/* Logo only — no text */}
+            <Link href="/" className="inline-flex">
+              <Image
+                src="/LOGO.svg"
+                alt="Oriture"
+                width={140}
+                height={36}
+                className="h-9 w-auto object-contain"
+              />
+            </Link>
+
+            <p className="text-white text-base leading-relaxed max-w-[320px]">
+              Beyond being an innovative UI UX design hub,
+              we&apos;re your one-stop for research, wireframing,
+              design, and development!
+            </p>
+
+            {/* CTA */}
+            <div className="flex items-center gap-2 group/cta">
+              <Link
+                href="/contact"
+                className="bg-[#D1FF52] text-black px-5 py-2.5 rounded-full text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
+              >
+                Contact Us
+              </Link>
+              <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] cursor-pointer">
+                <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
+              </button>
+            </div>
+          </div>
+
+          {/* Right — Three nav columns (start from ~2/3 width) */}
+          <div className="flex-1 grid grid-cols-3 gap-8 lg:gap-12 lg:pl-8">
+            {/* Services */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-white font-medium text-base mb-1">Services</h4>
+              {services.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-white text-base hover:text-white transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Company */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-white font-medium text-base mb-1">Company</h4>
+              {company.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-white text-base hover:text-white transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Review */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-white font-medium text-base mb-1">Review</h4>
+              {reviews.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-white text-base hover:text-white transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── DIVIDER ── */}
+        <div className="h-px bg-white/10 w-full" />
+
+        {/* ── MIDDLE ROW: company deck + copyright + socials ── */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 py-5">
+
+          {/* Company deck download */}
+          <button className="flex items-center gap-3 group/deck">
+            <div className="w-9 h-9 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
+              <Download className="w-4 h-4 text-black" />
+            </div>
+            <div className="text-left">
+              <p className="text-white text-base font-medium leading-tight">Company Deck</p>
+              <p className="text-white text-base">PDF, 3 MB</p>
+            </div>
+          </button>
+
+          {/* Copyright */}
+          <p className="text-white text-base">
+            © 2024–2025, Orituree , All Rights Reserved.
+          </p>
+
+          {/* Socials */}
+          <div className="flex items-center gap-3">
+            {socials.map(({ icon: Icon, href }, i) => (
+              <Link
+                key={i}
+                href={href}
+                className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 transition-colors"
+              >
+                <Icon className="w-6 h-6" />
+              </Link>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── BOTTOM: footer.svg as full-width image ── */}
+      <div className="relative z-10 max-w-[1300px] mx-auto mt-20 mb-10">
+        <Image
+          src="/footer.svg"
+          alt="Oriture"
+          width={1300}
+          height={400}
+          className="w-full h-auto object-contain object-bottom"
+          priority
+        />
+      </div>
+    </footer>
+  );
+}
