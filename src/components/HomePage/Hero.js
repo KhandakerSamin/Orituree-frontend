@@ -83,7 +83,7 @@ export default function Hero() {
       {/* ── ALL CONTENT: z-10 */}
 
       {/* HERO CONTENT */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-14 pb-4 sm:pt-30 sm:pb-8 min-h-[50vh]">
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-35 pb-4 sm:pt-30 sm:pb-8 min-h-[50vh]">
 
         <h1 className="font-newsreader text-[38px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
           Designing Digital Products
@@ -98,7 +98,7 @@ export default function Hero() {
         </p>
 
         {/* CTA — Desktop */}
-        <div className="hidden md:flex items-center space-x-2 mt-5 group">
+        <div className=" flex items-center space-x-2 mt-7 md:mt-5 group">
           <button className="bg-[#D1FF52] text-black px-5 py-3 rounded-full text-base font-medium cursor-pointer ">
             Start Your Project
           </button>
@@ -107,20 +107,14 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* CTA — Mobile */}
-        <div className="md:hidden mt-8 mb-10">
-          <button className="flex items-center justify-center gap-2 bg-[#D1FF52] text-black px-8 py-4 rounded-full text-base text-capital font-medium ">
-            Start Your Project
-            <MoveUpRight className="w-5 h-5" />
-          </button>
-        </div>
+
 
         
       </div>
 
       {/* BRAND SECTION */}
-      <div className="relative z-10 w-full pb-18 pt-4 px-4 sm:px-8">
-        <p className="text-center text-sm text-white/70 mb-7 tracking-wide">
+      <div className="relative z-10 w-full pb-35 pt-4 px-4 sm:px-8">
+        <p className="text-center text-sm uppercase text-white/70 mb-7 tracking-wide">
           we help to{" "}
           <span className="text-[#D1FF52] font-medium">structure</span>
         </p>
@@ -200,9 +194,9 @@ export default function Hero() {
       `}</style>
 
       {/* Mobile scroll indicator */}
-        <div className="absolute bottom-1 md:hidden left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <div className="absolute bottom-7 md:hidden left-1/2 -translate-x-1/2 z-20 animate-bounce">
           <div className="flex flex-col items-center gap-1">
-            <span className="text-[10px] uppercase tracking-widest text-white/30">Scroll</span>
+            <span className="text-[10px] uppercase tracking-widest text-white/70">Scroll</span>
             <div className="w-px h-7 bg-gradient-to-b from-[#D1FF52]/60 via-purple-400/40 to-transparent" />
           </div>
         </div>

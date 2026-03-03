@@ -1,4 +1,5 @@
 import Navbar from "@/components/Global/Navbar";
+import FAQSection from "@/components/HomePage/FAQ";
 import GlobalPresence from "@/components/HomePage/GlobalPresence";
 import Hero from "@/components/HomePage/Hero";
 import IdeaToImpact from "@/components/HomePage/IdeaToImpact";
@@ -21,6 +22,7 @@ export default function Page() {
         <IdeaToImpact />
         <GlobalPresence />
         <TestimonialSection />
+        <FAQSection />
       </div>
     </main>
   )

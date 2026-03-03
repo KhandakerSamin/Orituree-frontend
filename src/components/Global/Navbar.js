@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeItem, setActiveItem] = useState("Work");
+  const [activeItem, setActiveItem] = useState("Home");
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const SCROLL_THRESHOLD = 60;
@@ -111,7 +111,7 @@ export default function Navbar() {
               <div
                 className={`flex items-center transition-all duration-700 ease-in-out ${
                   isScrolled
-                    ? "border border-white/12 bg-black/65 backdrop-blur-2xl rounded-full px-3 py-2 gap-1 shadow-[0_4px_32px_rgba(0,0,0,0.45)]"
+                    ? "border border-white/12 bg-black/65 backdrop-blur-2xl rounded-full px-4 py-3 gap-1 shadow-[0_4px_32px_rgba(0,0,0,0.45)]"
                     : "border border-transparent bg-transparent rounded-full px-0 py-5 gap-7"
                 }`}
               >
