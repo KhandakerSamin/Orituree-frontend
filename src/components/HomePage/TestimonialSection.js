@@ -1,140 +1,206 @@
-"use client"
-import React, { useState } from "react"
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
+"use client";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-const TestimonialSection = () => {
-     const [currentTestimonial, setCurrentTestimonial] = useState(0)
+const testimonials = [
+  {
+    id: 1,
+    name: "Sakhawat Hossain",
+    position: "Brand Manager, Lori",
+    avatar: "/avatar.png",
+    testimonial:
+      "Mohon is really talented, creative and also incredibly analytical. He so easily knocked out some of the most challenging designs we had to work on. I recommend him to anyone who looking for someone they can trust to take any task under their wing and find solutions that work!",
+    company: "Tintype",
+    logo: "/testoLogo.png",
+  },
+  {
+    id: 2,
+    name: "Sarah L.",
+    position: "Product Manager at E-Commerce",
+    avatar: "/avatar.png",
+    testimonial:
+      "Outstanding work on our mobile app redesign. The user experience is now seamless and our conversion rates have improved by 40%. Truly exceptional design thinking.",
+    company: "ShopFlow",
+    logo: "/brand3.png",
+  },
+  {
+    id: 3,
+    name: "David K.",
+    position: "CTO at Healthcare Tech",
+    avatar: "/avatar.png",
+    testimonial:
+      "Incredible attention to detail and user-centered design approach. Our healthcare platform is now more accessible and user-friendly than ever before.",
+    company: "MedTech Pro",
+    logo: "/brand6.png",
+  },
+];
 
-     // Testimonial data
-     const testimonials = [
-          {
-               id: 1,
-               name: "Michael R.",
-               position: "CEO at FinTech Startup",
-               avatar: "/avatar-1.png",
-               testimonial:
-                    "The team completely revamped our platform's UI/UX, making it more intuitive and engaging. Our user retention skyrocketed!",
-               company: "Tintype",
-          },
-          {
-               id: 2,
-               name: "Sarah L.",
-               position: "Product Manager at E-Commerce",
-               avatar: "/avatar-2.png",
-               testimonial:
-                    "Outstanding work on our mobile app redesign. The user experience is now seamless and our conversion rates have improved by 40%.",
-               company: "ShopFlow",
-          },
-          {
-               id: 3,
-               name: "David K.",
-               position: "CTO at Healthcare Tech",
-               avatar: "/avatar-3.png",
-               testimonial:
-                    "Incredible attention to detail and user-centered design approach. Our healthcare platform is now more accessible and user-friendly.",
-               company: "MedTech Pro",
-          },
-     ]
+export default function TestimonialSection() {
+  const [current, setCurrent] = useState(0);
 
-     const handlePrevious = () => {
-          setCurrentTestimonial((prev) =>
-               prev === 0 ? testimonials.length - 1 : prev - 1
-          )
-     }
+  const prev = () => setCurrent(i => (i === 0 ? testimonials.length - 1 : i - 1));
+  const next = () => setCurrent(i => (i + 1) % testimonials.length);
 
-     const handleNext = () => {
-          setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-     }
+  const t = testimonials[current];
 
-     const currentTest = testimonials[currentTestimonial]
+  return (
+    <section className="relative w-full min-h-screen overflow-hidden bg-black">
 
-     return (
-          <section
-               className="relative py-20 sm:py-24 md:py-35 lg:py-50 px-6 overflow-hidden "
-               style={{
-                    background: "linear-gradient(180deg, #17181B 0%, #000000 70%, #17181B 100%)"
-               }}
-          >
-               <div className="max-w-[1920px] mx-auto hidden md:block">
-                    {/* Left Green Shape */}
-                    <div className="absolute left-23 top-130 -translate-y-1/2 -translate-x-1/4 w-48 sm:w-64 lg:w-90 h-64 sm:h-80 lg:h-[1400px] ">
-                         <Image src="/FeedBackL.png" alt="" fill className="object-contain" />
-                    </div>
+      {/* ── GRADIENT LAYERS ── */}
 
-                    {/* Right Green Shape */}
-                    <div className="absolute right-19 top-130 -translate-y-1/2 translate-x-1/4 w-48 sm:w-64 lg:w-90 h-64 sm:h-80 lg:h-[1400px]">
-                         <Image src="/FeedBackR.png" alt="" fill className="object-contain" />
-                    </div>
-               </div>
+      {/* Layer 0: large soft indigo blob from top-left */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 85% 75% at 5% 0%, #4A2E9E 0%, #3B2272 18%, #1E1040 38%, transparent 65%)",
+        }}
+      />
 
-               <div className="max-w-3xl mx-auto text-center relative z-10">
-                    {/* Header */}
-                    <div className="mb-15 sm:mb-20 md:mb-25 lg:mb-30">
-                         <div className="inline-flex items-center border border-[#D1FF52] text-white px-6 py-2 mb-10 text-sm font-medium rounded-full">
-                              What Clients Say
-                         </div>
-                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white">
-                              Real Feedback, Real Impact
-                         </h2>
-                    </div>
+      {/* Layer 1: tighter brighter blob for depth */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none opacity-70"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 0% 5%, #6B46C1 0%, #4A2E9E 15%, #2B1860 32%, transparent 58%)",
+        }}
+      />
 
-                    {/* Testimonial */}
-                    <div className="relative mb-15">
-                         {/* Avatar + Name */}
-                         <div className="flex items-center justify-start mb-10 space-x-4">
-                              <div className=" relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-600">
-                                   <Image
-                                        src="/avatar.png"
-                                        alt={currentTest.name}
-                                        fill
-                                        className="object-cover"
-                                   />
-                              </div>
-                              <div className="text-left">
-                                   <h3 className="text-white font-semibold text-lg">
-                                        {currentTest.name}
-                                   </h3>
-                                   <p className="text-gray-400 text-sm">{currentTest.position}</p>
-                              </div>
-                         </div>
+      {/* Layer 2: blurred SVG curve — soft feathered right/bottom edge */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <svg
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ filter: "blur(48px)" }}
+          viewBox="0 0 1440 900"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="blobGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stopColor="#7B5FD4" stopOpacity="0.85" />
+              <stop offset="30%"  stopColor="#5A3EAA" stopOpacity="0.6"  />
+              <stop offset="60%"  stopColor="#2B1860" stopOpacity="0.3"  />
+              <stop offset="100%" stopColor="#000000" stopOpacity="0"    />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0,0 L1080,0 C1100,0 1150,20 1100,120 C1050,220 900,260 750,280 C550,310 280,300 100,340 C40,360 0,380 0,380 Z"
+            fill="url(#blobGrad)"
+          />
+        </svg>
+      </div>
 
-                         {/* Testimonial Text */}
-                         <blockquote className="text-white text-left text-xl font-light sm:text-2xl lg:text-3xl leading-relaxed mb-6">
-                              {currentTest.testimonial}
-                         </blockquote>
+      {/* Layer 3: noise grain — heavy pass */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          opacity: 0.45,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: "200px 200px",
+          mixBlendMode: "overlay",
+        }}
+      />
 
-                    </div>
-                    <div className="flex items-center justify-between">
-                         {/* Company */}
-                         <div className="relative w-40 h-10 flex-shrink-0">
-                              <Image
-                                   src="/testominial-logo.png"
-                                   alt={`${currentTest.company} logo`}
-                                   fill
-                                   className="object-contain"
-                              />
-                         </div>
+      {/* Layer 4: noise grain — fine pass */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          opacity: 0.3,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n2)'/%3E%3C/svg%3E")`,
+          backgroundSize: "80px 80px",
+          mixBlendMode: "soft-light",
+        }}
+      />
 
-                         {/* Controls */}
-                         <div className="flex items-center justify-center space-x-6">
-                              <button
-                                   onClick={handlePrevious}
-                                   className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
-                              >
-                                   <ArrowLeft className="w-5 h-5" />
-                              </button>
-                              <button
-                                   onClick={handleNext}
-                                   className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
-                              >
-                                   <ArrowRight className="w-5 h-5" />
-                              </button>
-                         </div>
-                    </div>
-               </div>
-          </section>
-     )
+      {/* ── QUOTE SVGs ── */}
+
+      {/* Left quote */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-64 lg:w-full lg:h-90 pointer-events-none z-0">
+        <Image
+          src="/testomonial1.svg"
+          alt=""
+          fill
+          className="object-contain object-left"
+        />
+      </div>
+
+      {/* Right quote */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full h-64 lg:w-full lg:h-90 pointer-events-none z-0">
+        <Image
+          src="/testomonial2.svg"
+          alt=""
+          fill
+          className="object-contain object-right"
+        />
+      </div>
+
+      {/* ── CONTENT ── */}
+      <div className="relative z-10 max-w-3xl mx-auto px-8 py-24 md:py-32">
+
+        {/* Heading */}
+        <div className="mb-22">
+          <h2 className="font-serif text-4xl lg:text-5xl font-normal leading-snug text-white">
+            What it's like <br />
+            to work with{" "}
+            <em className="italic" style={{ color: "#D1FF52" }}>
+              oriture
+            </em>
+          </h2>
+        </div>
+
+        {/* Avatar + Name */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="relative w-11 h-11 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
+            <Image
+              src={t.avatar}
+              alt={t.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <p className="text-white font-semibold text-sm font-newsreader">{t.name}</p>
+            <p className="text-white/50 text-xs">{t.position}</p>
+          </div>
+        </div>
+
+        {/* Quote */}
+        <blockquote className="text-white/95 text-lg lg:text-xl min-h-35 font-light leading-relaxed mb-8">
+          {t.testimonial}
+        </blockquote>
+
+        {/* Bottom row */}
+        <div className="flex items-center justify-between">
+
+          {/* Company logo */}
+          <div className="relative w-32 h-9 flex-shrink-0">
+            <Image
+              src={t.logo}
+              alt={t.company}
+              fill
+              className="object-contain object-left"
+            />
+          </div>
+
+          {/* Nav arrows */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prev}
+              className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
 }
-
-export default TestimonialSection

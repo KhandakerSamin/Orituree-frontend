@@ -2,6 +2,7 @@ import Navbar from "@/components/Global/Navbar";
 import GlobalPresence from "@/components/HomePage/GlobalPresence";
 import Hero from "@/components/HomePage/Hero";
 import IdeaToImpact from "@/components/HomePage/IdeaToImpact";
+import TestimonialSection from "@/components/HomePage/TestimonialSection";
 import WhyChoose from "@/components/HomePage/WhyChoose";
 
 export default function Page() {
@@ -19,6 +20,7 @@ export default function Page() {
         <WhyChoose />
         <IdeaToImpact />
         <GlobalPresence />
+        <TestimonialSection />
       </div>
     </main>
   )
