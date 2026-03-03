@@ -109,7 +109,7 @@ export default function Hero() {
 
         {/* CTA — Mobile */}
         <div className="md:hidden mt-8 mb-10">
-          <button className="flex items-center justify-center gap-2 bg-[#D1FF52] text-black px-8 py-4 rounded-full text-base font-medium ">
+          <button className="flex items-center justify-center gap-2 bg-[#D1FF52] text-black px-8 py-4 rounded-full text-base text-capital font-medium ">
             Start Your Project
             <MoveUpRight className="w-5 h-5" />
           </button>

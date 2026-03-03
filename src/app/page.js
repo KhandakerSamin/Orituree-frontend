@@ -1,4 +1,5 @@
 import Navbar from "@/components/Global/Navbar";
+import GlobalPresence from "@/components/HomePage/GlobalPresence";
 import Hero from "@/components/HomePage/Hero";
 import IdeaToImpact from "@/components/HomePage/IdeaToImpact";
 import WhyChoose from "@/components/HomePage/WhyChoose";
@@ -17,6 +18,7 @@ export default function Page() {
         <Hero />
         <WhyChoose />
         <IdeaToImpact />
+        <GlobalPresence />
       </div>
     </main>
   )
