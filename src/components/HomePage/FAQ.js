@@ -129,7 +129,7 @@ export default function FAQSection() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1200px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
 
         {/* Left column */}
         <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-32 lg:self-start">

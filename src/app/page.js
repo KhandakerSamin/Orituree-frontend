@@ -1,4 +1,5 @@
 import Navbar from "@/components/Global/Navbar";
+import ContactSection from "@/components/HomePage/ContactSection";
 import FAQSection from "@/components/HomePage/FAQ";
 import GlobalPresence from "@/components/HomePage/GlobalPresence";
 import Hero from "@/components/HomePage/Hero";
@@ -23,6 +24,7 @@ export default function Page() {
         <GlobalPresence />
         <TestimonialSection />
         <FAQSection />
+        <ContactSection />
       </div>
     </main>
   )

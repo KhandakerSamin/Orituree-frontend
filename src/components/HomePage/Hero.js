@@ -114,7 +114,7 @@ export default function Hero() {
 
       {/* BRAND SECTION */}
       <div className="relative z-10 w-full pb-35 pt-4 px-4 sm:px-8">
-        <p className="text-center text-sm uppercase text-white/70 mb-7 tracking-wide">
+        <p className="text-center text-sm uppercase text-white/70 mb-4 tracking-wide">
           we help to{" "}
           <span className="text-[#D1FF52] font-medium">structure</span>
         </p>
