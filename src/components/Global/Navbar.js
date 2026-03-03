@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Navigation items with their routes
   const navigationItems = [
@@ -25,6 +27,32 @@ export default function Navbar() {
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
+
+  // Smart navbar: hide on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Don't hide navbar when mobile menu is open
+      if (isMenuOpen) return;
+
+      if (currentScrollY < 10) {
+        // Always show at the top of the page
+        setIsNavVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down → hide
+        setIsNavVisible(false);
+      } else {
+        // Scrolling up → show
+        setIsNavVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMenuOpen]);
 
   // Close menu on escape key press
   useEffect(() => {
@@ -52,7 +80,11 @@ export default function Navbar() {
   return (
     <>
       {/* Full-width navbar background wrapper */}
-      <div className="relative w-full border-b  border-white/10  bg-black/80">
+      <div
+        className={`fixed top-0 left-0 w-full border-b border-white/10 bg-black/80 backdrop-blur-md z-[100] transition-transform duration-300 ease-in-out ${
+          isNavVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
         {/* Base gradient layer */}
 
         {/* Grain texture overlay */}

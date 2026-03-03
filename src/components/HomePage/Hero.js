@@ -6,7 +6,7 @@ const row2 = [8, 9, 10, 11, 12, 13];
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col min-h-[calc(100vh-80px)] w-full overflow-hidden bg-black">
+    <section className="relative flex flex-col min-h-[calc(100vh)] w-full overflow-hidden bg-black">
 
       {/* ── LAYER 0: Base radial glow — large, soft, centered-low, muted indigo */}
       <div
@@ -83,7 +83,7 @@ export default function Hero() {
       {/* ── ALL CONTENT: z-10 */}
 
       {/* HERO CONTENT */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-14 pb-4 sm:pt-12 sm:pb-8 min-h-[50vh]">
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-14 pb-4 sm:pt-30 sm:pb-8 min-h-[50vh]">
 
         <h1 className="font-newsreader text-[38px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
           Designing Digital Products
