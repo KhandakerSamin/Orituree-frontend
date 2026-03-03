@@ -26,7 +26,7 @@ const stats = [
 ];
 
 const infoCards = [
-  { highlight: "Oritars", body: "Where Strategy, Design & Technology Converge" },
+  { highlight: "Oriturs", body: "Where Strategy, Design & Technology Converge" },
   { highlight: "A team",  body: "Built for Global Brands, Focused on Performance & Scalable Success." },
 ];
 
@@ -190,10 +190,10 @@ export default function GlobalPresence() {
                 }}
               >
                 <div className="mb-3">
-                  <img src="logoIcon.svg" className="w-5 h-5" alt="" />
+                  <img src="LogoIcon.svg" className="w-5 h-5" alt="" />
                 </div>
                 <p className="m-0 text-sm text-white leading-relaxed">
-                  <em className="text-[#D1FF52] font-medium italic">{card.highlight}</em>{" "}
+                  <em className="text-[#D1FF52] font-medium font-newsreader italic">{card.highlight}</em>{" "}
                   - {card.body}
                 </p>
               </div>
