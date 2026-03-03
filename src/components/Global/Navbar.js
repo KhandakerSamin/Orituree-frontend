@@ -131,12 +131,9 @@ export default function Navbar() {
             >
               Hire Us
             </a>
-            <a
-              href="/contact"
-              className="border border-[#D1FF52]/50 text-white group-hover:text-black bg-transparent p-2.5 rounded-full transition-all duration-500 group-hover:border-[#D1FF52]/80 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer"
-            >
-              <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
-            </a>
+            <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer">
+            <MoveUpRight className="w-5 h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
+          </button>
           </div>
 
           {/* Mobile Menu Button */}

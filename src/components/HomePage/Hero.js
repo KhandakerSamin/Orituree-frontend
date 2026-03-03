@@ -102,14 +102,14 @@ export default function Hero() {
           <button className="bg-[#D1FF52] text-black px-5 py-3 rounded-full text-base font-medium cursor-pointer ">
             Start Your Project
           </button>
-          <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-full transition-all duration-300 group-hover:bg-[#D1FF52] group-hover:rotate-45 cursor-pointer">
-            <MoveUpRight className="w-5 h-5 text-[#D1FF52] group-hover:text-black" />
+          <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer">
+            <MoveUpRight className="w-5 h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
           </button>
         </div>
 
         {/* CTA — Mobile */}
         <div className="md:hidden mt-8 mb-10">
-          <button className="flex items-center justify-center gap-2 bg-[#D1FF52] text-black px-8 py-4 rounded-full text-base font-medium hover:scale-105 active:scale-95 transition-all duration-300">
+          <button className="flex items-center justify-center gap-2 bg-[#D1FF52] text-black px-8 py-4 rounded-full text-base font-medium ">
             Start Your Project
             <MoveUpRight className="w-5 h-5" />
           </button>

@@ -1,16 +1,8 @@
 "use client";
+import { ArrowUpRight } from "lucide-react";
 import React from "react";
 
 const noise = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`;
-
-const CardIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="4" y="4" width="13" height="13" rx="2" stroke="#D1FF52" strokeWidth="1.5" fill="none"/>
-    <rect x="23" y="4" width="13" height="13" rx="2" stroke="#D1FF52" strokeWidth="1.5" fill="none"/>
-    <rect x="4" y="23" width="13" height="13" rx="2" stroke="#D1FF52" strokeWidth="1.5" fill="none"/>
-    <rect x="23" y="23" width="13" height="13" rx="2" stroke="#D1FF52" strokeWidth="1.5" fill="none"/>
-  </svg>
-);
 
 const services = [
   "Pitch Deck",
@@ -25,19 +17,26 @@ const cards = [
     title: "Branding",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
-    gradient: "linear-gradient(180deg, #000000 0%, #29205E 100%)",
+    // 40% solid black → 20% fade → 40% full color
+    gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
+    accentLine: "#29205E66",
+    isGreen: false,
   },
   {
     title: "Product Design",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
-    gradient: "linear-gradient(180deg, #000000 0%, #4a6a00 55%, #7aaa00 100%)",
+    gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #5a7a00 60%, #7aaa00 100%)",
+    accentLine: "#D1FF5233",
+    isGreen: true,
   },
   {
     title: "Development",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
-    gradient: "linear-gradient(180deg, #000000 0%, #29205E 100%)",
+    gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
+    accentLine: "#29205E66",
+    isGreen: false,
   },
 ];
 
@@ -46,13 +45,9 @@ export default function IdeaToImpact() {
     <section className="min-h-screen flex flex-col items-center justify-center py-20 px-6 bg-[#0a0a0a]">
       {/* Heading */}
       <div className="text-center mb-14">
-        <h1
-          className="text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-4 tracking-tight leading-[1.15]"
-        >
+        <h1 className="text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-4 tracking-tight leading-[1.15]">
           From Idea to{" "}
-          <em className="text-[#D1FF52] italic font-newsreader">
-            Impact
-          </em>
+          <em className="text-[#D1FF52] italic font-newsreader">Impact</em>
         </h1>
         <p className="text-gray-400 text-base font-normal leading-relaxed max-w-[380px] mx-auto">
           We craft scalable, user-first digital experiences for startups and
@@ -65,32 +60,45 @@ export default function IdeaToImpact() {
         {cards.map((card, i) => (
           <div
             key={card.title}
-            className="relative rounded-lg border border-[#29205E] overflow-hidden"
+            className="relative rounded-2xl border border-[#29205E] overflow-hidden"
             style={{
               background: card.gradient,
-              boxShadow: `inset 0px 1px 0px 0px ${
-                i === 1 ? "#D1FF5233" : "#29205E66"
-              }, 0 0 0 1px rgba(0,0,0,0.4)`,
+              boxShadow: `inset 0px 1px 0px 0px ${card.accentLine}, 0 0 0 1px rgba(0,0,0,0.4)`,
             }}
           >
-            {/* Noise overlay */}
+            {/* Noise — subtle on dark top zone (0–60%) */}
             <div
-              className="absolute inset-0 pointer-events-none z-[1] opacity-[0.08]"
+              className="absolute inset-0 pointer-events-none z-[1]"
               style={{
                 backgroundImage: noise,
                 backgroundSize: "180px 180px",
                 mixBlendMode: "overlay",
+                opacity: 0.06,
+                maskImage: "linear-gradient(180deg, black 0%, black 40%, transparent 62%)",
+                WebkitMaskImage: "linear-gradient(180deg, black 0%, black 40%, transparent 62%)",
               }}
             />
 
-            {/* Inner shadow top line */}
+            {/* Noise — heavy on colored bottom zone (60–100%) */}
+            <div
+              className="absolute inset-0 pointer-events-none z-[1]"
+              style={{
+                backgroundImage: noise,
+                backgroundSize: "180px 180px",
+                mixBlendMode: "overlay",
+                opacity: 0.6,
+                maskImage: "linear-gradient(180deg, transparent 0%, transparent 58%, black 68%, black 100%)",
+                WebkitMaskImage: "linear-gradient(180deg, transparent 0%, transparent 58%, black 68%, black 100%)",
+              }}
+            />
+
+            {/* Inner top highlight line */}
             <div
               className="absolute top-0 left-0 right-0 h-px z-[2]"
               style={{
-                background:
-                  i === 1
-                    ? "linear-gradient(90deg, transparent, #D1FF52 40%, #D1FF52 60%, transparent)"
-                    : "linear-gradient(90deg, transparent, #29205E 40%, #29205E 60%, transparent)",
+                background: card.isGreen
+                  ? "linear-gradient(90deg, transparent, #D1FF52 40%, #D1FF52 60%, transparent)"
+                  : "linear-gradient(90deg, transparent, #29205E 40%, #29205E 60%, transparent)",
               }}
             />
 
@@ -98,7 +106,7 @@ export default function IdeaToImpact() {
             <div className="relative z-[3] pt-7 px-6 pb-6">
               {/* Icon */}
               <div className="mb-5">
-                <CardIcon />
+                <img src="/CardIcon.svg"></img>
               </div>
 
               {/* Title */}
@@ -112,28 +120,14 @@ export default function IdeaToImpact() {
               </p>
 
               {/* Service List */}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col  gap-0.5">
                 {services.map((service) => (
                   <button
                     key={service}
-                    className="flex items-center justify-between bg-black/25 border border-white/[0.08] rounded-[10px] py-3 px-4 text-white/85 text-sm cursor-pointer transition-all duration-200 backdrop-blur-sm hover:bg-white/[0.08] hover:border-white/[0.18]"
+                    className="flex items-center justify-between bg- border bg-black/[0.1] border-white/3 rounded-[8px] py-3 px-4 text-white/85 text-sm cursor-pointer transition-all duration-200  hover:bg-white/[0.08] hover:border-white/[0.18]"
                   >
                     <span>{service}</span>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 12L12 2M12 2H5M12 2V9"
-                        stroke="rgba(255,255,255,0.6)"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowUpRight />
                   </button>
                 ))}
               </div>
