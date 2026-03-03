@@ -42,7 +42,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden py-20 px-6 flex items-center justify-center">
+    <section className="relative min-h-screen w-full overflow-clip py-20 px-6 flex items-start justify-center">
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -129,10 +129,10 @@ export default function FAQSection() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start pt-10">
 
         {/* Left column */}
-        <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-32 lg:self-start">
+        <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-24 lg:self-start">
           <h2
             className="font-newsreader text-white font-normal leading-snug mb-10"
             style={{ fontSize: "clamp(28px, 3.2vw, 46px)" }}
