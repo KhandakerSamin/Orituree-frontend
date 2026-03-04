@@ -31,12 +31,12 @@ function CustomDropdown({ label, placeholder, options, value, onChange }) {
 
   return (
     <div className="flex flex-col gap-1.5" ref={ref}>
-      <label className="text-white text-base pb-1.5">{label}</label>
+      <label className="text-white text-sm sm:text-base pb-1">{label}</label>
       <div className="relative">
         <button
           type="button"
           onClick={() => setOpen((p) => !p)}
-          className={`w-full bg-white/10 rounded-sm px-4 py-3 text-base outline-none transition-colors flex items-center justify-between cursor-pointer ${
+          className={`w-full bg-white/10 rounded-sm px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base outline-none transition-colors flex items-center justify-between cursor-pointer ${
             value ? "text-white" : "text-white/60"
           } ${open ? "ring-1 ring-white/20" : ""}`}
         >
@@ -87,10 +87,10 @@ export default function ContactSection() {
   const setField = (k) => (v) => setForm((p) => ({ ...p, [k]: v }));
 
   const inputCls =
-    "w-full bg-white/10 rounded-sm px-4 py-3 text-white text-base placeholder-white/60 outline-none focus:border-white/25 transition-colors";
+    "w-full bg-white/10 rounded-sm px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base placeholder-white/60 outline-none focus:border-white/25 transition-colors";
 
   return (
-    <section className="relative w-full overflow-hidden py-20 px-6 flex items-center justify-center min-h-screen">
+    <section className="relative w-full overflow-hidden py-16 sm:py-28 px-5 sm:px-6 flex items-center justify-center min-h-[auto] sm:min-h-screen">
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -190,13 +190,12 @@ export default function ContactSection() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-24 items-start">
 
         {/* Left column */}
         <div className="w-full lg:w-[50%] flex-shrink-0 pt-2">
           <h2
-            className="font-newsreader text-white font-normal leading-snug mb-6"
-            style={{ fontSize: "clamp(28px, 3vw, 44px)" }}
+            className="font-newsreader text-white font-normal leading-snug mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl"
           >
             Ready to turn your<br />
             idea into a{" "}
@@ -205,7 +204,7 @@ export default function ContactSection() {
             </em>
           </h2>
 
-          <p className="text-white text-sm leading-relaxed mb-10 max-w-[340px]">
+          <p className="text-white/70 text-sm leading-relaxed mb-8 sm:mb-10 max-w-[340px]">
             Book a discovery call with our team.<br />
             We'll align on strategy, define the roadmap, present a tailored proposal — and begin building.
           </p>
@@ -213,7 +212,7 @@ export default function ContactSection() {
           {/* Person card */}
           <div className="flex flex-col gap-3">
             <div
-              className="relative w-[220px] h-[220px] rounded-lg overflow-hidden"
+              className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-lg overflow-hidden"
               style={{ background: "rgba(255,255,255,0.06)" }}
             >
               <Image
@@ -224,17 +223,17 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <p className="text-white font-newsreader italic text-base leading-tight">Md Abul Hashem</p>
+              <p className="text-white font-newsreader italic text-sm sm:text-base leading-tight">Md Abul Hashem</p>
               <p className="text-white/50 text-xs mt-0.5">Design Lead, Oriure</p>
             </div>
           </div>
         </div>
 
         {/* Right column — form */}
-        <div className="w-full lg:w-[58%] flex flex-col gap-5">
+        <div className="w-full lg:w-[50%] flex flex-col gap-3 sm:gap-4">
 
-          {/* Name */}
-          <div className="flex flex-col gap-1.5">
+
+            <div className="flex flex-col gap-1.5">
             <label className="text-white text-base pb-1.5">Your Name*</label>
             <input
               className={inputCls}
@@ -243,9 +242,7 @@ export default function ContactSection() {
               onChange={set("name")}
             />
           </div>
-
-          {/* Company */}
-          <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5">
             <label className="text-white text-base pb-1.5">Company Name</label>
             <input
               className={inputCls}
@@ -255,10 +252,34 @@ export default function ContactSection() {
             />
           </div>
 
-          {/* Phone + Email */}
-          <div className="grid grid-cols-2 gap-4">
+
+
+          {/* Name + Company */}
+          {/* <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-white text-base pb-1.5">Phone</label>
+            <label className="text-white text-base pb-1.5">Your Name*</label>
+            <input
+              className={inputCls}
+              placeholder="John Doe"
+              value={form.name}
+              onChange={set("name")}
+            />
+          </div>
+            <div className="flex flex-col gap-1.5">
+            <label className="text-white text-base pb-1.5">Company Name</label>
+            <input
+              className={inputCls}
+              placeholder="Google Inc."
+              value={form.company}
+              onChange={set("company")}
+            />
+          </div>
+          </div> */}
+
+          {/* Phone + Email */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-white text-sm sm:text-base pb-1.5">Phone</label>
               <input
                 className={inputCls}
                 placeholder="+1 212-555-0178"
@@ -267,7 +288,7 @@ export default function ContactSection() {
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-white text-base pb-1.5">Email*</label>
+              <label className="text-white text-sm sm:text-base pb-1.5">Email*</label>
               <input
                 className={inputCls}
                 placeholder="yourname@example.com"
@@ -278,7 +299,7 @@ export default function ContactSection() {
           </div>
 
           {/* Service + Budget */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <CustomDropdown
               label="Service(s) you need*"
               placeholder="Select your service"
@@ -297,7 +318,7 @@ export default function ContactSection() {
 
           {/* Project details */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-white text-base pb-1.5">Project Details</label>
+            <label className="text-white text-sm sm:text-base pb-1.5">Project Details</label>
             <textarea
               className={inputCls + " resize-none min-h-[100px]"}
               placeholder="I want to redesign my website"

@@ -224,13 +224,13 @@ export default function Footer() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] mx-auto  ">
+      <div className="relative z-10 max-w-[1300px] mx-auto px-5 sm:px-6">
 
         {/* ── TOP ROW: Logo + description left, nav columns right ── */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-0 pt-16 pb-10">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 pt-12 sm:pt-16 pb-8 sm:pb-10">
 
           {/* Left — Logo + description + CTA (takes ~1/3 width) */}
-          <div className="flex flex-col gap-6 lg:w-[36%] flex-shrink-0">
+          <div className="flex flex-col gap-5 sm:gap-6 lg:w-[36%] flex-shrink-0">
             {/* Logo only — no text */}
             <Link href="/" className="inline-flex">
               <Image
@@ -238,11 +238,11 @@ export default function Footer() {
                 alt="Oriture"
                 width={140}
                 height={36}
-                className="h-9 w-auto object-contain"
+                className="h-8 sm:h-9 w-auto object-contain"
               />
             </Link>
 
-            <p className="text-white text-base leading-relaxed max-w-[320px]">
+            <p className="text-white text-sm sm:text-base leading-relaxed max-w-[320px]">
               Beyond being an innovative UI UX design hub,
               we&apos;re your one-stop for research, wireframing,
               design, and development!
@@ -252,26 +252,26 @@ export default function Footer() {
             <div className="flex items-center gap-2 group/cta">
               <Link
                 href="/contact"
-                className="bg-[#D1FF52] text-black px-5 py-2.5 rounded-full text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
+                className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
               >
                 Contact Us
               </Link>
-              <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] cursor-pointer">
+              <button className="border border-[#D1FF52]/50 bg-transparent p-2 sm:p-2.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] cursor-pointer">
                 <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
               </button>
             </div>
           </div>
 
           {/* Right — Three nav columns (start from ~2/3 width) */}
-          <div className="flex-1 grid grid-cols-3 gap-8 lg:gap-12 lg:pl-8">
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 lg:pl-8">
             {/* Services */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-white font-medium text-base mb-1">Services</h4>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Services</h4>
               {services.map((l) => (
                 <Link
                   key={l.label}
                   href={l.href}
-                  className="text-white text-base hover:text-white transition-colors"
+                  className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -279,13 +279,13 @@ export default function Footer() {
             </div>
 
             {/* Company */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-white font-medium text-base mb-1">Company</h4>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Company</h4>
               {company.map((l) => (
                 <Link
                   key={l.label}
                   href={l.href}
-                  className="text-white text-base hover:text-white transition-colors"
+                  className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -293,17 +293,19 @@ export default function Footer() {
             </div>
 
             {/* Review */}
-            <div className="flex flex-col gap-4">
-              <h4 className="text-white font-medium text-base mb-1">Review</h4>
-              {reviews.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  className="text-white text-base hover:text-white transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-3 sm:gap-4 col-span-2 sm:col-span-1">
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Review</h4>
+              <div className="flex flex-wrap sm:flex-col gap-3 sm:gap-4">
+                {reviews.map((l) => (
+                  <Link
+                    key={l.label}
+                    href={l.href}
+                    className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -312,33 +314,33 @@ export default function Footer() {
         <div className="h-px bg-white/10 w-full" />
 
         {/* ── MIDDLE ROW: company deck + copyright + socials ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 py-5">
+        <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 sm:gap-5 py-5">
 
           {/* Company deck download */}
           <button className="flex items-center gap-3 group/deck">
-            <div className="w-9 h-9 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
-              <Download className="w-4 h-4 text-black" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
+              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
             </div>
             <div className="text-left">
-              <p className="text-white text-base font-medium leading-tight">Company Deck</p>
-              <p className="text-white text-base">PDF, 3 MB</p>
+              <p className="text-white text-sm sm:text-base font-medium leading-tight">Company Deck</p>
+              <p className="text-white/60 text-xs sm:text-sm">PDF, 3 MB</p>
             </div>
           </button>
 
           {/* Copyright */}
-          <p className="text-white text-base">
-            © 2024–2025, Orituree , All Rights Reserved.
+          <p className="text-white/60 text-xs sm:text-sm text-center order-last sm:order-none">
+            © 2024–2026, Orituree , All Rights Reserved.
           </p>
 
           {/* Socials */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {socials.map(({ icon: Icon, href }, i) => (
               <Link
                 key={i}
                 href={href}
-                className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 transition-colors"
+                className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
               >
-                <Icon className="w-6 h-6" />
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
               </Link>
             ))}
           </div>
@@ -347,7 +349,7 @@ export default function Footer() {
       </div>
 
       {/* ── BOTTOM: footer.svg as full-width image ── */}
-      <div className="relative z-10 max-w-[1300px] mx-auto mt-20 mb-10">
+      <div className="relative z-10 max-w-[1300px] mx-auto mt-10 sm:mt-20 mb-6 sm:mb-10 px-5 sm:px-6">
         <Image
           src="/footer.svg"
           alt="Oriture"

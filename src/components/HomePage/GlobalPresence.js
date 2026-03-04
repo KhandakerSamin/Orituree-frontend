@@ -61,7 +61,7 @@ export default function GlobalPresence() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden bg-black">
+    <section className="min-h-[auto] sm:min-h-screen flex items-center justify-center px-5 sm:px-6 py-16 sm:py-28 relative overflow-hidden bg-black">
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -163,11 +163,21 @@ export default function GlobalPresence() {
       {/* ── CONTENT ── */}
       <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
+        {/* Mobile background map — visible only on small screens */}
+        <div className="absolute inset-0 flex items-start justify-center lg:hidden pointer-events-none z-0 pt-8">
+          <img
+            src="/map.svg"
+            alt=""
+            className="w-[130%] max-w-none h-auto opacity-60"
+            style={{ filter: "brightness(1.3)" }}
+          />
+        </div>
+
         {/* Left column */}
-        <div className="w-full lg:w-1/2">
+        <div className="relative z-10 w-full lg:w-1/2">
           <h1
-            className="text-white font-normal mb-10 font-newsreader"
-            style={{ fontSize: "clamp(26px, 3.2vw, 44px)", lineHeight: 1.28, letterSpacing: "-0.2px" }}
+            className="text-white font-normal mb-6 sm:mb-10 font-newsreader text-center lg:text-left text-2xl sm:text-3xl lg:text-4xl"
+            style={{ lineHeight: 1.28, letterSpacing: "-0.2px" }}
           >
             Crafting digital
             <br />
@@ -179,14 +189,14 @@ export default function GlobalPresence() {
             </em>
           </h1>
 
-          {/* Info cards */}
-          <div className="relative flex gap-3.5 mb-11">
+          {/* Info cards — stack vertically on mobile, horizontal on larger */}
+          <div className="relative flex flex-col sm:flex-row gap-3.5 mb-8 sm:mb-11">
             {infoCards.map((card, idx) => (
               <div
                 key={idx}
-                className="min-w-[175px] max-w-[300px] min-h-[150px] flex-shrink-0 p-4 pb-[18px] backdrop-blur-[10px] rounded-l-[12px] border-t border-l border-b border-white/[0.01] border-r-0"
+                className="w-full sm:min-w-[175px] sm:max-w-[300px] min-h-[120px] sm:min-h-[150px] flex-shrink-0 p-4 pb-[18px] backdrop-blur-[14px] rounded-[12px] sm:rounded-l-[12px] sm:rounded-r-none border border-white/[0.06] sm:border-r-0"
                 style={{
-                  background: "linear-gradient(270deg, rgba(0,0,0,0.1) 0%, rgba(109,85,255,0.2) 100%)",
+                  background: "linear-gradient(270deg, rgba(0,0,0,0.25) 0%, rgba(109,85,255,0.3) 100%)",
                 }}
               >
                 <div className="mb-3">
@@ -203,10 +213,10 @@ export default function GlobalPresence() {
           {/* Stats */}
           <div
             ref={statsRef}
-            className="grid grid-cols-4 max-w-[650px] px-5 min-h-35 pt-6 pb-5 rounded-t-[12px] border-t border-l border-r border-white/[0.01] border-b-0"
+            className="grid grid-cols-2 sm:grid-cols-4 max-w-[650px] px-5 min-h-35 pt-6 pb-5 rounded-[12px] sm:rounded-t-[12px] sm:rounded-b-none border border-white/[0.06] sm:border-b-0 backdrop-blur-[14px] lg:backdrop-blur-none"
             style={{
-              gap: "clamp(24px, 4vw, 48px)",
-              background: "linear-gradient(360deg, rgba(0,0,0,0.1) 0%, rgba(109,85,255,0.2) 100%)",
+              gap: "clamp(20px, 4vw, 48px)",
+              background: "linear-gradient(360deg, rgba(0,0,0,0.25) 0%, rgba(109,85,255,0.3) 100%)",
             }}
           >
             {stats.map((stat) => (
@@ -215,8 +225,8 @@ export default function GlobalPresence() {
           </div>
         </div>
 
-        {/* Right column — map */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center">
+        {/* Right column — map (desktop only) */}
+        <div className="hidden lg:flex w-full lg:w-1/2 items-center justify-center">
           <img src="/map.svg" alt="" className="w-full h-auto block opacity-50" />
         </div>
       </div>

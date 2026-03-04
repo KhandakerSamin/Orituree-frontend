@@ -85,25 +85,25 @@ export default function Hero() {
       {/* HERO CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-35 pb-4 sm:pt-30 sm:pb-8 min-h-[50vh]">
 
-        <h1 className="font-newsreader text-[38px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
+        <h1 className="font-newsreader text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
           Designing Digital Products
           <br />
           <span>That Move </span>
           <span className="italic text-[#D1FF52]">business forward!</span>
         </h1>
 
-        <p className="relative z-10 text-white/70 text-base sm:text-md md:text-lg max-w-sm sm:max-w-lg md:max-w-2xl mt-3 sm:mt-5 leading-relaxed">
+        <p className="relative z-10 text-white/70 text-sm sm:text-base md:text-lg max-w-xs sm:max-w-lg md:max-w-2xl mt-3 sm:mt-5 leading-relaxed">
           We craft scalable, user-first digital experiences for startups and growing
           companies worldwide.
         </p>
 
         {/* CTA — Desktop */}
-        <div className=" flex items-center space-x-2 mt-7 md:mt-5 group">
-          <button className="bg-[#D1FF52] text-black px-5 py-3 rounded-full text-base font-medium cursor-pointer ">
+        <div className="flex items-center space-x-2 mt-6 sm:mt-7 md:mt-5 group">
+          <button className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium cursor-pointer">
             Start Your Project
           </button>
-          <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer">
-            <MoveUpRight className="w-5 h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
+          <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 sm:p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer">
+            <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
           </button>
         </div>
 

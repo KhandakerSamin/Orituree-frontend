@@ -4,18 +4,18 @@ import { ArrowUpRight, MoveUpRight } from 'lucide-react';
 
 const CTASection = () => {
   return (
-    <section className="py-20 sm:py-40 md:py-30 lg:py-35 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="py-16 sm:py-28 md:py-36 lg:py-40 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-4xl mx-auto text-center">
         {/* Header Badge */}
-        <div className="mb-8 sm:mb-12">
-          <div className="inline-flex items-center justify-center border border-[#D1FF52] px-6 py-2 text-sm font-medium text-gray-300 rounded-full bg-transparent">
+        <div className="mb-6 sm:mb-12">
+          <div className="inline-flex items-center justify-center border border-[#D1FF52] px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-gray-300 rounded-full bg-transparent">
             Got a project in mind?
           </div>
         </div>
 
         {/* Main Heading */}
         <h2
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight mb-8 sm:mb-12 bg-clip-text text-transparent"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight mb-6 sm:mb-12 bg-clip-text text-transparent"
           style={{
             background: 'linear-gradient(95.24deg, #D1FF52 4.05%, #010206 105.94%)',
             WebkitBackgroundClip: 'text',

@@ -75,11 +75,11 @@ export default function WhyChoose() {
       />
 
       {/* ── Content — centered column layout */}
-      <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-10 lg:px-16 py-16 sm:py-28 lg:py-36">
 
         {/* Heading — centered */}
-        <div className="text-start mx-8 mb-12 sm:mb-16">
-          <h2 className="font-newsreader text-3xl sm:text-4xl lg:text-5xl font-normal  leading-[1.2] text-white">
+        <div className="text-start mx-4 sm:mx-8 mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="font-newsreader text-2xl sm:text-3xl lg:text-5xl font-normal leading-[1.2] text-white">
             <span className="not-italic" style={{ color: "#D1FF52" }}>Oriture</span>{" "}
             is your
             <br />
@@ -88,11 +88,11 @@ export default function WhyChoose() {
         </div>
 
         {/* Cards — single column, centered */}
-          <div className="flex flex-col items-center gap-5  sm:gap-6">
+          <div className="flex flex-col items-center gap-4 sm:gap-6">
             {reasons.map((item, i) => (
               <div
                 key={i}
-                className="group  relative w-full max-w-xl overflow-hidden rounded-t-2xl px-6 py-5 transition-all duration-300"
+                className="group relative w-full max-w-xl overflow-hidden rounded-t-2xl px-4 sm:px-6 py-4 sm:py-5 transition-all duration-300"
                 style={{
             background: "linear-gradient(360deg, rgba(3, 2, 7, 0) 0%, rgba(255, 255, 255, 0.1) 100%)",
             borderTop: "1px solid rgba(255,255,255,0.08)",
@@ -102,13 +102,13 @@ export default function WhyChoose() {
                 }}
               >
                 {/* Icon + Text */}
-              <div className="relative z-10 flex items-start gap-4">
+              <div className="relative z-10 flex items-start gap-3 sm:gap-4">
                
-                <img src="/LogoIcon.svg" alt="icon" className="w-5 h-5" />
+                <img src="/LogoIcon.svg" alt="icon" className="w-4 h-4 sm:w-5 sm:h-5 mt-1" />
                 
 
                 <div>
-                  <h3 className="font-newsreader text-xl sm:text-2xl font-normal text-white leading-snug mb-2 whitespace-pre-line">
+                  <h3 className="font-newsreader text-lg sm:text-2xl font-normal text-white leading-snug mb-1.5 sm:mb-2 whitespace-pre-line">
                     {item.title}
                   </h3>
                   <p className="text-white/50 text-sm leading-relaxed">

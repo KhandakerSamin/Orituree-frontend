@@ -27,18 +27,18 @@ export default function Services() {
   ]
 
   return (
-    <section className="py-20 sm:py-24 md:py-35 lg:py-50 px-4 bg-black">
+    <section className="py-16 sm:py-28 md:py-40 lg:py-50 px-4 sm:px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Services Badge */}
-        <div className="flex justify-center mb-8 ">
-          <span className="inline-flex items-center px-4 py-2 rounded-full border border-[#D1FF52]  text-gray-300 text-sm font-medium">
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#D1FF52] text-gray-300 text-xs sm:text-sm font-medium">
             Services We Offer
           </span>
         </div>
 
         {/* Main Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium text-white leading-tight">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-medium text-white leading-tight">
             Where Innovation Meets
             <br />
             User-Centric Design
@@ -46,26 +46,26 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-gray-900 rounded-2xl p-6 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105"
+              className="bg-gray-900 rounded-2xl p-5 sm:p-6 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105"
             >
               {/* Service Number */}
-              <div className="flex items-center justify-center w-12 h-12 bg-[#D1FF52] rounded-full mb-6">
-                <span className="text-black font-bold text-lg">{service.id}</span>
+              <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#D1FF52] rounded-full mb-4 sm:mb-6">
+                <span className="text-black font-bold text-base sm:text-lg">{service.id}</span>
               </div>
 
               {/* Service Title */}
-              <h3 className="text-white text-xl font-medium mb-6">{service.title}</h3>
+              <h3 className="text-white text-lg sm:text-xl font-medium mb-4 sm:mb-6">{service.title}</h3>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                 {service.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-black/10 text-gray-300 text-sm  rounded-full border border-[#D1FF52]"
+                    className="px-2 sm:px-3 py-0.5 sm:py-1 bg-black/10 text-gray-300 text-xs sm:text-sm rounded-full border border-[#D1FF52]"
                   >
                     {tag}
                   </span>
@@ -75,10 +75,10 @@ export default function Services() {
               {/* Pricing and Button */}
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-gray-400 text-sm">Start from</span>
-                  <div className="text-[#D1FF52] text-3xl font-medium">{service.price}</div>
+                  <span className="text-gray-400 text-xs sm:text-sm">Start from</span>
+                  <div className="text-[#D1FF52] text-2xl sm:text-3xl font-medium">{service.price}</div>
                 </div>
-                <button className="bg-[#D1FF52] cursor-pointer text-black px-4 py-2 mt-2 rounded-full font-normal transition-all duration-300">
+                <button className="bg-[#D1FF52] cursor-pointer text-black px-3 sm:px-4 py-1.5 sm:py-2 mt-2 rounded-full text-sm font-normal transition-all duration-300">
                   Learn More
                 </button>
               </div>

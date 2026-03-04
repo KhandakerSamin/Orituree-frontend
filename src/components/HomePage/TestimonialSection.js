@@ -45,7 +45,7 @@ export default function TestimonialSection() {
   const t = testimonials[current];
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-black">
+    <section className="relative w-full min-h-[73vh] md:min-h-screen max-h-[50vh] sm:min-h-screen overflow-hidden bg-black">
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -116,7 +116,7 @@ export default function TestimonialSection() {
       {/* ── QUOTE SVGs ── */}
 
       {/* Left quote */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-64 lg:w-full lg:h-90 pointer-events-none z-0">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-32 sm:w-40 sm:h-64 lg:w-full lg:h-90 pointer-events-none z-0 opacity-40 sm:opacity-100">
         <Image
           src="/testomonial1.svg"
           alt=""
@@ -126,7 +126,7 @@ export default function TestimonialSection() {
       </div>
 
       {/* Right quote */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full h-64 lg:w-full lg:h-90 pointer-events-none z-0">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-32 sm:w-full sm:h-64 lg:w-full lg:h-90 pointer-events-none z-0 opacity-40 sm:opacity-100">
         <Image
           src="/testomonial2.svg"
           alt=""
@@ -136,11 +136,11 @@ export default function TestimonialSection() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-3xl mx-auto px-8 py-24 md:py-32">
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 py-10 sm:py-24 md:py-32 flex flex-col min-h-[80vh]  md:min-h-screen">
 
         {/* Heading */}
-        <div className="mb-22">
-          <h2 className="font-serif text-4xl lg:text-5xl font-normal leading-snug text-white">
+        <div className="mb-8 sm:mb-22">
+          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal leading-snug text-white">
             What it's like <br />
             to work with{" "}
             <em className="italic" style={{ color: "#D1FF52" }}>
@@ -149,32 +149,35 @@ export default function TestimonialSection() {
           </h2>
         </div>
 
-        {/* Avatar + Name */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="relative w-11 h-11 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
-            <Image
-              src={t.avatar}
-              alt={t.name}
-              fill
-              className="object-cover"
-            />
+        {/* Testimonial content — grows to fill available space */}
+        <div className="flex-1 mt-15 sm:mt-0 flex flex-col">
+          {/* Avatar + Name */}
+          <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
+              <Image
+                src={t.avatar}
+                alt={t.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-white font-semibold text-sm font-newsreader">{t.name}</p>
+              <p className="text-white/50 text-xs">{t.position}</p>
+            </div>
           </div>
-          <div>
-            <p className="text-white font-semibold text-sm font-newsreader">{t.name}</p>
-            <p className="text-white/50 text-xs">{t.position}</p>
-          </div>
+
+          {/* Quote */}
+          <blockquote className="text-white/95 text-base sm:text-lg lg:text-xl font-light leading-relaxed mb-6 sm:mb-8 transition-opacity duration-300">
+            {t.testimonial}
+          </blockquote>
         </div>
 
-        {/* Quote */}
-        <blockquote className="text-white/95 text-lg lg:text-xl min-h-35 font-light leading-relaxed mb-8">
-          {t.testimonial}
-        </blockquote>
-
-        {/* Bottom row */}
-        <div className="flex items-center justify-between">
+        {/* Bottom row — always pinned at bottom */}
+        <div className="flex items-center mb-20 sm:mb-0 justify-between mt-auto pt-4">
 
           {/* Company logo */}
-          <div className="relative w-32 h-9 flex-shrink-0">
+          <div className="relative w-24  sm:w-32 h-8 sm:h-9 flex-shrink-0">
             <Image
               src={t.logo}
               alt={t.company}
@@ -184,16 +187,16 @@ export default function TestimonialSection() {
           </div>
 
           {/* Nav arrows */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all duration-300 flex items-center justify-center"
             >
               <ArrowRight className="w-4 h-4" />
             </button>

@@ -42,21 +42,21 @@ const cards = [
 
 export default function IdeaToImpact() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center py-20 px-6 bg-[#0a0a0a]">
+    <section className="min-h-[auto] sm:min-h-screen flex flex-col items-center justify-center py-16 sm:py-28 px-5 sm:px-6 bg-[#0a0a0a]">
       {/* Heading */}
-      <div className="text-center mb-14">
-        <h1 className="text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-4 tracking-tight leading-[1.15]">
+      <div className="text-center mb-10 sm:mb-14">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-3 sm:mb-4 tracking-tight leading-[1.15]">
           From Idea to{" "}
           <em className="text-[#D1FF52] italic font-newsreader">Impact</em>
         </h1>
-        <p className="text-gray-400 text-base font-normal leading-relaxed max-w-[380px] mx-auto">
+        <p className="text-gray-400 text-sm font-normal leading-relaxed max-w-[380px] mx-auto">
           We craft scalable, user-first digital experiences for startups and
           growing companies worldwide.
         </p>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[1300px] w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 max-w-[1300px] w-full">
         {cards.map((card, i) => (
           <div
             key={card.title}
@@ -103,31 +103,31 @@ export default function IdeaToImpact() {
             />
 
             {/* Card Content */}
-            <div className="relative z-[3] pt-7 px-6 pb-6">
+            <div className="relative z-[3] pt-5 sm:pt-7 px-4 sm:px-6 pb-5 sm:pb-6">
               {/* Icon */}
-              <div className="mb-5">
+              <div className="mb-4 sm:mb-5">
                 <img src="/CardIcon.svg"></img>
               </div>
 
               {/* Title */}
-              <h2 className="text-[26px] font-normal font-newsreader text-white mb-3 tracking-tight">
+              <h2 className="text-xl sm:text-[26px] font-normal font-newsreader text-white mb-2 sm:mb-3 tracking-tight">
                 {card.title}
               </h2>
 
               {/* Description */}
-              <p className="text-white/55 max-w-[290px] text-sm leading-relaxed mb-6 font-light">
+              <p className="text-white/55 max-w-[290px] text-sm leading-relaxed mb-4 sm:mb-6 font-light">
                 {card.description}
               </p>
 
               {/* Service List */}
-              <div className="flex flex-col  gap-0.5">
+              <div className="flex flex-col gap-0.5">
                 {services.map((service) => (
                   <button
                     key={service}
-                    className="flex items-center justify-between bg- border bg-black/[0.1] border-white/3 rounded-[8px] py-3 px-4 text-white/85 text-sm cursor-pointer transition-all duration-200  hover:bg-white/[0.08] hover:border-white/[0.18]"
+                    className="flex items-center justify-between bg- border bg-black/[0.1] border-white/3 rounded-[8px] py-2.5 sm:py-3 px-3 sm:px-4 text-white/85 text-sm cursor-pointer transition-all duration-200 hover:bg-white/[0.08] hover:border-white/[0.18]"
                   >
                     <span>{service}</span>
-                    <ArrowUpRight />
+                    <ArrowUpRight className="w-4 h-4" />
                   </button>
                 ))}
               </div>

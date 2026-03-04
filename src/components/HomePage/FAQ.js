@@ -42,7 +42,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="relative min-h-screen w-full overflow-clip py-20 px-6 flex items-start justify-center">
+    <section className="relative min-h-[auto] sm:min-h-screen w-full overflow-clip py-16 sm:py-28 px-5 sm:px-6 flex items-start justify-center">
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -129,13 +129,12 @@ export default function FAQSection() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start pt-10">
+      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-24 items-start pt-6 sm:pt-10">
 
         {/* Left column */}
         <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-24 lg:self-start">
           <h2
-            className="font-newsreader text-white font-normal leading-snug mb-10"
-            style={{ fontSize: "clamp(28px, 3.2vw, 46px)" }}
+            className="font-newsreader text-white font-normal leading-snug mb-6 sm:mb-10 text-2xl sm:text-3xl lg:text-4xl"
           >
             Security, Payments<br />
             {"& Process –"}{" "}
@@ -144,7 +143,7 @@ export default function FAQSection() {
 
           {/* CTA card */}
           <div
-            className="rounded-2xl p-6 flex flex-col gap-5"
+            className="rounded-2xl p-5 sm:p-6 flex flex-col gap-4 sm:gap-5"
             style={{
               background: "linear-gradient(360deg, rgba(0,0,0,0.2) 0%, rgba(109,85,255,0.2) 100%)",
               backdropFilter: "blur(12px)",
@@ -155,7 +154,7 @@ export default function FAQSection() {
               {["/avatar.png", "/avatar.png", "/avatar.png"].map((src, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 relative bg-gray-600"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white/20 relative bg-gray-600"
                   style={{ zIndex: 3 - i }}
                 >
                   <Image src={src} alt="" fill className="object-cover" />
@@ -171,11 +170,11 @@ export default function FAQSection() {
             <div className="flex items-center gap-2 group/cta">
               <a
                 href="/contact"
-                className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-5 py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
+                className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
               >
                 Book a Quick Call
               </a>
-              <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
+              <button className="border border-[#D1FF52]/50 bg-transparent p-2 sm:p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
                 <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
               </button>
             </div>
@@ -183,15 +182,14 @@ export default function FAQSection() {
         </div>
 
         {/* Right column — accordion */}
-        <div className="w-full lg:w-[62%] flex flex-col gap-3">
+        <div className="w-full lg:w-[62%] flex flex-col gap-2 sm:gap-3">
           {faqs.map((faq, i) => {
             const isOpen = open === i;
             return (
               <div
                 key={i}
-                className="bg-black/10 rounded-xl px-5 py-4 transition-all duration-300 cursor-pointer"
-                onMouseEnter={() => setOpen(i)}
-                onMouseLeave={() => setOpen(null)}
+                className="bg-black/10 rounded-xl px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 cursor-pointer"
+                onClick={() => setOpen(isOpen ? null : i)}
               >
                 <div className="w-full flex items-center justify-between gap-4 text-left">
                   <span
