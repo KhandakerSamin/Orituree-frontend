@@ -94,12 +94,12 @@ export default function WorkHero() {
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center py-16">
-      {/* ── GRADIENT LAYERS ── */}
+      {/* GRADIENT LAYERS */}
 
       {/* Base: pure black */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-black" />
 
-      {/* Dark left — top-left stays black */}
+      {/* Dark left - top-left stays black */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -185,7 +185,7 @@ export default function WorkHero() {
         </svg>
       </div>
 
-      {/* Dark mask — left-of-S stays dark */}
+      {/* Dark mask - left-of-S stays dark */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -225,7 +225,7 @@ export default function WorkHero() {
         }}
       />
 
-      {/* ── CONTENT ── */}
+      {/* CONTENT */}
       <div className="relative z-10 w-full max-w-[1350px] mx-auto px-5 sm:px-8 flex flex-col items-center">
 
         {/* Heading */}
@@ -288,7 +288,7 @@ export default function WorkHero() {
 
           {/* LEFT CARD - Static container, animated content */}
           <div
-            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[250px] rounded-2xl p-6 flex-shrink-0"
+            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[365px] min-h-[250px] rounded-lg p-7 flex-shrink-0"
             style={{
               background: "linear-gradient(180deg, rgba(17, 13, 38, 0.55) 0%, rgba(109, 85, 255, 0) 100%)",
               backdropFilter: "blur(1px)",
@@ -322,9 +322,9 @@ export default function WorkHero() {
           </div>
 
           {/* CENTER IMAGE */}
-          <div className="flex flex-col items-center gap-4 flex-shrink-0">
+          <div className="flex flex-col items-center gap-5 flex-shrink-0">
             <div
-              className="relative rounded-2xl overflow-hidden"
+              className="relative rounded-xl overflow-hidden"
               style={{
                 width: "clamp(300px, 38vw, 520px)",
                 aspectRatio: "4/3",
@@ -396,7 +396,7 @@ export default function WorkHero() {
 
           {/* RIGHT CARD - Static container, animated content */}
           <div
-            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[250px] rounded-2xl p-6 flex-shrink-0"
+            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[365px] min-h-[250px] rounded-2xl p-7  flex-shrink-0"
             style={{
               background: "linear-gradient(180deg, rgba(17, 13, 38, 0.55) 0%, rgba(109, 85, 255, 0) 100%)",
               backdropFilter: "blur(1px)",
@@ -437,7 +437,7 @@ export default function WorkHero() {
         {/* Mobile cards (below image on small screens) */}
         <div className="flex lg:hidden flex-col gap-4 mt-6 w-full max-w-sm">
           <div
-            className="rounded-2xl p-5"
+            className="rounded-xl p-5"
             style={{
               background: "linear-gradient(180deg, rgba(17,13,38,0.55) 0%, rgba(109,85,255,0) 100%)",
               border: "1px solid rgba(255,255,255,0.07)",
@@ -455,7 +455,7 @@ export default function WorkHero() {
             </div>
           </div>
           <div
-            className="rounded-2xl p-5"
+            className="rounded-xl p-5"
             style={{
               background: "linear-gradient(180deg, rgba(17,13,38,0.55) 0%, rgba(109,85,255,0) 100%)",
               border: "1px solid rgba(255,255,255,0.07)",
