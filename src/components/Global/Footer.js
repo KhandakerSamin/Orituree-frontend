@@ -51,17 +51,6 @@ export default function Footer() {
       {/* Base: pure black foundation */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-black" />
 
-      {/* 
-        S-CURVE SPLIT:
-        Left of S = black/dark
-        Right of S = dark fading into bright vivid purple (bottom-right)
-        
-        The S-curve is simulated with:
-        1. A dark-left diagonal linear gradient (top-left stays black)
-        2. A bright bloom from bottom-right (right side of S)
-        3. An SVG S-curve path as the transition spine
-      */}
-
       {/* Dark left side — top-left quadrant stays near black */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -224,7 +213,7 @@ export default function Footer() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] mx-auto px-5 sm:px-6">
+      <div className="relative z-10 max-w-[1350px] mx-auto px-5 sm:px-6">
 
         {/* ── TOP ROW: Logo + description left, nav columns right ── */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 pt-12 sm:pt-16 pb-8 sm:pb-10">

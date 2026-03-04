@@ -1,10 +1,26 @@
+"use client";
 import { MoveUpRight } from "lucide-react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const row1 = [1, 2, 3, 4, 5, 6, 7];
 const row2 = [8, 9, 10, 11, 12, 13];
 
 export default function Hero() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative flex flex-col min-h-[calc(100vh)] w-full overflow-hidden bg-black">
 
@@ -113,7 +129,7 @@ export default function Hero() {
       </div>
 
       {/* BRAND SECTION */}
-      <div className="relative z-10 w-full pb-35 pt-4 px-4 sm:px-8">
+      <div className="relative z-10 w-full pb-40 pt-4 px-4 sm:px-8">
         <p className="text-center text-sm uppercase text-white/70 mb-4 tracking-wide">
           we help to{" "}
           <span className="text-[#D1FF52] font-medium">structure</span>
@@ -193,8 +209,12 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* Mobile scroll indicator */}
-        <div className="absolute bottom-7 md:hidden left-1/2 -translate-x-1/2 z-20 animate-bounce">
+
+{/* scroll indicator — hidden on desktop after scroll */}
+      
+        <div className={`absolute bottom-12 md:bottom-7 left-1/2 -translate-x-1/2 z-20 animate-bounce transition-opacity duration-500 ${
+          hasScrolled ? "md:opacity-0 md:pointer-events-none" : "opacity-100"
+        }`}>
           <div className="flex flex-col items-center gap-1">
             <span className="text-[10px] uppercase tracking-widest text-white/70">Scroll</span>
             <div className="w-px h-7 bg-gradient-to-b from-[#D1FF52]/60 via-purple-400/40 to-transparent" />

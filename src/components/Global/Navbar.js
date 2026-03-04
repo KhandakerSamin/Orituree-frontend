@@ -14,7 +14,7 @@ export default function Navbar() {
   const SCROLL_THRESHOLD = 60;
 
   const navigationItems = [
-    { name: "Work", href: "/works", hasDropdown: false },
+    { name: "Work", href: "/work", hasDropdown: false },
     {
       name: "Services",
       href: "/services",
@@ -39,7 +39,7 @@ export default function Navbar() {
 
   const mobileNavigationItems = [
     { name: "Home", href: "/" },
-    { name: "Work", href: "/works" },
+    { name: "Work", href: "/work" },
     { 
       name: "Services", 
       href: "/services",
@@ -219,12 +219,12 @@ export default function Navbar() {
                   }`}
                 >
                   <div className="flex items-center gap-2 pr-1">
-                    <a
+                    <Link
                       href="/contact"
                       className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
                     >
                       Hire Us
-                    </a>
+                    </Link>
                     <button className="border border-[#D1FF52]/40 bg-transparent p-1.5 rounded-tr-full rounded-b-full hover:rounded-t-full hover:rounded-bl-none hover:bg-[#D1FF52] transition-all duration-300 shrink-0 group/ctabtn">
                       <MoveUpRight className="w-3.5 h-3.5 text-[#D1FF52] group-hover/ctabtn:rotate-45 group-hover/ctabtn:text-black transition-all duration-300" />
                     </button>
@@ -241,12 +241,12 @@ export default function Navbar() {
                   : "w-auto opacity-100 translate-x-0 py-5"
               }`}
             >
-              <a
+              <Link
                 href="/contact"
                 className="border border-[#D1FF52]/50 text-white group-hover/ctatop:text-black group-hover/ctatop:bg-[#D1FF52] group-hover/ctatop:border-[#D1FF52] bg-transparent px-5 py-2 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
               >
                 Hire Us
-              </a>
+              </Link>
               <button className="border border-[#D1FF52]/50 bg-transparent p-2 rounded-tr-full rounded-b-full group-hover/ctatop:rounded-t-full group-hover/ctatop:rounded-bl-none group-hover/ctatop:bg-[#D1FF52] transition-all duration-300">
                 <MoveUpRight className="w-4 h-4 text-[#D1FF52] group-hover/ctatop:rotate-45 group-hover/ctatop:text-black transition-all duration-300" />
               </button>
@@ -285,12 +285,12 @@ export default function Navbar() {
 
             {/* Mobile CTA */}
             <div className="flex items-center gap-1.5 pl-2 border-l border-white/10 ml-1">
-              <a
+              <Link
                 href="/contact"
                 className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-3.5 py-1.5 rounded-full transition-all duration-300 text-[12px] font-medium whitespace-nowrap"
               >
                 Hire Us
-              </a>
+              </Link>
               <button className="border border-[#D1FF52]/40 bg-transparent p-1.5 rounded-tr-full rounded-b-full hover:rounded-t-full hover:rounded-bl-none hover:bg-[#D1FF52] transition-all duration-300 shrink-0 group/mobilecta">
                 <MoveUpRight className="w-3 h-3 text-[#D1FF52] group-hover/mobilecta:rotate-45 group-hover/mobilecta:text-black transition-all duration-300" />
               </button>
@@ -417,7 +417,7 @@ export default function Navbar() {
                     </div>
                   ) : (
                     // Regular nav item
-                    <a
+                    <Link
                       href={item.href}
                       className="group relative flex items-center justify-between p-4 rounded-2xl overflow-hidden transition-all duration-300"
                       style={{ background: "rgba(255,255,255,0.03)" }}
@@ -438,7 +438,7 @@ export default function Navbar() {
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                         style={{ background: "radial-gradient(circle at 0% 50%, rgba(209,255,82,0.06) 0%, transparent 50%)" }}
                       />
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}
@@ -453,13 +453,13 @@ export default function Navbar() {
               style={{ animationDelay: "420ms" }}
             >
               <div className="flex items-center gap-2 group/cta">
-                <a
+                <Link
                   href="/contact"
                   className="flex-1 flex items-center justify-center bg-[#D1FF52] text-black px-5 py-3.5 rounded-full font-semibold text-[14px] transition-all duration-300 hover:shadow-[0_0_28px_rgba(209,255,82,0.3)]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Start Your Project
-                </a>
+                </Link>
                 <button 
                   className="bg-white/5 hover:bg-[#D1FF52] p-3.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none flex-shrink-0"
                   onClick={() => setIsMenuOpen(false)}
