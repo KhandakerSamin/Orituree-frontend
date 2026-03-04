@@ -1,9 +1,12 @@
+import Footer from '@/components/Global/Footer';
+import Navbar from '@/components/Global/Navbar';
 import React from 'react';
 
 const AboutPage = () => {
      return (
           <div>
-               <h1>About Us</h1>
+               <Navbar />
+               <Footer />
           </div>
      );
 };

@@ -167,10 +167,12 @@ export default function TestimonialSection() {
             </div>
           </div>
 
-          {/* Quote */}
-          <blockquote className="text-white/95 text-base sm:text-lg lg:text-xl font-light leading-relaxed mb-6 sm:mb-8 transition-opacity duration-300">
-            {t.testimonial}
-          </blockquote>
+          {/* Quote - fixed height container */}
+          <div className="min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]">
+            <blockquote className="text-white/95 text-base sm:text-lg lg:text-xl font-light leading-relaxed transition-opacity duration-300">
+              {t.testimonial}
+            </blockquote>
+          </div>
         </div>
 
         {/* Bottom row — always pinned at bottom */}

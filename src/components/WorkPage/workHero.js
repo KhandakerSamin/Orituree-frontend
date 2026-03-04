@@ -14,12 +14,12 @@ const projects = [
     reviewer: {
       name: "Sakhawat Hossain",
       role: "Brand Manager, LGH",
-      avatar: "/workhero1.png",
+      avatar: "/avatar.png",
     },
   },
   {
     id: 2,
-    image: "/workhero1.png",
+    image: "/workhero2.png",
     title: "Nova Tech Solutions",
     description:
       "We Collaborated With Nova Tech To Build A Sleek, Performance-Driven SaaS Dashboard That Streamlines Workflows And Delivers An Intuitive Experience For Their Enterprise Clients.",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     id: 3,
-    image: "/workhero1.png",
+    image: "/workhero3.png",
     title: "Bloom Fashion Studio",
     description:
       "We Designed An Immersive E-Commerce Experience For Bloom Fashion Studio That Blends Editorial Storytelling With Seamless Shopping — Increasing Conversions By 40% In The First Month.",
@@ -44,7 +44,7 @@ const projects = [
     reviewer: {
       name: "Mia Johansson",
       role: "Creative Director, Bloom",
-      avatar: "/workhero1.png",
+      avatar: "/avatar.png",
     },
   },
 ];
@@ -108,23 +108,33 @@ export default function WorkHero() {
         }}
       />
 
-      {/* Vivid bottom-right bloom */}
+      {/* Vivid bottom-right bloom - expanded coverage */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 102% 102%, #8b58f5 0%, #6038d0 25%, #3318 80 52%, #0e0628 72%, transparent 85%)",
+            "radial-gradient(ellipse 95% 90% at 85% 85%, #8b58f5 0%, #6038d0 25%, #3318 80 52%, #0e0628 72%, transparent 88%)",
           opacity: 1,
         }}
       />
 
-      {/* Tighter vivid core bottom-right */}
+      {/* Tighter vivid core - extended left and toward top */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 50% 48% at 99% 100%, #aa78ff 0%, #7845ee 28%, #4020b0 52%, transparent 68%)",
+            "radial-gradient(ellipse 65% 60% at 80% 88%, #aa78ff 0%, #7845ee 28%, #4020b0 52%, transparent 72%)",
           opacity: 0.9,
+        }}
+      />
+
+      {/* Top-right corner glow */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 45% 90% at 92% 20%, #7845ee 0%, #5030b8 30%, #2a1870 55%, transparent 75%)",
+          opacity: 0.6,
         }}
       />
 
@@ -259,7 +269,7 @@ export default function WorkHero() {
                   style={{ zIndex: 3 - i }}
                 >
                   <img
-                    src="/workhero1.png"
+                    src="/avatar.png"
                     alt="avatar"
                     className="w-full h-full object-cover"
                   />
@@ -276,31 +286,34 @@ export default function WorkHero() {
         {/* Main carousel area */}
         <div className="w-full flex items-center justify-center gap-5 lg:gap-7">
 
-          {/* LEFT CARD */}
+          {/* LEFT CARD - Static container, animated content */}
           <div
-            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[300px] rounded-2xl p-6 flex-shrink-0"
+            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[250px] rounded-2xl p-6 flex-shrink-0"
             style={{
               background: "linear-gradient(180deg, rgba(17, 13, 38, 0.55) 0%, rgba(109, 85, 255, 0) 100%)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              backdropFilter: "blur(12px)",
-              transition: "opacity 0.4s ease, transform 0.4s ease",
-              opacity: animating ? 0 : 1,
-              transform: animating ? "translateY(8px)" : "translateY(0)",
+              backdropFilter: "blur(1px)",
             }}
           >
-            <div>
+            <div
+              key={`desc-${current}`}
+              className="typewriter-text"
+            >
               <p
-                className="text-gray-300 text-sm leading-relaxed"
+                className="text-gray-200 text-sm leading-relaxed"
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
               >
                 {proj.description}
               </p>
             </div>
-            <div className="flex flex-wrap gap-2 mt-6">
+            <div
+              key={`tags-${current}`}
+              className="flex flex-wrap gap-2 mt-6 typewriter-text"
+              style={{ animationDelay: "0.3s" }}
+            >
               {proj.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs text-gray-300 border border-gray-600 rounded-full px-3 py-1"
+                  className="text-sm text-gray-200  bg-white/10  rounded-full px-4 py-1.5"
                 >
                   {tag}
                 </span>
@@ -316,8 +329,6 @@ export default function WorkHero() {
                 width: "clamp(300px, 38vw, 520px)",
                 aspectRatio: "4/3",
                 boxShadow: "0 0 60px rgba(120, 70, 240, 0.25)",
-                transition: "opacity 0.4s ease",
-                opacity: animating ? 0 : 1,
               }}
             >
               <img
@@ -333,7 +344,7 @@ export default function WorkHero() {
                 <button
                   key={p.id}
                   onClick={() => goTo(i)}
-                  className="relative h-[6px] rounded-full overflow-hidden cursor-pointer focus:outline-none"
+                  className="relative h-[7px] rounded-full overflow-hidden cursor-pointer focus:outline-none"
                   style={{
                     width: "100px",
                     background: i <= current ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.15)",
@@ -366,28 +377,46 @@ export default function WorkHero() {
                 0% { transform: scaleX(0); }
                 100% { transform: scaleX(1); }
               }
+              @keyframes typewrite {
+                0% {
+                  opacity: 0;
+                  clip-path: inset(0 100% 0 0);
+                }
+                100% {
+                  opacity: 1;
+                  clip-path: inset(0 0 0 0);
+                }
+              }
+              .typewriter-text {
+                animation: typewrite 0.6s ease-out forwards;
+                opacity: 0;
+              }
             `}</style>
           </div>
 
-          {/* RIGHT CARD */}
+          {/* RIGHT CARD - Static container, animated content */}
           <div
-            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[300px] rounded-2xl p-6 flex-shrink-0"
+            className="hidden lg:flex flex-col justify-between w-[280px] xl:w-[300px] min-h-[250px] rounded-2xl p-6 flex-shrink-0"
             style={{
               background: "linear-gradient(180deg, rgba(17, 13, 38, 0.55) 0%, rgba(109, 85, 255, 0) 100%)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              backdropFilter: "blur(12px)",
-              transition: "opacity 0.4s ease, transform 0.4s ease",
-              opacity: animating ? 0 : 1,
-              transform: animating ? "translateY(8px)" : "translateY(0)",
+              backdropFilter: "blur(1px)",
             }}
           >
             <p
-              className="text-gray-300 text-sm leading-relaxed"
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              key={`test-${current}`}
+              className="text-gray-100 text-sm leading-relaxed typewriter-text"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 400,
+              }}
             >
               {proj.testimonial}
             </p>
-            <div className="flex items-center gap-3 mt-6">
+            <div
+              key={`rev-${current}`}
+              className="flex items-center gap-3 mt-6 typewriter-text"
+              style={{ animationDelay: "0.3s" }}
+            >
               <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
                 <img
                   src={proj.reviewer.avatar}
@@ -399,7 +428,7 @@ export default function WorkHero() {
                 <p className="text-white text-sm font-semibold leading-none">
                   {proj.reviewer.name}
                 </p>
-                <p className="text-gray-500 text-xs mt-1">{proj.reviewer.role}</p>
+                <p className="text-white text-sm mt-1">{proj.reviewer.role}</p>
               </div>
             </div>
           </div>

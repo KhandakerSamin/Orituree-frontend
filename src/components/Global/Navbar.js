@@ -3,13 +3,20 @@ import { ChevronDown, MoveUpRight, ArrowUpRight, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileDropdown, setMobileDropdown] = useState(null);
+
+  // Check if current path matches item href
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   const SCROLL_THRESHOLD = 60;
 
@@ -34,7 +41,7 @@ export default function Navbar() {
       dropdown: ["React", "Next.js", "Figma", "Framer"],
     },
     { name: "About", href: "/about", hasDropdown: false },
-    { name: "Insight", href: "/blog", hasDropdown: false },
+    { name: "Insight", href: "/insight", hasDropdown: false },
   ];
 
   const mobileNavigationItems = [
@@ -59,7 +66,7 @@ export default function Navbar() {
       dropdown: ["React", "Next.js", "Figma", "Framer"]
     },
     { name: "About", href: "/about" },
-    { name: "Insight", href: "/blog" },
+    { name: "Insight", href: "/insight" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -153,58 +160,69 @@ export default function Navbar() {
 
                 {/* Nav links */}
                 {navigationItems.map((item) => (
-                  <div key={item.name} className="relative">
-                    <button
-                      onClick={() => {
-                        setActiveItem(item.name);
-                        if (item.hasDropdown) {
-                          setOpenDropdown(openDropdown === item.name ? null : item.name);
-                        } else {
-                          setOpenDropdown(null);
-                        }
-                      }}
-                      className={`flex items-center gap-1 whitespace-nowrap transition-all duration-300 text-[15px] font-light ${
-                        isScrolled
-                          ? "px-3 py-1.5 rounded-full hover:bg-white/8"
-                          : "px-0 py-0"
-                      } ${
-                        activeItem === item.name
-                          ? "text-[#D1FF52]"
-                          : "text-white/80 hover:text-white"
-                      }`}
-                    >
-                      {item.name}
-                      {item.hasDropdown && (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => item.hasDropdown && setOpenDropdown(item.name)}
+                    onMouseLeave={() => item.hasDropdown && setOpenDropdown(null)}
+                  >
+                    {item.hasDropdown ? (
+                      <button
+                        className={`flex items-center gap-1 whitespace-nowrap transition-all duration-300 text-[15px] font-light ${
+                          isScrolled
+                            ? "px-3 py-1.5 rounded-full hover:bg-white/8"
+                            : "px-0 py-0"
+                        } ${
+                          isActive(item.href) || openDropdown === item.name
+                            ? "text-[#D1FF52]"
+                            : "text-white/80 hover:text-white"
+                        }`}
+                      >
+                        {item.name}
                         <ChevronDown
-                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          className={`w-3.5 h-3.5 text-[#D1FF52] transition-transform duration-200 ${
                             openDropdown === item.name ? "rotate-180" : ""
-                          } ${
-                            activeItem === item.name ? "text-[#D1FF52]" : "text-white/40"
                           }`}
                         />
-                      )}
-                    </button>
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={`flex items-center gap-1 whitespace-nowrap transition-all duration-300 text-[15px] font-light ${
+                          isScrolled
+                            ? "px-3 py-1.5 rounded-full hover:bg-white/8"
+                            : "px-0 py-0"
+                        } ${
+                          isActive(item.href)
+                            ? "text-[#D1FF52]"
+                            : "text-white/80 hover:text-white"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
 
                     {/* Dropdown */}
                     {item.hasDropdown && (
                       <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-[#0c0c0c]/96 backdrop-blur-xl rounded-2xl py-2 shadow-2xl shadow-black/60 transition-all duration-200 ${
+                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
                           openDropdown === item.name
                             ? "opacity-100 translate-y-0 pointer-events-auto"
                             : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
                       >
-                        {item.dropdown.map((sub) => (
-                          <a
-                            key={sub}
-                            href="#"
-                            className="flex items-center justify-between px-4 py-2.5 mx-1 rounded-xl text-[13px] text-white/65 hover:text-[#D1FF52] hover:bg-white/5 transition-all duration-150 group/sub"
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {sub}
-                            <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150" />
-                          </a>
-                        ))}
+                        <div className="w-48 bg-[#0c0c0c]/96 backdrop-blur-xl rounded-2xl py-2 shadow-2xl shadow-black/60">
+                          {item.dropdown.map((sub) => (
+                            <a
+                              key={sub}
+                              href="#"
+                              className="flex items-center justify-between px-4 py-2.5 mx-1 rounded-xl text-[13px] text-white/65 hover:text-[#D1FF52] hover:bg-white/5 transition-all duration-150 group/sub"
+                            >
+                              {sub}
+                              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150" />
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>

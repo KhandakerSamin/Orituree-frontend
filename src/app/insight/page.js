@@ -1,9 +1,12 @@
+import Footer from '@/components/Global/Footer'
+import Navbar from '@/components/Global/Navbar'
 import React from 'react'
 
 const BlogPage = () => {
   return (
     <div>
-     <h1>All Blog Posts</h1>
+     <Navbar />
+     <Footer />
     </div>
   )
 }

@@ -193,7 +193,7 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-24 items-start">
 
         {/* Left column */}
-        <div className="w-full lg:w-[50%] flex-shrink-0 pt-2">
+        <div className="w-full lg:w-[38%] flex-shrink-0 pt-2">
           <h2
             className="font-newsreader text-white font-normal leading-snug mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl"
           >
@@ -230,7 +230,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right column — form */}
-        <div className="w-full lg:w-[50%] flex flex-col gap-3 sm:gap-4">
+        <div className="w-full lg:w-[62%] flex flex-col gap-3 sm:gap-4">
 
 
             <div className="flex flex-col gap-1.5">
