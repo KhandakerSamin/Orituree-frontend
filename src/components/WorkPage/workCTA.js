@@ -278,13 +278,11 @@ export default function WorkCTA() {
 
               {/* Heading */}
               <h2
-                className="text-3xl sm:text-4xl font-light text-white leading-snug"
-                style={{ fontFamily: "'Georgia', serif" }}
+                className="text-3xl sm:text-4xl font-normal text-white leading-snug font-serif"
               >
                 Not sure if Oriture is the{" "}<br/>
                 <span
-                  className="italic font-light"
-                  style={{ color: "#d1ff52", fontFamily: "'Georgia', serif" }}
+                  className="italic font-normal text-action"
                 >
                   right partner
                 </span>{" "}
@@ -293,8 +291,7 @@ export default function WorkCTA() {
 
               {/* Body */}
               <p
-                className="text-gray-100 font-light text-sm sm:text-xl leading-relaxed max-w-md"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="text-gray-100 font-normal text-sm sm:text-xl leading-relaxed max-w-md"
               >
                 Start with{" "}
                 <span style={{ color: "#d1ff52" }}>3 free strategy discussions</span>{" "}

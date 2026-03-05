@@ -231,29 +231,21 @@ export default function WorkHero() {
         {/* Heading */}
         <div className="text-center mb-10">
           <h1
-            className="text-4xl sm:text-5xl lg:text-5xl font-normal text-white leading-tight tracking-tight"
-            style={{ fontFamily: "'Georgia', serif" }}
+            className="text-4xl sm:text-5xl lg:text-5xl font-normal text-white leading-tight tracking-tight font-serif"
           >
             From Concept to
           </h1>
           <h1
-            className="text-4xl sm:text-5xl lg:text-5xl font-normal leading-tight"
-            style={{ fontFamily: "'Georgia', serif" }}
+            className="text-4xl sm:text-5xl lg:text-5xl font-normal leading-tight font-serif"
           >
             <span
-              className="italic"
-              style={{
-                color: "#c8f000",
-                fontStyle: "italic",
-                fontFamily: "'Georgia', serif",
-              }}
+              className="italic text-action"
             >
               high-Impact
             </span>{" "}
             <span className="text-white">digital{" "}</span>
             <span
-              className="italic text-white"
-              style={{ fontFamily: "'Georgia', serif" }}
+              className="italic text-white font-serif"
             >
               experience
             </span>
@@ -300,7 +292,6 @@ export default function WorkHero() {
             >
               <p
                 className="text-gray-200 text-sm leading-relaxed"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
               >
                 {proj.description}
               </p>
@@ -405,10 +396,6 @@ export default function WorkHero() {
             <p
               key={`test-${current}`}
               className="text-gray-100 text-sm leading-relaxed typewriter-text"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 400,
-              }}
             >
               {proj.testimonial}
             </p>

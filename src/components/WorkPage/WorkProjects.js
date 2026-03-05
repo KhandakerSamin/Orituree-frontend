@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 import { 
   ArrowUpRight, 
   Layers, 
@@ -17,6 +18,7 @@ import {
   Megaphone, 
   Building2 
 } from "lucide-react";
+import projectsData from "@/data/projectsData";
 
 // Icon mapping for each category
 const CATEGORY_ICONS = {
@@ -36,39 +38,18 @@ const CATEGORY_ICONS = {
   "Agency": Building2,
 };
 
-// --- ALL PROJECT DATA ---
-export const PROJECTS = [
-  { id: "liftup", category: "EdTech", workPage: { image: "/workhero1.png", heading: "LiftUP", description: "LiftUP Is An Edtech Platform Crafted To Empower Students With Skill-Based Learning, Bridging The Gap Between Classroom Theory And Real-World Application.", tags: ["EdTech", "E-Learning", "Dashboard"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "fahad-tutorial", category: "EdTech", workPage: { image: "/workHero2.png", heading: "Fahad Tutorial", description: "A Clean, Focused Learning Hub That Makes Course Discovery, Enrollment, And Progress Tracking Effortless For Students Of All Ages.", tags: ["EdTech", "Branding", "Web"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "kanonic-edtech", category: "EdTech", workPage: { image: "/workHero3.png", heading: "Kanonic", description: "Kanonic Delivers A Next-Generation Edtech Experience With Adaptive Learning Paths, Gamified Progress, And A Beautifully Minimal UI.", tags: ["EdTech", "SaaS", "UI/UX"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "nexus", category: "EdTech", workPage: { image: "/workhero1.png", heading: "Nexus", description: "Nexus Is A Collaborative Academic Platform Connecting Students, Mentors, And Institutions Under One Roof — Designed For Scale And Engineered For Clarity.", tags: ["EdTech", "Platform", "Collaboration"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "diu-ds-lab", category: "EdTech", workPage: { image: "/workHero2.png", heading: "DIU DS Lab", description: "A Research-Forward Digital Identity For DIU's Data Science Lab, Showcasing Faculty, Publications, And Student Projects In A Modern Interface.", tags: ["EdTech", "Research", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "ap", category: "EdTech", workPage: { image: "/workHero3.png", heading: "AP", description: "AP Is An Advanced Preparation Platform Helping Students Ace Competitive Exams Through AI-Curated Practice Sets And Real-Time Performance Analytics.", tags: ["EdTech", "AI", "Analytics"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "eclips", category: "EdTech", workPage: { image: "/workhero1.png", heading: "Eclips", description: "Eclips Transforms Video-Based Learning With Smart Clip Annotations, Peer Discussions, And Instructor Tools That Turn Passive Watching Into Active Understanding.", tags: ["EdTech", "Video", "Web App"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "we-pilot", category: "AI", workPage: { image: "/workHero2.png", heading: "We Pilot", description: "We Pilot Is An AI Co-Pilot Platform That Automates Repetitive Business Workflows, Giving Teams A Smarter, Faster Way To Ship Work.", tags: ["AI", "SaaS", "Automation"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "kanonic-ai", category: "AI", workPage: { image: "/workHero3.png", heading: "Kanonic AI", description: "Kanonic's AI Layer Brings Intelligent Content Recommendations And Adaptive Assessments, Personalising Every Step Of The Educational Journey.", tags: ["AI", "EdTech", "Product"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "lgh", category: "Restaurant", workPage: { image: "/workhero1.png", heading: "Lebanese Grill House", description: "We Partnered With LGH To Craft A Clean, Elegant, And Conversion-Focused Digital Experience That Reflects Their Brand Identity And Elevates Their Online Presence.", tags: ["Hospitality", "Restaurant", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "hf", category: "Restaurant", workPage: { image: "/workHero2.png", heading: "HF Restaurant", description: "HF Restaurant Needed A Digital Identity As Warm And Inviting As Their Food. We Created A Rich, Sensory-Forward Website That Drives Reservations And Builds Loyalty.", tags: ["Restaurant", "Branding", "Web"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "burger-buddy", category: "Restaurant", workPage: { image: "/workHero3.png", heading: "Burger Buddy", description: "Burger Buddy's Bold Personality Demanded A Website That Matched Its Energy. We Built A Fun, Fast-Loading Order-First Experience That Converts Cravings Into Clicks.", tags: ["Restaurant", "Fast Food", "UI/UX"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "trs", category: "Podcast", workPage: { image: "/workhero1.png", heading: "TRS", description: "TRS Is One Of The Region's Most Listened-To Podcasts. We Built A Hub That Centralises Episodes, Guest Bios, And Community Interaction Into A Single Sleek Experience.", tags: ["Podcast", "Media", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "ucast", category: "Podcast", workPage: { image: "/workHero2.png", heading: "Ucast", description: "Ucast Is A Podcast Discovery And Hosting Platform Built For Independent Creators — Featuring Episode Management, Analytics, And A Creator-Centric Listening Interface.", tags: ["Podcast", "Platform", "SaaS"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "marshan", category: "E-Commerce", workPage: { image: "/workHero3.png", heading: "Marshan", description: "Marshan's E-Commerce Redesign Focused On Reducing Friction At Every Touchpoint — From Discovery To Checkout — Resulting In A 35% Uplift In Completed Purchases.", tags: ["E-Commerce", "Fashion", "UI/UX"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "tripking", category: "E-Commerce", workPage: { image: "/workhero1.png", heading: "TripKing", description: "TripKing Merges Travel Commerce With Editorial Storytelling — Letting Explorers Discover, Compare, And Book Experiences Through A Visually Immersive Storefront.", tags: ["E-Commerce", "Travel", "Web"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "golpo-app", category: "Music", workPage: { image: "/workHero2.png", heading: "Golpo App", description: "Golpo Is A Music Storytelling App Where Artists Share The Narratives Behind Their Songs. We Built An Intimate, Audio-First Interface That Deepens The Fan-Artist Connection.", tags: ["Music", "Mobile App", "Product"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "ray-task", category: "Automobile", workPage: { image: "/workHero3.png", heading: "Ray Task", description: "Ray Task Is An Automotive Service Scheduling Platform That Connects Car Owners With Certified Technicians — Streamlined Booking, Transparent Pricing, Zero Hassle.", tags: ["Automobile", "Marketplace", "App"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "dm-task", category: "Automobile", workPage: { image: "/workhero1.png", heading: "DM Task", description: "DM Task Brings Digital Efficiency To Automotive Fleet Management — Providing Real-Time Tracking, Maintenance Alerts, And Driver Analytics In One Unified Dashboard.", tags: ["Automobile", "SaaS", "Dashboard"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "gofast", category: "Automobile", workPage: { image: "/workHero2.png", heading: "GoFast", description: "GoFast Is A High-Performance EV Brand We Helped Launch Digitally — With A Cinematic Website That Captures The Speed, Technology, And Ambition Behind The Brand.", tags: ["Automobile", "EV", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "tintype", category: "Productivity", workPage: { image: "/workHero3.png", heading: "Tintype", description: "Tintype Is A Minimalist Productivity Suite For Deep Workers — Featuring Distraction-Free Writing, Task Batching, And A Beautifully Calm Interface Built For Focus.", tags: ["Productivity", "SaaS", "Design"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "ghurni", category: "Green Tech", workPage: { image: "/workhero1.png", heading: "Ghurni", description: "Ghurni Is A Green-Tech Startup Revolutionising Waste Collection Logistics. We Designed A Data-Forward Platform That Makes Sustainability Tracking Actionable And Engaging.", tags: ["Green Tech", "Sustainability", "Platform"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "factwatch", category: "News", workPage: { image: "/workHero2.png", heading: "FactWatch", description: "FactWatch Is A Fact-Checking Platform Designed For Trust And Speed — Presenting Verified Information With Clear Source Attribution And An Easy-To-Parse Visual Hierarchy.", tags: ["News", "Media", "Web"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "trending-today", category: "News", workPage: { image: "/workHero3.png", heading: "Trending Today", description: "Trending Today Is A Real-Time News Aggregator Built For The Scroll Generation — Fast-Loading Cards, Smart Topic Filtering, And A Personalised Feed.", tags: ["News", "Media", "Mobile"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "nuo", category: "News", workPage: { image: "/workhero1.png", heading: "Nuo", description: "Nuo Reimagines Local News With A Community-Driven Editorial Model. We Created A Platform That Balances Journalistic Integrity With The Accessibility Of Modern Social Media.", tags: ["News", "Community", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "pzs", category: "Association", workPage: { image: "/workHero2.png", heading: "PZS", description: "PZS Needed A Professional Digital Presence That Reflects The Prestige Of Its Membership. We Delivered A Refined, Content-Rich Portal For Events, Publications, And Governance.", tags: ["Association", "NGO", "Web"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "demand-agency", category: "Marketing", workPage: { image: "/workHero3.png", heading: "Demand Agency", description: "Demand Agency Is A Performance Marketing Firm. We Built Their Website As A Conversion Machine — Bold Copy, Sharp Visuals, And A Lead Funnel That Turns Visitors Into Clients.", tags: ["Marketing", "Agency", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "codeflee", category: "Agency", workPage: { image: "/workhero1.png", heading: "Codeflee", description: "Codeflee Is A Dev Agency With Big Ambitions. We Crafted Their Brand Identity And Website To Communicate Technical Excellence While Remaining Approachable To Non-Technical Clients.", tags: ["Agency", "Tech", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "syscomatic", category: "Agency", workPage: { image: "/workHero2.png", heading: "Syscomatic", description: "Syscomatic Delivers Enterprise Automation Solutions. Their New Digital Presence Positions Them As Category Leaders — Serious, Scalable, And Unmistakably Modern.", tags: ["Agency", "Automation", "Enterprise"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-  { id: "legit-banda", category: "Agency", workPage: { image: "/workHero3.png", heading: "Legit Banda", description: "Legit Banda Is A Creative Agency With Personality. We Helped Them Express Their Irreverent Identity Through A Portfolio Site That Doubles As A Statement Of Intent.", tags: ["Agency", "Creative", "Branding"] }, detailPage: { heroImage: null, overview: "", challenge: "", solution: "", images: [], tags: [] } },
-];
+// Build PROJECTS array from centralized data
+export const PROJECTS = projectsData.map((p) => ({
+  id: p.id,
+  category: p.category,
+  workPage: {
+    image: p.homepage.homepageThumbnail,
+    heading: p.homepage.projectTitle,
+    description: p.homepage.homepageDetail,
+    tags: p.homepage.tags || p.homepage.keywords,
+  },
+  hasDetail: !!p.detailPage,
+}));
 
 // Tabs arranged to balance row widths (mix of long and short labels)
 const REAL_TABS = [
@@ -127,7 +108,7 @@ function ProjectCard({ project, index, shouldAnimate }) {
     }
   }, [project.id]);
 
-  return (
+  const cardContent = (
     <div
       ref={cardRef}
       className="group cursor-pointer w-full"
@@ -173,6 +154,11 @@ function ProjectCard({ project, index, shouldAnimate }) {
       </div>
     </div>
   );
+
+  if (project.hasDetail) {
+    return <Link href={`/work/${project.id}`}>{cardContent}</Link>;
+  }
+  return cardContent;
 }
 
 // --- MAIN COMPONENT ---

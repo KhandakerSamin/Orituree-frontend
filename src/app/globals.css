@@ -7,6 +7,7 @@ html {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --action: #D1FF52;
 }
 
 @theme inline {
@@ -26,9 +27,25 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "DM Sans";
+  font-family: "DM Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Newsreader", serif;
+}
+
+.font-serif {
+  font-family: "Newsreader", serif !important;
 }
 
 .font-newsreader {
-  font-family: "Newsreader";
+  font-family: "Newsreader", serif;
+}
+
+.text-action {
+  color: var(--action);
+}
+
+.bg-action {
+  background-color: var(--action);
 }
