@@ -236,14 +236,14 @@ export default function Navbar() {
                       : "max-w-0 opacity-0 pl-0 ml-0 border-l-0"
                   }`}
                 >
-                  <div className="flex items-center gap-2 pr-1">
+                  <div className="flex items-center gap-2 pr-1 group/ctabtn">
                     <Link
                       href="/contact"
-                      className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
+                      className="border border-[#D1FF52]/40 text-white group-hover/ctabtn:text-black group-hover/ctabtn:bg-[#D1FF52] group-hover/ctabtn:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
                     >
                       Hire Us
                     </Link>
-                    <button className="border border-[#D1FF52]/40 bg-transparent p-1.5 rounded-tr-full rounded-b-full hover:rounded-t-full hover:rounded-bl-none hover:bg-[#D1FF52] transition-all duration-300 shrink-0 group/ctabtn">
+                    <button className="border border-[#D1FF52]/40 bg-transparent p-1.5 rounded-tr-full rounded-b-full group-hover/ctabtn:rounded-t-full group-hover/ctabtn:rounded-bl-none group-hover/ctabtn:bg-[#D1FF52] transition-all duration-300 shrink-0">
                       <MoveUpRight className="w-3.5 h-3.5 text-[#D1FF52] group-hover/ctabtn:rotate-45 group-hover/ctabtn:text-black transition-all duration-300" />
                     </button>
                   </div>
