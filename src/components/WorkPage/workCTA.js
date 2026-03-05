@@ -134,36 +134,36 @@ const StyledCard = styled.div`
     position: relative;
     z-index: 2;
     border-radius: 18px;
-    background: #080d0a;
+    background: radial-gradient(ellipse 80% 50% at 18% 0%, rgba(209,255,82,0.07) 0%, transparent 60%),
+                linear-gradient(180deg, #23261a 0%, #0a0a0a 100%);
     overflow: hidden;
   }
 
-  /* lime top fade inside card */
+  /* lime top fade inside card (even less, further left) */
   .card-inner::before {
     content: "";
     pointer-events: none;
     position: absolute;
-    top: -120px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 320px;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(209,255,82,0.18) 0%, transparent 70%);
-    filter: blur(40px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: radial-gradient(ellipse 80% 50% at 18% 0%, rgba(209,255,82,0.07) 0%, transparent 70%);
+    filter: blur(8px);
     z-index: 0;
   }
 
-  /* subtle bottom-right violet pool */
+  /* subtle bottom fade, no violet */
   .card-inner::after {
     content: "";
     pointer-events: none;
     position: absolute;
-    bottom: -60px;
-    right: -60px;
-    width: 260px;
-    height: 260px;
-    background: radial-gradient(ellipse 80% 80% at 100% 100%, rgba(109,85,255,0.22) 0%, transparent 70%);
-    filter: blur(40px);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(180deg, transparent 0%, #0a0a0a 100%);
+    filter: blur(10px);
     z-index: 0;
   }
 
