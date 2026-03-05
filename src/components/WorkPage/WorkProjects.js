@@ -345,21 +345,18 @@ export default function WorkProjects() {
                 Find the right solution for you now
               </p>
               
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 group/cta mt-2">
                 <a
                   href="/contact"
-                  className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-5 py-2 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
+                  className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
                 >
-                  Book a Quick call
+                  Book a Quick Call
                 </a>
-                <button
-                  className="border border-[#D1FF52]/40 bg-transparent p-2 rounded-tr-full rounded-b-full hover:rounded-t-full hover:rounded-bl-none hover:bg-[#D1FF52] transition-all duration-300 cursor-pointer group"
-                >
-                  <ArrowUpRight 
-                    className="w-4 h-4 text-[#D1FF52] group-hover:text-black group-hover:rotate-45 transition-all duration-300" 
-                  />
-                </button>
+                 <button className="border border-[#D1FF52]/50 bg-transparent p-2 sm:p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
+                <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
+              </button>
               </div>
+
             </div>
           </div>
 

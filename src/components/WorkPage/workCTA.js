@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import styled from "styled-components";
 
@@ -10,47 +11,61 @@ const StyledCard = styled.div`
     justify-content: center;
     position: relative;
   }
-
-  .layer,
-  .glow-layer {
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    z-index: 0;
-  }
-
-  /* shared conic spinner mixin */
-  .layer::before,
-  .glow-layer::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 800px;
-    height: 800px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    transition: all 2s;
-  }
-
-  /* dark border base */
-  .darkBorder {
-    filter: blur(3px);
-  }
-  .darkBorder::before {
-    transform: translate(-50%, -50%) rotate(82deg);
-    background-image: conic-gradient(
-      rgba(0, 0, 0, 0),
-      #1a0f5e,
-      rgba(0, 0, 0, 0) 10%,
-      rgba(0, 0, 0, 0) 50%,
-      #3d1f8a,
-      rgba(0, 0, 0, 0) 60%
-    );
-  }
-
   /* lime accent border */
+      /* CTA button - single border, icon separated */
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        color: #fff;
+        font-weight: 500;
+        font-size: 15px;
+        border: 1.5px solid #d1ff52;
+        border-radius: 9999px;
+        padding: 0 0 0 24px;
+        height: 48px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0.01em;
+        position: relative;
+        overflow: hidden;
+        gap: 0;
+      }
+      .cta-btn:hover {
+        background: #d1ff52;
+        color: #0a0a0a;
+        border-color: #d1ff52;
+      }
+      .cta-btn .cta-text {
+        padding-right: 32px;
+        font-size: 15px;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+      .cta-btn:hover .cta-text {
+        color: #0a0a0a;
+      }
+      .cta-btn .arrow {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border-radius: 50%;
+        font-size: 18px;
+        color: #d1ff52;
+        transition: background 0.3s, color 0.3s;
+      }
+      .cta-btn:hover .arrow {
+        background: #fff;
+        color: #0a0a0a;
+      }
   .limeBorder {
     filter: blur(0.5px);
   }
@@ -287,11 +302,18 @@ export default function WorkCTA() {
                 we&apos;ll bring your product to life.
               </p>
 
-              {/* CTA Button */}
-              <button className="cta-btn mt-2">
-                Book a Quick call
-                <span className="arrow">↗</span>
+              {/* CTA Button - FAQ style */}
+              <div className="flex items-center gap-2 group/cta mt-2">
+                <a
+                  href="/contact"
+                  className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
+                >
+                  Book a Quick Call
+                </a>
+                 <button className="border border-[#D1FF52]/50 bg-transparent p-2 sm:p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
+                <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
               </button>
+              </div>
 
             </div>
           </div>
