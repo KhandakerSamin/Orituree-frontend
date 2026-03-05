@@ -157,36 +157,45 @@ const StyledCard = styled.div`
     z-index: 1;
   }
 
-  /* CTA button */
+  /* CTA button - Navbar hero style */
   .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #d1ff52;
-    color: #0a0a0a;
-    font-weight: 600;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
     font-size: 14px;
-    border: none;
-    border-radius: 999px;
+    border: 1px solid rgba(209,255,82,0.5);
+    border-radius: 9999px;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     letter-spacing: 0.01em;
   }
   .cta-btn:hover {
-    background: #c8f040;
-    transform: translateY(-1px);
-    box-shadow: 0 0 24px rgba(209,255,82,0.4);
+    background: #d1ff52;
+    color: #0a0a0a;
+    border-color: #d1ff52;
   }
   .cta-btn .arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.15);
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    background: transparent;
+    border: 1px solid rgba(209,255,82,0.5);
+    border-radius: 9999px 9999px 9999px 0;
+    width: 28px;
+    height: 28px;
     font-size: 13px;
+    color: #d1ff52;
+    transition: all 0.3s ease;
+  }
+  .cta-btn:hover .arrow {
+    background: rgba(0,0,0,0.15);
+    border-color: transparent;
+    border-radius: 9999px 9999px 0 9999px;
+    color: #0a0a0a;
   }
 `;
 
