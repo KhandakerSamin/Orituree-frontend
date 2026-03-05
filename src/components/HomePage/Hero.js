@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex flex-col min-h-[calc(100vh)] w-full overflow-hidden bg-black">
+    <section className="relative flex flex-col min-h-screen w-full overflow-hidden bg-black">
 
       {/* ── LAYER 0: Base radial glow — large, soft, centered-low, muted indigo */}
       <div

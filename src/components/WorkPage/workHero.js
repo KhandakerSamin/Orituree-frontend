@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 2,
-    image: "/workhero2.png",
+    image: "/workHero2.png",
     title: "Nova Tech Solutions",
     description:
       "We Collaborated With Nova Tech To Build A Sleek, Performance-Driven SaaS Dashboard That Streamlines Workflows And Delivers An Intuitive Experience For Their Enterprise Clients.",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     id: 3,
-    image: "/workhero3.png",
+    image: "/workHero3.png",
     title: "Bloom Fashion Studio",
     description:
       "We Designed An Immersive E-Commerce Experience For Bloom Fashion Studio That Blends Editorial Storytelling With Seamless Shopping — Increasing Conversions By 40% In The First Month.",
