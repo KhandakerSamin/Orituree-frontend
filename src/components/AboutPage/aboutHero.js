@@ -179,11 +179,11 @@ export default function AboutHero() {
           className="text-gray-100 text-sm sm:text-base leading-relaxed max-w-[720px]"
         >
           Oriture is a team of{" "}
-          <em className="text-action font-newsreader font-medium italic">
+          <em className="text-action font-newsreader text-lg font-medium italic">
             designers and developers
           </em>{" "}
           focused on building digital products that perform. We partner with ambitious brands to design, build, and launch experiences that{" "}
-          <em className="text-action font-newsreader italic">
+          <em className="text-action font-newsreader text-lg italic">
             inspire users and drive growth.
           </em>
         </p>

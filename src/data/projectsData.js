@@ -11,8 +11,8 @@ const projectsData = [
     },
 
     detailPage: {
-      projectTitle: "Golpo",
-      projectInfo: "Audiobook & Storytelling App",
+      projectTitle: "Designing a Seamless Digital Experience for an Audiobook & Storytelling App",
+      projectInfo: "",
 
       projectSubtitles: [
         { label: "Client", value: "Golpo" },
@@ -167,8 +167,8 @@ const projectsData = [
     },
 
     detailPage: {
-      projectTitle: "TripKing",
-      projectInfo: "AI-Powered Travel Planning Platform",
+      projectTitle: "Reimagining Travel Planning with an AI-Driven Digital Experience",
+      projectInfo: "",
 
       projectSubtitles: [
         { label: "Client", value: "TripKing" },
