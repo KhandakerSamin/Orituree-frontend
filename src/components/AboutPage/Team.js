@@ -99,12 +99,12 @@ const TEAM = [
 ───────────────────────────────────── */
 const SocialIcon = ({ type, url }) => {
   const icons = {
-    linkedin:  <Linkedin  className="w-3.5 h-3.5" />,
-    twitter:   <Twitter   className="w-3.5 h-3.5" />,
-    github:    <Github    className="w-3.5 h-3.5" />,
-    instagram: <Instagram className="w-3.5 h-3.5" />,
-    dribbble:  <Dribbble  className="w-3.5 h-3.5" />,
-    globe:     <Globe     className="w-3.5 h-3.5" />,
+    linkedin:  <Linkedin  className="w-4 h-4" />,
+    twitter:   <Twitter   className="w-4 h-4" />,
+    github:    <Github    className="w-4 h-4" />,
+    instagram: <Instagram className="w-4 h-4" />,
+    dribbble:  <Dribbble  className="w-4 h-4" />,
+    globe:     <Globe     className="w-4 h-4" />,
   };
 
   return (
@@ -112,10 +112,10 @@ const SocialIcon = ({ type, url }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-800 hover:text-black transition-all duration-200 shadow-lg backdrop-blur-sm"
+      className="w-9 h-9 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-800 hover:text-black transition-all duration-200 shadow-lg backdrop-blur-sm"
       onClick={(e) => e.stopPropagation()}
     >
-      {icons[type] || <Globe className="w-3.5 h-3.5" />}
+      {icons[type] || <Globe className="w-4 h-4" />}
     </a>
   );
 };
@@ -164,7 +164,7 @@ function TeamCard({ member }) {
 
         {/* Social icons — inside card, bottom-left, visible on hover */}
         <div
-          className="absolute bottom-3 left-3 flex flex-col gap-2"
+          className="absolute bottom-3 left-3 flex flex-row gap-2"
           style={{
             opacity: hovered ? 1 : 0,
             transform: hovered ? "translateY(0)" : "translateY(8px)",
