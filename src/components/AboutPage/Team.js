@@ -136,7 +136,7 @@ function TeamCard({ member }) {
     >
       {/* Card wrapper — border-radius animates */}
       <div
-        className="relative overflow-hidden w-full"
+        className="relative overflow-hidden h-[420px] w-full"
         style={{
           backgroundColor: member.bg,
           borderRadius: hovered
@@ -190,9 +190,7 @@ function TeamCard({ member }) {
   );
 }
 
-/* ─────────────────────────────────────
-   MAIN TEAM SECTION
-───────────────────────────────────── */
+
 export default function TeamSection() {
   // Split into rows of 3
   const rows = [];
