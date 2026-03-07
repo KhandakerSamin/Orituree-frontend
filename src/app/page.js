@@ -11,7 +11,7 @@ import WhyChoose from "@/components/HomePage/WhyChoose";
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden">
+    <main className="relative min-h-screen bg-black">
       {/* Hero Section Background (includes Navbar and Brand) */}
       <div 
         className="relative"

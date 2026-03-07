@@ -2,17 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-/* ─────────────────────────────────────────────────
-   PROJECT DATA
-   Replace / extend for real projects later.
-   Each project has: title, client, timeAgo, logo,
-   description, tags, testimonial, images (3)
-───────────────────────────────────────────────── */
 const PROJECTS = [
   {
     id: 1,
     timeAgo: "1 Day Ago",
-    logo: "/hp1-1.png",           // swap for real logo
+    logo: "/hp1-1.png",
     title: "Fresh Launch",
     subtitle: "by Oriture Team",
     client: "Lebanese Green House",
@@ -23,7 +17,7 @@ const PROJECTS = [
       text: "Oriture Excels With Meticulous Attention To Detail, Commitment To Excellence, And Creative Problem-Solving. Their Inventive Solutions Captivate Visually And Significantly Enhance The User Experience.",
       author: "Sakhawat Hossain",
       role: "Brand Manager, LGH",
-      avatar: "/hp1-1.png",       // swap for real avatar
+      avatar: "/hp1-1.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
   },
@@ -65,46 +59,62 @@ const PROJECTS = [
   },
 ];
 
-/* ─────────────────────────────────────────────────
-   LEFT PANEL — sticky project info
-───────────────────────────────────────────────── */
+/* ── Left Panel ── */
 function LeftPanel({ project }) {
+  const [displayProject, setDisplayProject] = useState(project);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (project.id !== displayProject.id) {
+      // Fade out
+      setIsVisible(false);
+      const timer = setTimeout(() => {
+        // Swap content then fade in
+        setDisplayProject(project);
+        setIsVisible(true);
+      }, 280);
+      return () => clearTimeout(timer);
+    }
+  }, [project.id]);
+
   return (
     <div
-      className="flex flex-col gap-5 transition-all duration-500"
-      key={project.id}
+      className="flex flex-col gap-5 transition-all duration-300"
+      style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(12px)" }}
     >
-      {/* Logo + time badge */}
+      {/* Logo + badge */}
       <div className="flex items-center gap-3">
         <img
-          src={project.logo}
-          alt={project.client}
+          src={displayProject.logo}
+          alt={displayProject.client}
           className="w-10 h-10 rounded-lg object-cover"
         />
         <span className="text-xs text-white/50 bg-white/10 px-3 py-1 rounded-full">
-          {project.timeAgo}
+          {displayProject.timeAgo}
         </span>
       </div>
 
       {/* Title */}
       <div>
         <h2 className="text-3xl md:text-4xl font-normal font-newsreader text-white leading-tight">
-          {project.title}
+          {displayProject.title}
         </h2>
         <h2 className="text-3xl md:text-4xl font-normal font-newsreader leading-tight">
           <span className="text-white">by </span>
-          <em className="text-[#D1FF52] italic">{project.subtitle.replace("by ", "")}</em>
+          <em className="text-[#D1FF52] italic">
+            {displayProject.subtitle.replace("by ", "")}
+          </em>
         </h2>
       </div>
 
       {/* Description */}
       <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-        {project.description}
+        {displayProject.description}
       </p>
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
+        {displayProject.tags.map((tag) => (
           <span
             key={tag}
             className="text-xs text-white/70 border border-white/20 px-3 py-1 rounded-full"
@@ -114,22 +124,22 @@ function LeftPanel({ project }) {
         ))}
       </div>
 
-      {/* Testimonial card */}
+      {/* Testimonial */}
       <div className="bg-white/5 border border-white/10 rounded-2xl p-4 max-w-sm">
         <p className="text-white/70 text-xs leading-relaxed mb-4">
-          {project.testimonial.text}
+          {displayProject.testimonial.text}
         </p>
         <div className="flex items-center gap-3">
           <img
-            src={project.testimonial.avatar}
-            alt={project.testimonial.author}
+            src={displayProject.testimonial.avatar}
+            alt={displayProject.testimonial.author}
             className="w-8 h-8 rounded-full object-cover"
           />
           <div>
             <p className="text-white text-xs font-newsreader italic font-medium">
-              {project.testimonial.author}
+              {displayProject.testimonial.author}
             </p>
-            <p className="text-white/40 text-[10px]">{project.testimonial.role}</p>
+            <p className="text-white/40 text-[10px]">{displayProject.testimonial.role}</p>
           </div>
         </div>
       </div>
@@ -150,31 +160,38 @@ function LeftPanel({ project }) {
   );
 }
 
-/* ─────────────────────────────────────────────────
-   MAIN SECTION
-───────────────────────────────────────────────── */
+/* ── Main ── */
 export default function HomeProjects() {
   const [activeProject, setActiveProject] = useState(0);
-  // One ref per image row (9 total: 3 projects × 3 images)
-  const imageRefs = useRef([]);
+  // One ref per PROJECT (not per image) — watch the project group container
+  const projectGroupRefs = useRef([]);
   const sectionRef = useRef(null);
 
-  /* Intersection Observer — watch each image, map to project index */
+  /* 
+    Strategy: observe each project's IMAGE GROUP container.
+    When a project group is ≥40% visible, make it active.
+    This is more reliable than per-image tracking for "every 3 images = 1 project".
+  */
   useEffect(() => {
     const observers = [];
 
-    imageRefs.current.forEach((el, imgIdx) => {
+    projectGroupRefs.current.forEach((el, pIdx) => {
       if (!el) return;
-      const projectIdx = Math.floor(imgIdx / 3);
 
       const obs = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setActiveProject(projectIdx);
+            setActiveProject(pIdx);
           }
         },
-        { threshold: 0.5 }
+        {
+          // Fire when 20% of the project group enters the viewport center zone
+          threshold: 0.2,
+          // Shrink the effective viewport: only the middle 50% of the screen triggers changes
+          rootMargin: "-20% 0px -30% 0px",
+        }
       );
+
       obs.observe(el);
       observers.push(obs);
     });
@@ -189,7 +206,6 @@ export default function HomeProjects() {
     >
       {/* ── Background ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Left purple glow */}
         <div
           className="absolute inset-0"
           style={{
@@ -198,57 +214,58 @@ export default function HomeProjects() {
             opacity: 0.7,
           }}
         />
-        {/* Grain */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
           style={{
-            opacity: 0.2,
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
             backgroundSize: "200px 200px",
-            mixBlendMode: "overlay",
           }}
         />
       </div>
 
-      {/* ── Section heading ── */}
-      <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-10 pt-20 md:pt-28 pb-10">
-        <h2 className="text-3xl md:text-5xl font-normal font-newsreader text-white leading-snug">
-          Our recent{" "}
-          <em className="text-[#D1FF52] italic font-newsreader">work</em>
-        </h2>
-      </div>
+      {/* ── Content wrapper ── */}
+      <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-10 py-28 lg:py-36">
+        <div className="flex flex-col lg:flex-row items-start">
 
-      {/* ── Sticky layout ── */}
-      <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-10">
-        <div className="flex flex-col lg:flex-row gap-0 lg:gap-16">
-
-          {/* LEFT — sticky panel */}
-          <div className="hidden lg:block lg:w-[420px] shrink-0">
-            <div className="sticky top-24">
-              <LeftPanel project={PROJECTS[activeProject]} />
-            </div>
+          {/* LEFT PANEL - same sticky system as WorkProjects */}
+          <div className="hidden lg:flex flex-col w-full lg:w-[45%] sticky top-32 self-start pr-8 h-fit">
+            <LeftPanel project={PROJECTS[activeProject]} />
           </div>
 
-          {/* RIGHT — scrollable images */}
-          <div className="flex-1 flex flex-col gap-6 pb-20 md:pb-28">
-            {PROJECTS.map((project, pIdx) =>
-              project.images.map((src, iIdx) => {
-                const globalIdx = pIdx * 3 + iIdx;
-                return (
+          {/* GAP — 5% */}
+          <div className="hidden lg:block w-[5%]" />
+
+          {/* RIGHT — scrollable images (50%) */}
+          <div className="w-full lg:w-[50%]">
+            {PROJECTS.map((project, pIdx) => (
+              /*
+                Each project gets a GROUP wrapper that the IntersectionObserver watches.
+                When this group scrolls into the trigger zone, the left panel switches.
+              */
+              <div
+                key={project.id}
+                ref={(el) => (projectGroupRefs.current[pIdx] = el)}
+                className="mb-4 lg:mb-0"
+              >
+                {/* Mobile: project label above first image */}
+                <div className="lg:hidden mb-3">
+                  <p className="text-[#D1FF52] font-newsreader italic text-lg">
+                    {project.title}
+                  </p>
+                  <p className="text-white/50 text-xs">{project.client}</p>
+                </div>
+
+                {/* Mobile: show LeftPanel content inline between projects */}
+                <div className="block lg:hidden mb-6">
+                  <LeftPanel project={project} />
+                </div>
+
+                {/* Images for this project */}
+                {project.images.map((src, iIdx) => (
                   <div
-                    key={globalIdx}
-                    ref={(el) => (imageRefs.current[globalIdx] = el)}
-                    className="w-full"
+                    key={iIdx}
+                    className="w-full mb-8 lg:mb-12"
                   >
-                    {/* Mobile: show project label above first image of each project */}
-                    {iIdx === 0 && (
-                      <div className="lg:hidden mb-3">
-                        <p className="text-[#D1FF52] font-newsreader italic text-lg">
-                          {project.title}
-                        </p>
-                        <p className="text-white/50 text-xs">{project.client}</p>
-                      </div>
-                    )}
                     <div
                       className="w-full rounded-2xl overflow-hidden shadow-2xl"
                       style={{ aspectRatio: "16/10" }}
@@ -261,9 +278,9 @@ export default function HomeProjects() {
                       />
                     </div>
                   </div>
-                );
-              })
-            )}
+                ))}
+              </div>
+            ))}
           </div>
 
         </div>
