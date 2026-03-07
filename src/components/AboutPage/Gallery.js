@@ -2,82 +2,91 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-/* ─────────────────────────────────────
-   GALLERY DATA — 9 images, 3 frame colors
-───────────────────────────────────── */
-const FRAMES = [
-  { id: 1,  src: "/gallary1.png", date: "January 2026", bg: "#D1FF52",  rotate: "-3deg",   imageRotate: "6deg"   },
-  { id: 2,  src: "/gallary2.png", date: "January 2026", bg: "#C01BFD",  rotate: "2.5deg",  imageRotate: "2.5deg"  },
-  { id: 3,  src: "/gallary3.png", date: "January 2026", bg: "#FFFFFF",  rotate: "-2deg",   imageRotate: "-2deg"   },
-  { id: 4,  src: "/gallary4.png", date: "January 2026", bg: "#C01BFD",  rotate: "3.5deg",  imageRotate: "3.5deg"  },
-  { id: 5,  src: "/gallary5.png", date: "January 2026", bg: "#FFFFFF",  rotate: "-2.5deg", imageRotate: "-2.5deg" },
-  { id: 6,  src: "/gallary6.png", date: "January 2026", bg: "#D1FF52",  rotate: "2deg",    imageRotate: "2deg"    },
-  { id: 7,  src: "/gallary7.png", date: "January 2026", bg: "#FFFFFF",  rotate: "-3.5deg", imageRotate: "-3.5deg" },
-  { id: 8,  src: "/gallary8.png", date: "January 2026", bg: "#D1FF52",  rotate: "3deg",    imageRotate: "3deg"    },
-  { id: 9,  src: "/gallary9.png", date: "January 2026", bg: "#C01BFD",  rotate: "-2deg",   imageRotate: "-2deg"   },
-];
+/*
+  PhotoFrame — reusable card component.
+  Every prop is fully explicit so you can tune each card independently below.
 
-function toDegNumber(value) {
-  return Number(String(value).replace("deg", "")) || 0;
-}
-
-function labelColor(bg) {
-  return bg === "#C01BFD" ? "#ffffff" : "#0a0a0a";
-}
-
-/* ─────────────────────────────────────
-   SINGLE PHOTO FRAME
-───────────────────────────────────── */
-function PhotoFrame({ frame }) {
+  Props:
+    src          — image path
+    date         — label text
+    frameBg      — frame background color
+    frameRotate  — how many degrees the whole card tilts   e.g. "-3deg"
+    imgRotate    — rotate the image inside the frame       e.g. "5deg" or "-4deg" (default: "0deg")
+    imgWidth     — width of photo inside frame             e.g. "100%"  or "110%"
+    imgHeight    — height of photo inside frame            e.g. "100%"  or "115%"
+    imgPosition  — object-position for crop alignment      e.g. "center center"
+    labelColor   — text color for the date label
+*/
+function PhotoFrame({
+  src,
+  date,
+  frameBg,
+  frameRotate,
+  imgRotate = "0deg",
+  imgWidth,
+  imgHeight,
+  imgPosition,
+  labelColor,
+}) {
   const [hovered, setHovered] = useState(false);
-  const frameDeg = toDegNumber(frame.rotate);
-  const imageDeg = toDegNumber(frame.imageRotate ?? frame.rotate);
-  // Image is inside the rotated frame, so apply only the delta to keep final angle exact.
-  const imageDeltaDeg = imageDeg - frameDeg;
 
   return (
     <div
       className="select-none"
       style={{
-        transform: `rotate(${frame.rotate}) scale(${hovered ? 1.06 : 1})`,
+        transform: `rotate(${frameRotate}) scale(${hovered ? 1.06 : 1})`,
         transition: "transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1)",
         position: "relative",
         zIndex: hovered ? 10 : 1,
         transformOrigin: "center center",
+        width: "100%",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* Colored frame */}
       <div
         style={{
-          backgroundColor: frame.bg,
-          padding: "8px 8px 32px 8px",
+          backgroundColor: frameBg,
+          padding: "8px 8px 6px 8px",
           borderRadius: "6px",
           boxShadow: "0 20px 45px -10px rgba(0,0,0,0.6)",
-          position: "relative",
         }}
       >
-        <img
-          src={frame.src}
-          alt={`Gallery ${frame.id}`}
+        {/* Fixed photo viewport — always 4:3, overflow hidden */}
+        <div
           style={{
-            display: "block",
+            position: "relative",
             width: "100%",
-            aspectRatio: "4/3",
-            objectFit: "cover",
+            paddingBottom: "75%", /* 4:3 */
             borderRadius: "3px",
-            transform: `rotate(${imageDeltaDeg}deg)`,
-            transformOrigin: "center center",
+            overflow: "hidden",
           }}
-          draggable={false}
-        />
+        >
+          <img
+            src={src}
+            alt={date}
+            draggable={false}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: `translate(-50%, -50%) rotate(${imgRotate})`,
+              width: imgWidth,
+              height: imgHeight,
+              objectFit: "cover",
+              objectPosition: imgPosition,
+              display: "block",
+            }}
+          />
+        </div>
 
         {/* Date label */}
         <p
-          className="text-[14px] font-medium mt-1 pl-0.5 tracking-wide"
-          style={{ color: labelColor(frame.bg) }}
+          className="text-[13px] font-medium mb-2 pl-3 tracking-wide"
+          style={{ color: labelColor }}
         >
-          {frame.date}
+          {date}
         </p>
       </div>
     </div>
@@ -167,11 +176,126 @@ export default function Gallery() {
           </h2>
         </div>
 
-        {/* Photo grid — 3 columns */}
+        {/* Photo grid — 3 columns, each card individually controlled */}
         <div className="grid grid-cols-3 gap-6 md:gap-8 place-items-center">
-          {FRAMES.map((frame) => (
-            <PhotoFrame key={frame.id} frame={frame} />
-          ))}
+
+          {/* ── Card 1 ── */}
+          <PhotoFrame
+            src="/gallary1.png"
+            date="January 2026"
+            frameBg="#D1FF52"
+            frameRotate="-3deg"
+            imgRotate="9deg"
+            imgWidth="100%"
+            imgHeight="100%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 2 ── */}
+          <PhotoFrame
+            src="/gallary2.png"
+            date="January 2026"
+            frameBg="#C01BFD"
+            frameRotate="2.5deg"
+            imgRotate="-0.5deg"
+            imgWidth="95%"
+            imgHeight="90%"
+            imgPosition="center center"
+            labelColor="#ffffff"
+          />
+
+          {/* ── Card 3 ── */}
+          <PhotoFrame
+            src="/gallary3.png"
+            date="January 2026"
+            frameBg="#FFFFFF"
+            frameRotate="-2deg"
+            imgRotate="-5deg"
+            imgWidth="100%"
+            imgHeight="90%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 4 ── */}
+          <PhotoFrame
+            src="/gallary4.png"
+            date="January 2026"
+            frameBg="#C01BFD"
+            frameRotate="3.5deg"
+            imgRotate="-4.5deg"
+            imgWidth="100%"
+            imgHeight="95%"
+            imgPosition="center center"
+            labelColor="#ffffff"
+          />
+
+          {/* ── Card 5 ── */}
+          <PhotoFrame
+            src="/gallary5.png"
+            date="January 2026"
+            frameBg="#FFFFFF"
+            frameRotate="-2.5deg"
+            imgRotate="6deg"
+            imgWidth="98%"
+            imgHeight="93%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 6 ── */}
+          <PhotoFrame
+            src="/gallary6.png"
+            date="January 2026"
+            frameBg="#D1FF52"
+            frameRotate="2deg"
+            imgRotate="-11deg"
+            imgWidth="100%"
+            imgHeight="100%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 7 ── */}
+          <PhotoFrame
+            src="/gallary7.png"
+            date="January 2026"
+            frameBg="#FFFFFF"
+            frameRotate="-3.5deg"
+            imgRotate="-1.3deg"
+            imgWidth="92%"
+            imgHeight="92%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 8 ── */}
+          <PhotoFrame
+            src="/gallary8.png"
+            date="January 2026"
+            frameBg="#D1FF52"
+            frameRotate="3deg"
+            imgRotate="6deg"
+            imgWidth="97%"
+            imgHeight="95%"
+            imgPosition="center center"
+            labelColor="#0a0a0a"
+          />
+
+          {/* ── Card 9 ── */}
+          <PhotoFrame
+            src="/gallary9.png"
+            date="January 2026"
+            frameBg="#C01BFD"
+            frameRotate="-2deg"
+            imgRotate="-7deg"
+            imgWidth="100%"
+            imgHeight="95%"
+            imgPosition="center center"
+            labelColor="#ffffff"
+          />
+
         </div>
 
         {/* CTA Button */}
