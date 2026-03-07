@@ -1,4 +1,5 @@
 import AboutHero from '@/components/AboutPage/aboutHero';
+import Gallery from '@/components/AboutPage/Gallery';
 import GuidingMinds from '@/components/AboutPage/GuidingMinds';
 import TeamSection from '@/components/AboutPage/Team';
 import Footer from '@/components/Global/Footer';
@@ -12,6 +13,7 @@ const AboutPage = () => {
                <AboutHero />
                <TeamSection />
                <GuidingMinds />
+               <Gallery />
                <Footer />
           </div>
      );
