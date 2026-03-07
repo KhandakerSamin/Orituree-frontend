@@ -1,4 +1,5 @@
 import AboutHero from '@/components/AboutPage/aboutHero';
+import GuidingMinds from '@/components/AboutPage/GuidingMinds';
 import TeamSection from '@/components/AboutPage/Team';
 import Footer from '@/components/Global/Footer';
 import Navbar from '@/components/Global/Navbar';
@@ -10,6 +11,7 @@ const AboutPage = () => {
                <Navbar />
                <AboutHero />
                <TeamSection />
+               <GuidingMinds />
                <Footer />
           </div>
      );
