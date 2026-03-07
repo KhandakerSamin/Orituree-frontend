@@ -290,7 +290,7 @@ export default function Gallery() {
             frameBg="#C01BFD"
             frameRotate="-2deg"
             imgRotate="-7deg"
-            imgWidth="100%"
+            imgWidth="99%"
             imgHeight="95%"
             imgPosition="center center"
             labelColor="#ffffff"

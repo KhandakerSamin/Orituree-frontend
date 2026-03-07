@@ -4,6 +4,7 @@ import ContactSection from "@/components/HomePage/ContactSection";
 import FAQSection from "@/components/HomePage/FAQ";
 import GlobalPresence from "@/components/HomePage/GlobalPresence";
 import Hero from "@/components/HomePage/Hero";
+import HomeProjects from "@/components/HomePage/homeProjects";
 import IdeaToImpact from "@/components/HomePage/IdeaToImpact";
 import TestimonialSection from "@/components/HomePage/TestimonialSection";
 import WhyChoose from "@/components/HomePage/WhyChoose";
@@ -22,6 +23,7 @@ export default function Page() {
         <Hero />
         <WhyChoose />
         <IdeaToImpact />
+        <HomeProjects />
         <GlobalPresence />
         <TestimonialSection />
         <FAQSection />
