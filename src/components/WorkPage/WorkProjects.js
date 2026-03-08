@@ -119,7 +119,7 @@ function ProjectCard({ project, index, shouldAnimate }) {
       }}
     >
       {/* Image */}
-      <div className="relative w-full overflow-hidden rounded-2xl aspect-[16/10]">
+      <div className="relative w-full overflow-hidden rounded-lg aspect-[4/3]">
         <img
           src={workPage.image}
           alt={workPage.heading}
@@ -127,25 +127,25 @@ function ProjectCard({ project, index, shouldAnimate }) {
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-violet-600/15">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#D1FF52]">
+          <div className="w-12 h-12 rounded-full rounded-tl-none flex items-center justify-center bg-[#D1FF52]">
             <ArrowUpRight className="w-5 h-5 text-black" />
           </div>
         </div>
       </div>
 
       {/* Text below image */}
-      <div className="pt-3 pb-0">
-        <h3 className="text-white text-lg font-normal leading-snug mb-1.5 group-hover:text-[#D1FF52] transition-colors duration-300 font-serif">
+      <div className="pt-5 pb-5">
+        <h3 className="text-white text-xl sm:text-2xl font-normal leading-snug mb-1.5 group-hover:text-[#D1FF52] transition-colors duration-300 font-sans" style={{ fontFamily: "DM Sans" }}>
           {workPage.heading}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-3 line-clamp-2">
+        <p className="text-gray-400 text-base leading-relaxed mb-3 line-clamp-2">
           {workPage.description}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {workPage.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs text-gray-400 rounded-full px-2.5 py-1 bg-white/5 border border-white/10"
+              className="text-sm text-gray-400 rounded-full px-2.5 py-1 bg-white/10"
             >
               {tag}
             </span>
@@ -249,7 +249,7 @@ export default function WorkProjects() {
           
           {/* LEFT PANEL - 35% width, sticky to screen */}
           <div 
-            className="hidden lg:flex flex-col w-full lg:w-[35%] sticky top-32 self-start pl-8 h-fit"
+            className="hidden lg:flex flex-col w-full lg:w-[40%] sticky top-32 self-start pl-8 h-fit"
           >
             {/* Heading */}
             <div className="mb-8">
@@ -347,12 +347,12 @@ export default function WorkProjects() {
           </div>
 
           {/* GAP - 20% */}
-          <div className="hidden lg:block w-[20%]" />
+          <div className="hidden lg:block w-[10%]" />
 
           {/* RIGHT PANEL - 45% width, min-height prevents scroll jump on tab change */}
           <div
             ref={rightPanelRef}
-            className="w-full lg:w-[45%] pr-8 min-h-[100vh]"
+            className="w-full lg:w-[55%] pr-8 min-h-[100vh]"
             style={{
               transition: "opacity 0.25s ease-out",
               opacity: rightVisible ? 1 : 0,
@@ -393,7 +393,7 @@ export default function WorkProjects() {
               })}
             </div>
 
-            {/* Project count label */}
+            {/* Project count label
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.07]">
               <p className="text-gray-500 text-xs uppercase tracking-widest font-medium">
                 {activeTab === "All Industries" ? "All Projects" : activeTab}
@@ -401,7 +401,7 @@ export default function WorkProjects() {
               <span className="text-xs px-3 py-1 rounded-full bg-white/5 text-gray-500 border border-white/[0.07]">
                 {displayedProjects.length} projects
               </span>
-            </div>
+            </div> */}
 
             {/* PROJECT CARDS */}
             <div className="flex flex-col gap-8">

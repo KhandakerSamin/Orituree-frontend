@@ -42,7 +42,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="relative min-h-[auto] sm:min-h-screen w-full overflow-clip py-16 sm:py-28 px-5 sm:px-6 flex items-start justify-center">
+    <section className="relative min-h-[auto] sm:min-h-screen w-full overflow-clip py-16 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 flex items-start justify-center">
 
       {/* ── GRADIENT LAYERS ── */}
 

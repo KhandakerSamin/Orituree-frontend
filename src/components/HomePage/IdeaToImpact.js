@@ -42,7 +42,7 @@ const cards = [
 
 export default function IdeaToImpact() {
   return (
-    <section className="min-h-[auto] sm:min-h-screen flex flex-col items-center justify-center py-16 sm:py-28 px-5 sm:px-6 bg-[#0a0a0a]">
+    <section className="min-h-[auto] sm:min-h-screen flex flex-col items-center justify-center py-16 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       {/* Heading */}
       <div className="text-center mb-10 sm:mb-14">
         <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-3 sm:mb-4 tracking-tight leading-[1.15]">

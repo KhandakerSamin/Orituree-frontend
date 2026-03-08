@@ -136,8 +136,7 @@ export default function TestimonialSection() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 py-10 sm:py-24 md:py-32 flex flex-col min-h-[80vh]  md:min-h-screen">
-
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 flex flex-col min-h-[80vh] md:min-h-screen">
         {/* Heading */}
         <div className="mb-8 sm:mb-22">
           <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal leading-snug text-white">

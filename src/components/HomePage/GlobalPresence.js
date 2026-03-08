@@ -61,7 +61,7 @@ export default function GlobalPresence() {
   }, []);
 
   return (
-    <section className="min-h-[auto] sm:min-h-screen flex items-center justify-center px-5 sm:px-6 py-16 sm:py-28 relative overflow-hidden bg-black">
+    <section className="min-h-[auto] sm:min-h-screen flex items-center justify-center py-16 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
 
       {/* ── GRADIENT LAYERS ── */}
 

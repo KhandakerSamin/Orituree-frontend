@@ -129,7 +129,7 @@ export default function Hero() {
       </div>
 
       {/* BRAND SECTION */}
-      <div className="relative z-10 w-full pb-40 pt-4 px-4 sm:px-8">
+      <div className="relative z-10 w-full pb-32  md:pb-25 pt-4 px-4 sm:px-8">
         <p className="text-center text-sm uppercase text-white/70 mb-4 tracking-wide">
           we help to{" "}
           <span className="text-[#D1FF52] font-medium">structure</span>
@@ -212,7 +212,7 @@ export default function Hero() {
 
 {/* scroll indicator — hidden on desktop after scroll */}
       
-        <div className={`absolute bottom-12 md:bottom-7 left-1/2 -translate-x-1/2 z-20 animate-bounce transition-opacity duration-500 ${
+        <div className={`absolute bottom-4 md:bottom-2 left-1/2 -translate-x-1/2 z-20 animate-bounce transition-opacity duration-500 ${
           hasScrolled ? "md:opacity-0 md:pointer-events-none" : "opacity-100"
         }`}>
           <div className="flex flex-col items-center gap-1">

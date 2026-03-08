@@ -75,7 +75,7 @@ export default function WhyChoose() {
       />
 
       {/* ── Content — centered column layout */}
-      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-10 lg:px-16 py-16 sm:py-28 lg:py-36">
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
 
         {/* Heading — centered */}
         <div className="text-start mx-4 sm:mx-8 mb-8 sm:mb-12 lg:mb-16">

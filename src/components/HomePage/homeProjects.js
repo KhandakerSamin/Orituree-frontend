@@ -151,10 +151,7 @@ function LeftPanel({ project }) {
         </div>
 
         {/* Testimonial */}
-        <div 
-          className="rounded-2xl p-6 max-w-md mt-2"
-          style={{ background: "linear-gradient(360deg, rgba(0, 0, 0, 0.1) 0%, rgba(109, 85, 255, 0.2) 100%)" }}
-        >
+        <div className="bg-gradient-to-b from-white/10 to-transparent   rounded-2xl p-6 max-w-md mt-2">
           <p className="text-white/80 text-sm leading-[1.60] mb-6">
             {displayProject.testimonial.text}
           </p>
