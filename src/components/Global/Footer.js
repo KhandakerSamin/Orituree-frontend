@@ -338,11 +338,11 @@ export default function Footer() {
       </div>
 
       {/* ── BOTTOM: footer.svg as full-width image ── */}
-      <div className="relative z-10 max-w-[1300px] mx-auto mt-10 sm:mt-20 mb-6 sm:mb-10 px-5 sm:px-6">
+      <div className="relative z-10 max-w-[1350px] mx-auto mt-10 sm:mt-20 mb-6 sm:mb-10 px-5 sm:px-6">
         <Image
           src="/footer.svg"
           alt="Oriture"
-          width={1300}
+          width={1350}
           height={400}
           className="w-full h-auto object-contain object-bottom"
           priority

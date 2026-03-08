@@ -1,3 +1,4 @@
+import AboutCTA from '@/components/AboutPage/aboutCTA';
 import AboutHero from '@/components/AboutPage/aboutHero';
 import Gallery from '@/components/AboutPage/Gallery';
 import GuidingMinds from '@/components/AboutPage/GuidingMinds';
@@ -14,6 +15,7 @@ const AboutPage = () => {
                <TeamSection />
                <GuidingMinds />
                <Gallery />
+               <AboutCTA />
                <Footer />
           </div>
      );

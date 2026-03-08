@@ -6,7 +6,7 @@ const PROJECTS = [
   {
     id: 1,
     timeAgo: "1 Day Ago",
-    logo: "/hp1-1.png",
+    logo: "/brand3.png",
     title: "Fresh Launch",
     subtitle: "by Oriture Team",
     client: "Lebanese Green House",
@@ -17,14 +17,14 @@ const PROJECTS = [
       text: "Oriture Excels With Meticulous Attention To Detail, Commitment To Excellence, And Creative Problem-Solving. Their Inventive Solutions Captivate Visually And Significantly Enhance The User Experience.",
       author: "Sakhawat Hossain",
       role: "Brand Manager, LGH",
-      avatar: "/hp1-1.png",
+      avatar: "/avatar.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
   },
   {
     id: 2,
     timeAgo: "2 Weeks Ago",
-    logo: "/hp1-1.png",
+    logo: "/brand2.png",
     title: "Bold Redesign",
     subtitle: "by Oriture Team",
     client: "Studio Craft",
@@ -35,14 +35,14 @@ const PROJECTS = [
       text: "Working With Oriture Was Transformative. They Listened Deeply And Delivered A Product That Perfectly Captures Our Studio's Soul While Pushing The Boundaries Of Modern Design.",
       author: "Amara Osei",
       role: "Creative Director, Studio Craft",
-      avatar: "/hp1-1.png",
+      avatar: "/avatar.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
   },
   {
     id: 3,
     timeAgo: "1 Month Ago",
-    logo: "/hp1-1.png",
+    logo: "/brand6.png",
     title: "Digital Growth",
     subtitle: "by Oriture Team",
     client: "NovaTech",
@@ -53,7 +53,7 @@ const PROJECTS = [
       text: "The Team At Oriture Understood Our Goals From The First Conversation. The Result Was A Landing Page That Converts And A Brand Presence That Stands Out In A Crowded Market.",
       author: "Derek Lin",
       role: "CEO, NovaTech",
-      avatar: "/hp1-1.png",
+      avatar: "/avatar.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
   },
@@ -62,99 +62,116 @@ const PROJECTS = [
 /* ── Left Panel ── */
 function LeftPanel({ project }) {
   const [displayProject, setDisplayProject] = useState(project);
-  const [isVisible, setIsVisible] = useState(true);
+  const [animationState, setAnimationState] = useState("visible"); // "visible", "exiting", "entering"
 
   useEffect(() => {
     if (project.id !== displayProject.id) {
-      // Fade out
-      setIsVisible(false);
+      // 1. Slide old content UP and fade OUT
+      setAnimationState("exiting");
+      
       const timer = setTimeout(() => {
-        // Swap content then fade in
+        // 2. Change content instantly while invisible
         setDisplayProject(project);
-        setIsVisible(true);
-      }, 280);
+        
+        // 3. Move it DOWN instantly (without animation)
+        setAnimationState("entering");
+        
+        // 4. Then animate it sliding UP to the center and fading IN
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setAnimationState("visible");
+          });
+        });
+      }, 300); // 300ms matches the exit transition duration
+      
       return () => clearTimeout(timer);
     }
-  }, [project.id]);
+  }, [project.id, displayProject.id]);
+
+  // Determine styles based on current animation state
+  let opacity = 1;
+  let transform = "translateY(0)";
+  let transition = "all 300ms cubic-bezier(0.4, 0, 0.2, 1)";
+
+  if (animationState === "exiting") {
+    opacity = 0;
+    transform = "translateY(-24px)"; // slides up
+  } else if (animationState === "entering") {
+    opacity = 0;
+    transform = "translateY(24px)"; // starts from below
+    transition = "none"; // instant snap to bottom
+  }
 
   return (
-    <div
-      className="flex flex-col gap-5 transition-all duration-300"
-      style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(12px)" }}
-    >
-      {/* Logo + badge */}
-      <div className="flex items-center gap-3">
-        <img
-          src={displayProject.logo}
-          alt={displayProject.client}
-          className="w-10 h-10 rounded-lg object-cover"
-        />
-        <span className="text-xs text-white/50 bg-white/10 px-3 py-1 rounded-full">
-          {displayProject.timeAgo}
-        </span>
-      </div>
-
-      {/* Title */}
+    <div className="flex flex-col gap-6">
+      {/* Fixed Heading */}
       <div>
-        <h2 className="text-3xl md:text-4xl font-normal font-newsreader text-white leading-tight">
-          {displayProject.title}
+        <h2 className="text-4xl md:text-5xl lg:text-[42px] font-normal font-newsreader text-white leading-[1.1] mb-1">
+          Fresh Launch
         </h2>
-        <h2 className="text-3xl md:text-4xl font-normal font-newsreader leading-tight">
+        <h2 className="text-4xl md:text-5xl lg:text-[42px] font-normal font-newsreader leading-[1.1]">
           <span className="text-white">by </span>
           <em className="text-[#D1FF52] italic">
-            {displayProject.subtitle.replace("by ", "")}
+            Oriture Team
           </em>
         </h2>
       </div>
 
-      {/* Description */}
-      <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-        {displayProject.description}
-      </p>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2">
-        {displayProject.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs text-white/70 border border-white/20 px-3 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Testimonial */}
-      <div className="bg-white/5 border border-white/10 rounded-2xl p-4 max-w-sm">
-        <p className="text-white/70 text-xs leading-relaxed mb-4">
-          {displayProject.testimonial.text}
-        </p>
-        <div className="flex items-center gap-3">
+      <div
+        className="flex flex-col gap-5"
+        style={{ opacity, transform, transition }}
+      >
+        {/* Logo + badge */}
+        <div className="flex items-center gap-4">
           <img
-            src={displayProject.testimonial.avatar}
-            alt={displayProject.testimonial.author}
-            className="w-8 h-8 rounded-full object-cover"
+            src={displayProject.logo}
+            alt={displayProject.client}
+            className="h-8 object-contain"
           />
-          <div>
-            <p className="text-white text-xs font-newsreader italic font-medium">
-              {displayProject.testimonial.author}
-            </p>
-            <p className="text-white/40 text-[10px]">{displayProject.testimonial.role}</p>
+          <span className="text-sm font-medium text-[#D1FF52] bg-white/10 border border-transparent px-4 py-1.5 l rounded-full rounded-bl-none">
+            {displayProject.timeAgo}
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-white/80 text-base leading-[1.60] max-w-sm mt-1">
+          {displayProject.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-3 mt-1">
+          {displayProject.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-sm text-white/80 bg-white/10 border border-transparent px-5 py-2 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Testimonial */}
+        <div 
+          className="rounded-2xl p-6 max-w-md mt-2"
+          style={{ background: "linear-gradient(360deg, rgba(0, 0, 0, 0.1) 0%, rgba(109, 85, 255, 0.2) 100%)" }}
+        >
+          <p className="text-white/80 text-sm leading-[1.60] mb-6">
+            {displayProject.testimonial.text}
+          </p>
+          <div className="flex items-center gap-3">
+            <img
+              src={displayProject.testimonial.avatar}
+              alt={displayProject.testimonial.author}
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <div className="flex flex-col justify-center">
+              <p className="text-white text-[15px] font-newsreader italic mb-[2px]">
+                {displayProject.testimonial.author}
+              </p>
+              <p className="text-white/40 text-[11px] uppercase tracking-wider">{displayProject.testimonial.role}</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* CTA */}
-      <div className="flex items-center gap-2 group/cta">
-        <a
-          href="/work"
-          className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-5 py-2.5 rounded-full transition-all duration-300 text-sm font-medium"
-        >
-          View Case Study
-        </a>
-        <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
-          <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
-        </button>
       </div>
     </div>
   );
@@ -228,12 +245,12 @@ export default function HomeProjects() {
         <div className="flex flex-col lg:flex-row items-start">
 
           {/* LEFT PANEL - same sticky system as WorkProjects */}
-          <div className="hidden lg:flex flex-col w-full lg:w-[45%] sticky top-32 self-start pr-8 h-fit">
+          <div className="hidden lg:flex flex-col w-full lg:w-[47%] sticky top-32 self-start pr-8 h-fit">
             <LeftPanel project={PROJECTS[activeProject]} />
           </div>
 
           {/* GAP — 5% */}
-          <div className="hidden lg:block w-[5%]" />
+          <div className="hidden lg:block w-[3%]" />
 
           {/* RIGHT — scrollable images (50%) */}
           <div className="w-full lg:w-[50%]">

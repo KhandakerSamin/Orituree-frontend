@@ -194,7 +194,7 @@ export default function GlobalPresence() {
             {infoCards.map((card, idx) => (
               <div
                 key={idx}
-                className="w-full sm:min-w-[175px] sm:max-w-[300px] min-h-[120px] sm:min-h-[150px] flex-shrink-0 p-4 pb-[18px] backdrop-blur-[14px] rounded-[12px] sm:rounded-l-[12px] sm:rounded-r-none border border-white/[0.06] sm:border-r-0"
+                className="w-full sm:min-w-[175px] sm:max-w-[300px] min-h-[120px] sm:min-h-[150px] flex-shrink-0 p-4 pb-[18px] backdrop-blur-[14px] rounded-[12px] sm:rounded-l-[12px] sm:rounded-r-none sm:border-r-0"
                 style={{
                   background: "linear-gradient(270deg, rgba(0,0,0,0.25) 0%, rgba(109,85,255,0.3) 100%)",
                 }}
@@ -202,8 +202,8 @@ export default function GlobalPresence() {
                 <div className="mb-3">
                   <img src="LogoIcon.svg" className="w-5 h-5" alt="" />
                 </div>
-                <p className="m-0 text-sm text-white leading-relaxed">
-                  <em className="text-[#D1FF52] font-medium font-newsreader italic">{card.highlight}</em>{" "}
+                <p className="m-0 text-base text-white leading-relaxed">
+                  <em className="text-[#D1FF52] text-lg font-medium font-newsreader italic">{card.highlight}</em>{" "}
                   - {card.body}
                 </p>
               </div>
@@ -213,10 +213,10 @@ export default function GlobalPresence() {
           {/* Stats */}
           <div
             ref={statsRef}
-            className="grid grid-cols-2 sm:grid-cols-4 max-w-[650px] px-5 min-h-35 pt-6 pb-5 rounded-[12px] sm:rounded-t-[12px] sm:rounded-b-none border border-white/[0.06] sm:border-b-0 backdrop-blur-[14px] lg:backdrop-blur-none"
+            className="grid grid-cols-2 sm:grid-cols-4 max-w-[650px] px-5 min-h-35 pt-6 pb-5 rounded-[12px] sm:rounded-t-[12px] sm:rounded-b-none  sm:border-b-0 backdrop-blur-[14px] lg:backdrop-blur-none"
             style={{
               gap: "clamp(20px, 4vw, 48px)",
-              background: "linear-gradient(360deg, rgba(0,0,0,0.25) 0%, rgba(109,85,255,0.3) 100%)",
+              background: "linear-gradient(360deg, rgba(0,0,0,0.05) 0%, rgba(109,85,255,0.2) 100%)",
             }}
           >
             {stats.map((stat) => (

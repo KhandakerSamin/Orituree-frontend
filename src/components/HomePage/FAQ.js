@@ -189,7 +189,16 @@ export default function FAQSection() {
               <div
                 key={i}
                 className="bg-black/10 rounded-xl px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 cursor-pointer"
-                onClick={() => setOpen(isOpen ? null : i)}
+                onMouseEnter={() => {
+                  if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+                    setOpen(i);
+                  }
+                }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+                    setOpen(isOpen ? null : i);
+                  }
+                }}
               >
                 <div className="w-full flex items-center justify-between gap-4 text-left">
                   <span
