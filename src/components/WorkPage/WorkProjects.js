@@ -241,15 +241,15 @@ export default function WorkProjects() {
         }}
       />
 
-      {/* OUTER WRAPPER - 1350px max width, no padding */}
-      <div className="relative z-10 mx-auto max-w-[1370px] py-28 lg:py-36">
+{/* OUTER WRAPPER - 1300px max width, matching standard padding */}
+      <div className="relative z-10 mx-auto max-w-[1300px] px-5 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
         
         {/* MAIN FLEX CONTAINER - 35% left, 20% gap, 45% right */}
         <div className="flex flex-col lg:flex-row items-start">
           
           {/* LEFT PANEL - 35% width, sticky to screen */}
-          <div 
-            className="hidden lg:flex flex-col w-full lg:w-[40%] sticky top-32 self-start pl-8 h-fit"
+          <div
+            className="hidden lg:flex flex-col w-full lg:w-[40%] sticky top-32 self-start h-fit"
           >
             {/* Heading */}
             <div className="mb-8">
@@ -352,14 +352,25 @@ export default function WorkProjects() {
           {/* RIGHT PANEL - 45% width, min-height prevents scroll jump on tab change */}
           <div
             ref={rightPanelRef}
-            className="w-full lg:w-[55%] pr-8 min-h-[100vh]"
+            className="w-full lg:w-[55%] min-h-[100vh]"
             style={{
               transition: "opacity 0.25s ease-out",
               opacity: rightVisible ? 1 : 0,
             }}
           >
+            {/* Mobile Heading */}
+            <div className="block lg:hidden mb-6 sm:mb-8 text-center sm:text-left pt-6 sm:pt-0">
+              <h2 className="text-white font-normal leading-tight font-serif text-3xl sm:text-4xl">
+                Digital Work That
+                <br />
+                Moves{" "}
+                <em className="text-[#D1FF52] italic font-serif">
+                  businesses forward!
+                </em>
+              </h2>
+            </div>
             {/* Mobile tab strip */}
-            <div 
+            <div
               className="flex lg:hidden gap-2 overflow-x-auto pb-4 mb-6"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >

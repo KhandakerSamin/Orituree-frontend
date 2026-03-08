@@ -93,7 +93,7 @@ export default function WorkHero() {
   }, [current]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center py-16">
+<section className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center py-16 sm:py-24 lg:py-32">
       {/* GRADIENT LAYERS */}
 
       {/* Base: pure black */}
@@ -226,7 +226,7 @@ export default function WorkHero() {
       />
 
       {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-[1350px] mx-auto px-5 pt-15 sm:px-8 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-8 pt-15 flex flex-col items-center">
 
         {/* Heading */}
         <div className="text-center mb-10">

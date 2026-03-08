@@ -216,7 +216,7 @@ const StyledCard = styled.div`
 
 export default function WorkCTA() {
   return (
-    <section className="relative w-full overflow-hidden flex items-center justify-center py-20 px-4">
+    <section className="relative w-full overflow-hidden flex items-center justify-center py-16 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8">
 
       {/* ── PAGE BACKGROUND ── */}
       <div className="absolute inset-0 z-0 bg-black" />
