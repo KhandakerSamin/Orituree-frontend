@@ -136,14 +136,14 @@ function TeamCard({ member }) {
     >
       {/* Card wrapper — border-radius animates */}
       <div
-        className="relative overflow-hidden h-[420px] w-full"
+        className="relative overflow-hidden w-full"
         style={{
           backgroundColor: member.bg,
           borderRadius: hovered
             ? "60px 60px 60px 0px"   /* hover: bottom-left square */
             : "0px 55px 55px 55px",  /* default: top-left square */
           transition: "border-radius 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          aspectRatio: "3/3.6",
+          aspectRatio: "3/3",
         }}
       >
         {/* Photo — scales slightly on hover */}
@@ -162,9 +162,9 @@ function TeamCard({ member }) {
           />
         </div>
 
-        {/* Social icons — inside card, bottom-left, visible on hover */}
+        {/* Social icons — inside card, bottom-center, visible on hover */}
         <div
-          className="absolute bottom-3 left-3 flex flex-row gap-2"
+          className="absolute inset-x-0 bottom-3 mx-auto flex flex-row justify-center gap-2"
           style={{
             opacity: hovered ? 1 : 0,
             transform: hovered ? "translateY(0)" : "translateY(8px)",
@@ -192,10 +192,10 @@ function TeamCard({ member }) {
 
 
 export default function TeamSection() {
-  // Split into rows of 3
+  // Split into rows of 4
   const rows = [];
-  for (let i = 0; i < TEAM.length; i += 3) {
-    rows.push(TEAM.slice(i, i + 3));
+  for (let i = 0; i < TEAM.length; i += 4) {
+    rows.push(TEAM.slice(i, i + 4));
   }
 
   return (
@@ -277,12 +277,12 @@ export default function TeamSection() {
           </h2>
         </div>
 
-        {/* Grid — rows of 3 */}
+        {/* Grid — rows of 4 */}
         <div className="flex flex-col gap-10 md:gap-12">
           {rows.map((row, rowIdx) => (
             <div
               key={rowIdx}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6"
             >
               {row.map((member) => (
                 <TeamCard key={member.id} member={member} />

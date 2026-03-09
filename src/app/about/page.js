@@ -13,7 +13,7 @@ const AboutPage = () => {
                <Navbar />
                <AboutHero />
                <TeamSection />
-               <GuidingMinds />
+               {/* <GuidingMinds /> */}
                <Gallery />
                <AboutCTA />
                <Footer />
