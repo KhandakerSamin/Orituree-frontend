@@ -37,15 +37,15 @@ function SectionTitle({ title }) {
 
   if (words.length === 1) {
     return (
-      <h3 className="text-2xl md:text-3xl font-normal font-newsreader mb-6">
-        <em className="text-[#D1FF52] italic font-newsreader">{title}</em>
+      <h3 className="text-3xl md:text-5xl font-normal not-italic mb-6">
+        <em className="text-white " >{title}</em>
       </h3>
     );
   }
 
   if (words.length === 2) {
     return (
-      <h3 className="text-2xl md:text-3xl font-normal font-newsreader mb-6">
+      <h3 className="text-3xl md:text-5xl font-normal font-newsreader mb-6">
         <span className="text-white">{words[0]}</span>{" "}
         <em className="text-[#D1FF52] italic font-newsreader">{words[1]}</em>
       </h3>
@@ -56,7 +56,7 @@ function SectionTitle({ title }) {
   const normal = words.slice(0, words.length - 1).join(" ");
   const last = words[words.length - 1];
   return (
-    <h3 className="text-2xl md:text-3xl font-normal font-newsreader mb-6">
+    <h3 className="text-3xl md:text-5xl font-normal font-newsreader mb-6">
       <span className="text-white">{normal}</span>{" "}
       <em className="text-[#D1FF52] italic font-newsreader">{last}</em>
     </h3>
@@ -268,7 +268,7 @@ function ProjectSection({ section }) {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8 max-w-3xl">
+          <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8 max-w-full">
             {Array.isArray(section.description) ? section.description.join(" ") : section.description}
           </p>
         )}
@@ -306,12 +306,12 @@ function ProjectSection({ section }) {
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-auto object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-auto object-cover rounded-2xl transition-transform duration-700 group-hover:scale-103"
                 />
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 rounded-2xl flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
-                    <Expand className="w-4 h-4 text-white" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-2xl flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-transparent backdrop-blur-sm flex items-center justify-center border border-white/500">
+                    <Expand className="w-4 h-4 text-gray-600" />
                   </div>
                 </div>
               </div>
@@ -339,31 +339,31 @@ function ProjectSection({ section }) {
 function MoreProjectCard({ project }) {
   return (
     <Link href={`/work/${project.id}`} className="group block">
-      <div className="relative w-full overflow-hidden rounded-2xl aspect-[16/10] mb-4">
+      <div className="relative w-full overflow-hidden rounded-2xl aspect-5/4 mb-4">
         <img
           src={project.homepage.homepageThumbnail}
           alt={project.homepage.projectTitle}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-violet-600/15">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#D1FF52]">
+          <div className="w-12 h-12 rounded-full rounded-bl-none flex items-center justify-center bg-[#D1FF52]">
             <ArrowUpRight className="w-5 h-5 text-black" />
           </div>
         </div>
       </div>
-      <h4 className="text-white text-lg font-normal font-newsreader leading-snug mb-1.5 group-hover:text-[#D1FF52] transition-colors duration-300">
+      <h4 className="text-white text-xl sm:text-3xl font-normal leading-snug mb-1.5 group-hover:text-[#D1FF52] transition-colors duration-300" style={{ fontFamily: '"DM Sans", sans-serif' }}>
         {project.homepage.projectTitle}
       </h4>
-      {project.detailPage && (
-        <p className="text-gray-400 text-sm leading-relaxed mb-3">
-          {project.detailPage.projectInfo}
+      {project.homepage?.homepageDetail && (
+        <p className="text-gray-300 text-base leading-relaxed mb-3">
+          {project.homepage.homepageDetail}
         </p>
       )}
       <div className="flex flex-wrap gap-1.5">
         {(project.homepage.tags || project.homepage.keywords).map((tag) => (
           <span
             key={tag}
-            className="text-xs text-gray-400 rounded-full px-2.5 py-1 bg-white/5 border border-white/10"
+            className="text-base text-gray-300 rounded-full px-2.5 py-1 bg-white/10 border border-transparent"
           >
             {tag}
           </span>
@@ -380,12 +380,13 @@ function MoreProjects({ currentProject }) {
 
   let suggestions;
   if (sameCategory.length >= 2) {
-    suggestions = [...sameCategory].sort(() => Math.random() - 0.5).slice(0, 2);
+    suggestions = sameCategory.slice(0, 2);
   } else {
-    suggestions = projectsData
-      .filter((p) => p.id !== currentProject.id && p.detailPage)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
+    // If not enough in the same category, just take other projects
+    const others = projectsData.filter(
+      (p) => p.id !== currentProject.id && p.detailPage
+    );
+    suggestions = others.slice(0, 2);
   }
 
   if (suggestions.length === 0) return null;
@@ -623,7 +624,7 @@ export default function ProjectDetailPage() {
               <TitleWithAccentTail text={detailPage.projectTitle} />
             </h1>
 
-            <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
+            <p className="text-gray-400  text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
               {detailPage.projectInfo}
             </p>
 
@@ -662,7 +663,7 @@ export default function ProjectDetailPage() {
         {detailPage.description && (
           <section className="relative w-full py-12 md:py-16">
             <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-8">
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-3xl">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-full">
               {detailPage.description}
             </p>
             </div>

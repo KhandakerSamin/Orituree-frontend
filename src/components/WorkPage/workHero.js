@@ -231,12 +231,12 @@ export default function WorkHero() {
         {/* Heading */}
         <div className="text-center mb-10">
           <h1
-            className="text-4xl sm:text-5xl lg:text-5xl font-normal text-white leading-tight tracking-tight font-serif"
+            className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight tracking-tight font-serif"
           >
             From Concept to
           </h1>
           <h1
-            className="text-4xl sm:text-5xl lg:text-5xl font-normal leading-tight font-serif"
+            className="text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight font-serif"
           >
             <span
               className="italic text-action"

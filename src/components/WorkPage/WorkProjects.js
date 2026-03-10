@@ -127,7 +127,7 @@ function ProjectCard({ project, index, shouldAnimate }) {
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-violet-600/15">
-          <div className="w-12 h-12 rounded-full rounded-tl-none flex items-center justify-center bg-[#D1FF52]">
+          <div className="w-12 h-12 rounded-full rounded-bl-none flex items-center justify-center bg-[#D1FF52]">
             <ArrowUpRight className="w-5 h-5 text-black" />
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function WorkProjects() {
           >
             {/* Heading */}
             <div className="mb-8">
-              <h2 className="text-white font-normal leading-tight font-serif text-3xl lg:text-4xl">
+              <h2 className="text-white font-normal leading-tight font-serif text-3xl lg:text-[52px]">
                 Digital Work That
                 <br />
                 Moves{" "}
@@ -316,13 +316,13 @@ export default function WorkProjects() {
             >
               {/* Avatar stack */}
               <div className="flex -space-x-3">
-                {[0, 1, 2].map((i) => (
+                {["/saminAA.png", "/nafisAA.png", "/mohon.png"].map((src, i) => (
                   <div
                     key={i}
-                    className="w-9 h-9 rounded-full overflow-hidden bg-gray-700 border-2 border-white/15 relative"
+                    className="w-9 h-9 rounded-full overflow-hidden bg-gray-300 border-2 border-white/15 relative"
                     style={{ zIndex: 3 - i }}
                   >
-                    <img src="/avatar.png" alt="" className="w-full h-full object-cover" />
+                    <img src={src} alt="team member" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
@@ -333,7 +333,7 @@ export default function WorkProjects() {
               
               <div className="flex items-center gap-2 group/cta mt-2">
                 <a
-                  href="/contact"
+                  href="https://calendly.com/oriture-agency/30min"
                   className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
                 >
                   Book a Quick Call

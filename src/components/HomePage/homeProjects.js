@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -165,6 +165,117 @@ function LeftPanel({ project }) {
   );
 }
 
+/* ── Mobile Carousel ── */
+function MobileCarousel({ projects }) {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((i) => (i === 0 ? projects.length - 1 : i - 1));
+  const next = () => setCurrent((i) => (i + 1) % projects.length);
+
+  const project = projects[current];
+
+  return (
+    <div className="flex flex-col gap-6 py-4">
+      {/* Fixed Heading */}
+      <div>
+        <h2 className="text-3xl font-normal font-newsreader text-white leading-[1.1] mb-1">
+          Fresh Launch
+        </h2>
+        <h2 className="text-3xl mb-4 font-normal font-newsreader leading-[1.1]">
+          <span className="text-white">by </span>
+          <em className="text-[#D1FF52] italic">
+            Oriture Team
+          </em>
+        </h2>
+      </div>
+
+      <div className="flex flex-col relative w-full overflow-hidden" key={`mobile-view-${project.id}`}>
+        {/* Render only the first image */}
+        <div className="w-full mb-6 animate-in fade-in zoom-in-95 duration-500">
+          <div
+            className="w-full rounded-2xl overflow-hidden shadow-2xl"
+            style={{ aspectRatio: "16/10" }}
+          >
+            <img
+              src={project.images[0]}
+              alt={`${project.title || 'Project'} image`}
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-4">
+            <img
+              src={project.logo}
+              alt={project.client || 'Client'}
+              className="h-8 object-contain"
+            />
+            <span className="text-xs font-medium text-[#D1FF52] bg-white/10 border border-transparent px-3 py-1 rounded-full rounded-bl-none">
+              {project.timeAgo}
+            </span>
+          </div>
+          
+          {/* Navigation Arrows */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prev}
+              className="w-8 h-8 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all flex items-center justify-center p-1"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={next}
+              className="w-8 h-8 rounded-full border border-[#D1FF52] text-[#D1FF52] hover:bg-[#D1FF52] hover:text-black transition-all flex items-center justify-center p-1"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-white/80 text-sm leading-[1.60] mb-4">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs text-white/80 bg-white/10 border border-transparent px-3 py-1.5 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Testimonial */}
+        <div className="bg-gradient-to-b from-white/10 to-transparent rounded-2xl p-4">
+          <p className="text-white/80 text-xs leading-[1.60] mb-4">
+            "{project.testimonial.text}"
+          </p>
+          <div className="flex items-center gap-3">
+            <img
+              src={project.testimonial.avatar}
+              alt={project.testimonial.author}
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <div className="flex flex-col justify-center">
+              <p className="text-white text-xs font-newsreader italic mb-[1px]">
+                {project.testimonial.author}
+              </p>
+              <p className="text-white/40 text-[9px] uppercase tracking-wider">{project.testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 /* ── Main ── */
 export default function HomeProjects() {
   const [activeProject, setActiveProject] = useState(0);
@@ -240,8 +351,8 @@ export default function HomeProjects() {
           {/* GAP — 5% */}
           <div className="hidden lg:block w-[3%]" />
 
-          {/* RIGHT — scrollable images (50%) */}
-          <div className="w-full lg:w-[50%]">
+          {/* RIGHT — scrollable images (50%) - Desktop Only */}
+          <div className="hidden lg:block w-[50%]">
             {PROJECTS.map((project, pIdx) => (
               /*
                 Each project gets a GROUP wrapper that the IntersectionObserver watches.
@@ -252,19 +363,6 @@ export default function HomeProjects() {
                 ref={(el) => (projectGroupRefs.current[pIdx] = el)}
                 className="mb-4 lg:mb-0"
               >
-                {/* Mobile: project label above first image */}
-                <div className="lg:hidden mb-3">
-                  <p className="text-[#D1FF52] font-newsreader italic text-lg">
-                    {project.title}
-                  </p>
-                  <p className="text-white/50 text-xs">{project.client}</p>
-                </div>
-
-                {/* Mobile: show LeftPanel content inline between projects */}
-                <div className="block lg:hidden mb-6">
-                  <LeftPanel project={project} />
-                </div>
-
                 {/* Images for this project */}
                 {project.images.map((src, iIdx) => (
                   <div
@@ -277,7 +375,7 @@ export default function HomeProjects() {
                     >
                       <img
                         src={src}
-                        alt={`${project.title} image ${iIdx + 1}`}
+                        alt={`${project.title || 'Project'} image ${iIdx + 1}`}
                         className="w-full h-full object-cover"
                         draggable={false}
                       />
@@ -286,6 +384,11 @@ export default function HomeProjects() {
                 ))}
               </div>
             ))}
+          </div>
+
+          {/* Mobile version (Mobile Only) */}
+          <div className="block lg:hidden w-full">
+             <MobileCarousel projects={PROJECTS} />
           </div>
 
         </div>
