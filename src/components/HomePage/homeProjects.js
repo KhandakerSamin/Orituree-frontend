@@ -6,47 +6,47 @@ const PROJECTS = [
   {
     id: 1,
     timeAgo: "1 Day Ago",
-    logo: "/brand3.png",
+    logo: "/hp1-logo.png",
     description:
-      "We Partnered With Lebanese Green House To Craft A Clean, Elegant, And Conversion-Focused Digital Experience That Reflects Their Brand Identity And Elevates Their Online Presence.",
-    tags: ["Hospitality", "Restaurant", "Branding"],
+      "TripKing is a comprehensive travel and booking platform designed to simplify the way people plan and manage their trips. The platform allows users to book hotels, flights, and travel-related products in one place while providing a smooth and user-friendly experience.",
+    tags: ["Booking Platform", "Booking Platform", "Booking Platform"],
     testimonial: {
-      text: "Oriture Excels With Meticulous Attention To Detail, Commitment To Excellence, And Creative Problem-Solving. Their Inventive Solutions Captivate Visually And Significantly Enhance The User Experience.",
-      author: "Sakhawat Hossain",
-      role: "Brand Manager, LGH",
-      avatar: "/avatar.png",
+      text: "Oriture delivered an excellent design for TripKing. The platform feels modern, organized, and easy to navigate for booking hotels, flights, and travel services. His design thinking helped simplify a complex travel system into a smooth user experience.",
+      author: "Mahfuzar Rahman",
+      role: "Founder at TripKing International",
+      avatar: "/hp1-avatar.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
   },
   {
     id: 2,
-    timeAgo: "2 Weeks Ago",
-    logo: "/brand2.png",
+    timeAgo: "1 Day Ago",
+    logo: "/hp2-logo.png",
     description:
-      "A Complete Visual Overhaul For Studio Craft — Bringing Their Artistic Vision To Life Through A Refined Design System, Modern Typography, And A Pixel-Perfect Web Presence.",
-    tags: ["Design", "Web", "Branding"],
+      "Golpo is a storytelling platform designed to bring stories closer to people through a simple and engaging digital experience. The app allows users to discover, listen to, and enjoy a wide range of audio stories in an easy and distraction-free environment.",
+    tags: ["Entertainment", "Product Design", "Design System"],
     testimonial: {
-      text: "Working With Oriture Was Transformative. They Listened Deeply And Delivered A Product That Perfectly Captures Our Studio's Soul While Pushing The Boundaries Of Modern Design.",
-      author: "Amara Osei",
-      role: "Creative Director, Studio Craft",
-      avatar: "/avatar.png",
+      text: "Working with Oriture was a great experience. He understood the vision of Golpo and translated it into a clean, intuitive, and engaging app design. The storytelling experience feels smooth and user-friendly. Highly recommended for anyone looking for thoughtful product design.",
+      author: "Faheem Noman",
+      role: "CEO, Golpo",
+      avatar: "/hp2-avatar.png",
     },
-    images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
+    images: ["/hp2-1.png", "/hp2-2.png", "/hp2-3.png"],
   },
   {
     id: 3,
-    timeAgo: "1 Month Ago",
-    logo: "/brand6.png",
+    timeAgo: "1 Day Ago",
+    logo: "/brand3.png",
     description:
-      "Oriture Helped NovaTech Launch A Powerful SaaS Landing Page That Communicates Value Instantly. From Information Architecture To Micro-Interactions, Every Detail Was Intentional.",
-    tags: ["SaaS", "Product", "UI/UX"],
+      "We partnered with Lebanese Green House to craft a clean, elegant, and conversion-focused digital experience that reflects their brand identity and elevates their online presence.",
+    tags: ["Hospitality", "Hospitality", "UI/Branding"],
     testimonial: {
-      text: "The Team At Oriture Understood Our Goals From The First Conversation. The Result Was A Landing Page That Converts And A Brand Presence That Stands Out In A Crowded Market.",
-      author: "Derek Lin",
-      role: "CEO, NovaTech",
+      text: "Oriture excels with meticulous attention to detail, commitment to excellence, and creative problem-solving. Their inventive solutions captivate visually and significantly enhance the user experience.",
+      author: "Sakhawat Hossain",
+      role: "Brand Manager, LGH",
       avatar: "/avatar.png",
     },
-    images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],
+    images: ["/hp3-1.png", "/hp3-2.png", "/hp3-3.png"],
   },
 ];
 
@@ -97,10 +97,10 @@ function LeftPanel({ project }) {
     <div className="flex flex-col gap-6">
       {/* Fixed Heading */}
       <div>
-        <h2 className="text-3xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white leading-[1.1] mb-1">
+        <h2 className="text-3xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white leading-[1.1] mb-0">
           Fresh Launch
         </h2>
-        <h2 className="text-3xl md:text-5xl lg:text-[52px] mb-4 font-normal font-newsreader leading-[1.1]">
+        <h2 className="text-3xl md:text-5xl lg:text-[52px] mb-3 font-normal font-newsreader leading-[1.1]">
           <span className="text-white">by </span>
           <em className="text-[#D1FF52] italic">
             Oriture Team
@@ -113,7 +113,7 @@ function LeftPanel({ project }) {
         style={{ opacity, transform, transition }}
       >
         {/* Logo + badge */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <img
             src={displayProject.logo}
             alt={displayProject.client}
@@ -125,15 +125,15 @@ function LeftPanel({ project }) {
         </div>
 
         {/* Description */}
-        <p className="text-white/80 text-base leading-[1.60] max-w-sm mt-1">
+        <p className="text-white/80 text-base leading-[1.60] max-w-lg mt-0.5">
           {displayProject.description}
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-3 mt-1">
-          {displayProject.tags.map((tag) => (
+          {displayProject.tags.map((tag, i) => (
             <span
-              key={tag}
+              key={`${tag}-${i}`}
               className="text-sm text-white/80 bg-white/10 border border-transparent px-5 py-2 rounded-full"
             >
               {tag}
@@ -143,7 +143,7 @@ function LeftPanel({ project }) {
 
         {/* Testimonial */}
         <div className="bg-gradient-to-b from-white/10 to-transparent   rounded-2xl p-6 max-w-md mt-2">
-          <p className="text-white/80 text-sm leading-[1.60] mb-6">
+          <p className="text-white/80 text-sm leading-[1.80] mb-6">
             {displayProject.testimonial.text}
           </p>
           <div className="flex items-center gap-3">
@@ -241,9 +241,9 @@ function MobileCarousel({ projects }) {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag) => (
+          {project.tags.map((tag, i) => (
             <span
-              key={tag}
+              key={`${tag}-${i}`}
               className="text-xs text-white/80 bg-white/10 border border-transparent px-3 py-1.5 rounded-full"
             >
               {tag}

@@ -1,5 +1,6 @@
 "use client";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MoveUpRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const noise = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`;
@@ -7,6 +8,7 @@ const noise = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http:
 const cards = [
   {
     title: "Branding",
+    icon: "/CardIcon1.svg",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
@@ -22,6 +24,7 @@ const cards = [
   },
   {
     title: "Product Design",
+    icon: "/CardIcon2.svg",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #5a7a00 60%, #7aaa00 100%)",
@@ -37,6 +40,7 @@ const cards = [
   },
   {
     title: "Development",
+    icon: "/CardIcon3.svg",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
@@ -117,8 +121,8 @@ export default function IdeaToImpact() {
             {/* Card Content */}
             <div className="relative z-[3] pt-5 sm:pt-7 px-4 sm:px-6 pb-5 sm:pb-6">
               {/* Icon */}
-              <div className="mb-4 sm:mb-5">
-                <img src="/CardIcon.svg"></img>
+              <div className="mb-4 w-8 h-8 sm:mb-5">
+                <img src={card.icon} alt={card.title} />
               </div>
 
               {/* Title */}
@@ -146,6 +150,37 @@ export default function IdeaToImpact() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* CTA Bar */}
+      <div
+        className="mt-5 sm:mt-6 max-w-[1300px] w-full rounded-2xl  px-5 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+        style={{
+          background: "linear-gradient(360deg, rgba(0,0,0,0.2) 0%, rgba(109,85,255,0.2) 100%)",
+        }}
+      >
+        {/* Avatar + Text */}
+        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+          <img
+            src="/saminAA.png"
+            alt="Team"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover object-top flex-shrink-0"
+          />
+          <p className="text-white/75 text-sm sm:text-base leading-snug font-newsreader max-w-xl">
+            Turn ideas into impactful products with Oriture’s design and development services built to grow revenue and maximize ROI.
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex items-center space-x-2 mt-6 sm:mt-7 md:mt-5 group">
+            <Link href="" className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium cursor-pointer flex items-center justify-center">
+              Book a Call
+            </Link>
+            <Link href="" className="border border-[#D1FF52]/50 bg-transparent p-2.5 sm:p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer flex items-center justify-center">
+              <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
+            </Link>
+        </div>
+
       </div>
     </section>
   );

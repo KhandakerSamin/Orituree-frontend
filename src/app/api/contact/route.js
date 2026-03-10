@@ -17,7 +17,7 @@ export async function POST(request) {
       service: "gmail",
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        pass: process.env.SMTP_PASS?.replace(/\s/g, ""),
       },
     });
 
@@ -39,18 +39,12 @@ export async function POST(request) {
           <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#1a0e42 0%,#0d0820 60%,#000000 100%);padding:44px 40px 36px;text-align:center;">
-              <!-- Logo mark -->
-              <table cellpadding="0" cellspacing="0" style="margin:0 auto 18px;">
+              <!-- Logo -->
+              <table cellpadding="0" cellspacing="0" style="margin:0 auto 20px;">
                 <tr>
-                  <td style="
-                    width:56px;height:56px;
-                    background:linear-gradient(135deg,#D1FF52 0%,#a8d400 100%);
-                    border-radius:14px;
-                    text-align:center;vertical-align:middle;
-                    font-size:26px;font-weight:900;color:#0d0820;
-                    letter-spacing:-1px;
-                    line-height:56px;
-                  ">O</td>
+                  <td align="center">
+                    <img src="https://oriture.co/LOGO.svg" alt="Oriture" width="140" height="39" style="display:block;width:140px;height:auto;" />
+                  </td>
                 </tr>
               </table>
               <p style="margin:0 0 6px;font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#D1FF52;">
@@ -123,8 +117,8 @@ export async function POST(request) {
                     <a href="mailto:${email}?subject=Re: Your enquiry to Oriture"
                        style="
                          display:inline-block;
-                         background:#0d0820;
-                         color:#D1FF52;
+                         background:#D1FF52;
+                         color:#000000;
                          text-decoration:none;
                          font-size:14px;
                          font-weight:700;

@@ -12,7 +12,7 @@ export default function InsightCard({ post }) {
       {/* Thumbnail */}
       <div className="relative w-full overflow-hidden rounded-2xl aspect-[16/10] mb-3">
         <img
-          src="/insightCard.png"
+          src={post.thumbnail}
           alt={post.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />

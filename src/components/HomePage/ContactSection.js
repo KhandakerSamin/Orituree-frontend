@@ -20,7 +20,7 @@ const budgets = [
 ];
 
 /* ── Custom Dropdown ── */
-function CustomDropdown({ label, placeholder, options, value, onChange }) {
+function CustomDropdown({ label, placeholder, options, value, onChange, error }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -39,7 +39,7 @@ function CustomDropdown({ label, placeholder, options, value, onChange }) {
           onClick={() => setOpen((p) => !p)}
           className={`w-full bg-white/10 rounded-sm px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base outline-none transition-colors flex items-center justify-between cursor-pointer ${
             value ? "text-white" : "text-white/60"
-          } ${open ? "ring-1 ring-white/20" : ""}`}
+          } ${open ? "ring-1 ring-white/20" : ""} ${error ? "ring-1 ring-red-400/50" : ""}`}
         >
           <span className="truncate">{value || placeholder}</span>
           <ChevronDown
@@ -74,6 +74,7 @@ function CustomDropdown({ label, placeholder, options, value, onChange }) {
           ))}
         </div>
       </div>
+      {error && <p className="text-red-400 text-xs mt-0.5">{error}</p>}
     </div>
   );
 }
@@ -85,29 +86,49 @@ export default function ContactSection() {
   });
 
   const [status, setStatus] = useState("idle");
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (status !== "idle") return;
-    setStatus("animating");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("send failed");
-    } catch (err) {
-      console.error(err);
-    }
-
-    // Keep animating for the full flight duration, then show sent
-    setTimeout(() => setStatus("sent"), 2200);
+  const validate = () => {
+    const e = {};
+    if (!form.name.trim()) e.name = "Name is required";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
+    if (!form.service) e.service = "Please select a service";
+    if (!form.budget) e.budget = "Please select a budget";
+    return e;
   };
 
-  const set = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
-  const setField = (k) => (v) => setForm((p) => ({ ...p, [k]: v }));
+  const handleSubmit = async (e) => {
+    if (e?.preventDefault) e.preventDefault();
+    if (status !== "idle") return;
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
+    setStatus("animating");
+
+    // Fire email — don't await it, let it send in background
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    }).catch(err => console.error("[contact] send error:", err));
+
+    // Show sent state exactly when plane animation ends
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    setStatus("sent");
+  };
+
+  const set = (k) => (e) => {
+    setForm((p) => ({ ...p, [k]: e.target.value }));
+    setErrors((p) => { const n = { ...p }; delete n[k]; return n; });
+  };
+  const setField = (k) => (v) => {
+    setForm((p) => ({ ...p, [k]: v }));
+    setErrors((p) => { const n = { ...p }; delete n[k]; return n; });
+  };
 
   const inputCls =
     "w-full bg-white/10 rounded-sm px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base placeholder-white/60 outline-none focus:border-white/25 transition-colors";
@@ -201,7 +222,7 @@ export default function ContactSection() {
           align-items: center;
           pointer-events: none;
           z-index: 3;
-          animation: sbtnFlyAcross 2.2s cubic-bezier(0.25,0.1,0.25,1) forwards;
+          animation: sbtnFlyAcross 1.2s cubic-bezier(0.25,0.1,0.25,1) forwards;
         }
         /* ── Sent state ── */
         .sbtn-check-icon {
@@ -390,11 +411,12 @@ export default function ContactSection() {
             <div className="flex flex-col gap-1.5">
             <label className="text-white text-base pb-1.5">Your Name*</label>
             <input
-              className={inputCls}
+              className={inputCls + (errors.name ? " ring-1 ring-red-400/50" : "")}
               placeholder="John Doe"
               value={form.name}
               onChange={set("name")}
             />
+            {errors.name && <p className="text-red-400 text-xs mt-0.5">{errors.name}</p>}
           </div>
             <div className="flex flex-col gap-1.5">
             <label className="text-white text-base pb-1.5">Company Name</label>
@@ -420,11 +442,12 @@ export default function ContactSection() {
             <div className="flex flex-col gap-1.5">
               <label className="text-white text-sm sm:text-base pb-1.5">Email*</label>
               <input
-                className={inputCls}
+                className={inputCls + (errors.email ? " ring-1 ring-red-400/50" : "")}
                 placeholder="yourname@example.com"
                 value={form.email}
                 onChange={set("email")}
               />
+              {errors.email && <p className="text-red-400 text-xs mt-0.5">{errors.email}</p>}
             </div>
           </div>
 
@@ -436,6 +459,7 @@ export default function ContactSection() {
               options={services}
               value={form.service}
               onChange={setField("service")}
+              error={errors.service}
             />
             <CustomDropdown
               label="Project budget*"
@@ -443,6 +467,7 @@ export default function ContactSection() {
               options={budgets}
               value={form.budget}
               onChange={setField("budget")}
+              error={errors.budget}
             />
           </div>
 
