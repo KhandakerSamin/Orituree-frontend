@@ -45,11 +45,11 @@ export default function IdeaToImpact() {
     <section className="min-h-[auto] sm:min-h-screen flex flex-col items-center justify-center py-16 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 bg-[#0a0a0a]">
       {/* Heading */}
       <div className="text-center mb-10 sm:mb-14">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-3 sm:mb-4 tracking-tight leading-[1.15]">
+        <h1 className="text-3xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white mb-3 sm:mb-4 tracking-tight leading-[1.15]">
           From Idea to{" "}
           <em className="text-[#D1FF52] italic font-newsreader">Impact</em>
         </h1>
-        <p className="text-gray-400 text-sm font-normal leading-relaxed max-w-[380px] mx-auto">
+        <p className="text-white/60 text-base font-normal leading-relaxed max-w-[380px] mx-auto">
           We craft scalable, user-first digital experiences for startups and
           growing companies worldwide.
         </p>
@@ -110,12 +110,12 @@ export default function IdeaToImpact() {
               </div>
 
               {/* Title */}
-              <h2 className="text-xl sm:text-[26px] font-normal font-newsreader text-white mb-2 sm:mb-3 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-normal font-newsreader text-white mb-2 sm:mb-3 tracking-tight">
                 {card.title}
               </h2>
 
               {/* Description */}
-              <p className="text-white/55 max-w-[290px] text-sm leading-relaxed mb-4 sm:mb-6 font-light">
+              <p className="text-white/60 max-w-[290px] text-sm leading-relaxed mb-4 sm:mb-6 font-light">
                 {card.description}
               </p>
 

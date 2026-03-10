@@ -101,14 +101,14 @@ export default function Hero() {
       {/* HERO CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-4 sm:px-6 lg:px-8 text-center pt-35 pb-4 sm:pt-30 sm:pb-8 min-h-[50vh]">
 
-        <h1 className="font-newsreader text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
+        <h1 className="font-newsreader text-[34px] sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-[1.15] max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl">
           Designing Digital Products
           <br />
           <span>That Move </span>
           <span className="italic text-[#D1FF52]">business forward!</span>
         </h1>
 
-        <p className="relative z-10 text-white/70 text-sm sm:text-base md:text-lg max-w-xs sm:max-w-lg md:max-w-2xl mt-3 sm:mt-5 leading-relaxed">
+        <p className="relative z-10 text-white/80 text-base md:text-lg max-w-xs sm:max-w-lg md:max-w-2xl mt-3 sm:mt-5 leading-relaxed">
           We craft scalable, user-first digital experiences for startups and growing
           companies worldwide.
         </p>

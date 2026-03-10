@@ -129,12 +129,12 @@ export default function FAQSection() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-24 items-start pt-6 sm:pt-10">
+      <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-24 items-start pt-0 sm:pt-10">
 
         {/* Left column */}
         <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-24 lg:self-start">
           <h2
-            className="font-newsreader text-white font-normal leading-snug mb-6 sm:mb-10 text-2xl sm:text-3xl lg:text-4xl"
+            className="font-newsreader text-white font-normal leading-snug mb-6 sm:mb-10 text-3xl sm:text-4xl lg:text-[52px]"
           >
             Security, Payments<br />
             {"& Process –"}{" "}
@@ -151,10 +151,10 @@ export default function FAQSection() {
           >
             {/* Avatars */}
             <div className="flex -space-x-3">
-              {["/avatar.png", "/avatar.png", "/avatar.png"].map((src, i) => (
+              {["/saminA.png", "/nafisAA.png", "/mohon.png"].map((src, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white/20 relative bg-gray-600"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white/20 relative bg-gray-300"
                   style={{ zIndex: 3 - i }}
                 >
                   <Image src={src} alt="" fill className="object-cover" />
@@ -189,20 +189,11 @@ export default function FAQSection() {
               <div
                 key={i}
                 className="bg-black/10 rounded-xl px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 cursor-pointer"
-                onMouseEnter={() => {
-                  if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
-                    setOpen(i);
-                  }
-                }}
-                onClick={() => {
-                  if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-                    setOpen(isOpen ? null : i);
-                  }
-                }}
+                onClick={() => setOpen(isOpen ? null : i)}
               >
                 <div className="w-full flex items-center justify-between gap-4 text-left">
                   <span
-                    className="text-sm sm:text-base font-normal font-newsreader leading-snug transition-colors duration-300"
+                    className="text-base sm:text-lg lg:text-xl font-normal font-newsreader leading-snug transition-colors duration-300"
                     style={{ color: isOpen ? "#D1FF52" : "rgba(255,255,255,0.85)" }}
                   >
                     {faq.q}

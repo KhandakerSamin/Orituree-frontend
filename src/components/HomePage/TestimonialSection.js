@@ -136,10 +136,10 @@ export default function TestimonialSection() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 flex flex-col min-h-[80vh] md:min-h-screen">
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 flex flex-col justify-center min-h-[80vh] md:min-h-screen">
         {/* Heading */}
-        <div className="mb-8 sm:mb-22">
-          <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal leading-snug text-white">
+        <div className="mb-8 sm:mb-16">
+          <h2 className="font-newsreader text-3xl sm:text-4xl lg:text-[52px] font-normal leading-snug text-white">
             What it's like <br />
             to work with{" "}
             <em className="italic" style={{ color: "#D1FF52" }}>
@@ -148,8 +148,8 @@ export default function TestimonialSection() {
           </h2>
         </div>
 
-        {/* Testimonial content — grows to fill available space */}
-        <div className="flex-1 mt-15 sm:mt-0 flex flex-col">
+        {/* Testimonial content */}
+        <div className="mt-15 sm:mt-0 flex flex-col">
           {/* Avatar + Name */}
           <div className="flex items-center gap-3 mb-4 sm:mb-6">
             <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
@@ -167,15 +167,15 @@ export default function TestimonialSection() {
           </div>
 
           {/* Quote - fixed height container */}
-          <div className="min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]">
+          <div className="min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
             <blockquote className="text-white/95 text-base sm:text-lg lg:text-xl font-light leading-relaxed transition-opacity duration-300">
               {t.testimonial}
             </blockquote>
           </div>
         </div>
 
-        {/* Bottom row — always pinned at bottom */}
-        <div className="flex items-center mb-20 sm:mb-0 justify-between mt-auto pt-4">
+        {/* Bottom row */}
+        <div className="flex items-center mb-20 sm:mb-0 justify-between mt-2 sm:mt-4">
 
           {/* Company logo */}
           <div className="relative w-24  sm:w-32 h-8 sm:h-9 flex-shrink-0">

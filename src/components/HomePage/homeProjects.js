@@ -7,9 +7,6 @@ const PROJECTS = [
     id: 1,
     timeAgo: "1 Day Ago",
     logo: "/brand3.png",
-    title: "Fresh Launch",
-    subtitle: "by Oriture Team",
-    client: "Lebanese Green House",
     description:
       "We Partnered With Lebanese Green House To Craft A Clean, Elegant, And Conversion-Focused Digital Experience That Reflects Their Brand Identity And Elevates Their Online Presence.",
     tags: ["Hospitality", "Restaurant", "Branding"],
@@ -25,9 +22,6 @@ const PROJECTS = [
     id: 2,
     timeAgo: "2 Weeks Ago",
     logo: "/brand2.png",
-    title: "Bold Redesign",
-    subtitle: "by Oriture Team",
-    client: "Studio Craft",
     description:
       "A Complete Visual Overhaul For Studio Craft — Bringing Their Artistic Vision To Life Through A Refined Design System, Modern Typography, And A Pixel-Perfect Web Presence.",
     tags: ["Design", "Web", "Branding"],
@@ -43,9 +37,6 @@ const PROJECTS = [
     id: 3,
     timeAgo: "1 Month Ago",
     logo: "/brand6.png",
-    title: "Digital Growth",
-    subtitle: "by Oriture Team",
-    client: "NovaTech",
     description:
       "Oriture Helped NovaTech Launch A Powerful SaaS Landing Page That Communicates Value Instantly. From Information Architecture To Micro-Interactions, Every Detail Was Intentional.",
     tags: ["SaaS", "Product", "UI/UX"],
@@ -106,10 +97,10 @@ function LeftPanel({ project }) {
     <div className="flex flex-col gap-6">
       {/* Fixed Heading */}
       <div>
-        <h2 className="text-4xl md:text-5xl lg:text-[42px] font-normal font-newsreader text-white leading-[1.1] mb-1">
+        <h2 className="text-3xl md:text-5xl lg:text-[52px] font-normal font-newsreader text-white leading-[1.1] mb-1">
           Fresh Launch
         </h2>
-        <h2 className="text-4xl md:text-5xl lg:text-[42px] font-normal font-newsreader leading-[1.1]">
+        <h2 className="text-3xl md:text-5xl lg:text-[52px] mb-4 font-normal font-newsreader leading-[1.1]">
           <span className="text-white">by </span>
           <em className="text-[#D1FF52] italic">
             Oriture Team
@@ -238,7 +229,7 @@ export default function HomeProjects() {
       </div>
 
       {/* ── Content wrapper ── */}
-      <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-10 py-28 lg:py-36">
+      <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-10 py-15 lg:py-36">
         <div className="flex flex-col lg:flex-row items-start">
 
           {/* LEFT PANEL - same sticky system as WorkProjects */}

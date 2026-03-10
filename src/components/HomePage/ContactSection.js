@@ -12,10 +12,11 @@ const services = [
 ];
 
 const budgets = [
-  "< $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000+",
+  "< $200",
+  "$200 – $500",
+  "$500 – $1,000",
+  "$1,000 – $5,000",
+  "$5000 +",
 ];
 
 /* ── Custom Dropdown ── */
@@ -193,9 +194,9 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-[1300px] w-full mx-auto flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-24 items-start">
 
         {/* Left column */}
-        <div className="w-full lg:w-[38%] flex-shrink-0 pt-2">
+        <div className="w-full lg:w-[38%] flex-shrink-0 pt-0 sm:pt-2">
           <h2
-            className="font-newsreader text-white font-normal leading-snug mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl"
+            className="font-newsreader text-white font-normal leading-snug mb-4 sm:mb-6 text-3xl sm:text-4xl lg:text-[52px]"
           >
             Ready to turn your<br />
             idea into a{" "}
@@ -251,30 +252,6 @@ export default function ContactSection() {
               onChange={set("company")}
             />
           </div>
-
-
-
-          {/* Name + Company */}
-          {/* <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col gap-1.5">
-            <label className="text-white text-base pb-1.5">Your Name*</label>
-            <input
-              className={inputCls}
-              placeholder="John Doe"
-              value={form.name}
-              onChange={set("name")}
-            />
-          </div>
-            <div className="flex flex-col gap-1.5">
-            <label className="text-white text-base pb-1.5">Company Name</label>
-            <input
-              className={inputCls}
-              placeholder="Google Inc."
-              value={form.company}
-              onChange={set("company")}
-            />
-          </div>
-          </div> */}
 
           {/* Phone + Email */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -332,7 +309,7 @@ export default function ContactSection() {
             <button
               className="bg-[#D1FF52] text-black px-6 py-3 rounded-full text-sm font-semibold cursor-pointer transition-all duration-300"
             >
-              Let's Connect
+              Send Message
             </button>
             <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/submit:rounded-t-full group-hover/submit:rounded-bl-none group-hover/submit:bg-[#D1FF52] cursor-pointer">
               <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/submit:rotate-45 group-hover/submit:text-black transition-all duration-300" />

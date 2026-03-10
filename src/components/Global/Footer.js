@@ -8,7 +8,6 @@ import {
   Instagram,
   Linkedin,
   Youtube,
-  Twitter,
 } from "lucide-react";
 
 const services = [
@@ -35,11 +34,11 @@ const reviews = [
 ];
 
 const socials = [
-  { icon: Facebook, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Linkedin, href: "#" },
-  { icon: Youtube, href: "#" },
-  { icon: Twitter, href: "#" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61581955532353" },
+  { icon: Instagram, href: "https://www.instagram.com/orituree?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/oriture/posts/?feedView=all" },
+  { icon: Youtube, href: "https://www.youtube.com/@oriture.agency" },
+  { icon: "/behance.svg", href: "https://www.behance.net/Oriture", isImage: true },
 ];
 
 export default function Footer() {
@@ -323,13 +322,17 @@ export default function Footer() {
 
           {/* Socials */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {socials.map(({ icon: Icon, href }, i) => (
+            {socials.map(({ icon: Icon, href, isImage }, i) => (
               <Link
                 key={i}
                 href={href}
-                className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
               >
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                {isImage ? (
+                  <Image src={Icon} alt="social" width={24} height={24} className="w-5 h-5 text-white sm:w-6 sm:h-6 object-contain" />
+                ) : (
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                )}
               </Link>
             ))}
           </div>

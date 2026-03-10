@@ -79,7 +79,7 @@ export default function WhyChoose() {
 
         {/* Heading — centered */}
         <div className="text-start mx-4 sm:mx-8 mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="font-newsreader text-2xl sm:text-3xl lg:text-5xl font-normal leading-[1.2] text-white">
+          <h2 className="font-newsreader text-3xl md-text-5xl lg:text-[52px] font-normal leading-[1.2] text-white">
             <span className="not-italic" style={{ color: "#D1FF52" }}>Oriture</span>{" "}
             is your
             <br />
@@ -108,10 +108,10 @@ export default function WhyChoose() {
                 
 
                 <div>
-                  <h3 className="font-newsreader text-lg sm:text-2xl font-normal text-white leading-snug mb-1.5 sm:mb-2 whitespace-pre-line">
+                  <h3 className="font-newsreader text-xl sm:text-2xl font-normal text-white leading-snug mb-1.5 sm:mb-2 whitespace-pre-line">
                     {item.title}
                   </h3>
-                  <p className="text-white/50 text-sm leading-relaxed">
+                  <p className="text-white/60 text-base leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

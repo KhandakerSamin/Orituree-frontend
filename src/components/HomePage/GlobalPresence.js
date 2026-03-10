@@ -176,7 +176,7 @@ export default function GlobalPresence() {
         {/* Left column */}
         <div className="relative z-10 w-full lg:w-1/2">
           <h1
-            className="text-white font-normal mb-6 sm:mb-10 font-newsreader text-center lg:text-left text-2xl sm:text-3xl lg:text-4xl"
+            className="text-white font-normal mb-6 sm:mb-10 font-newsreader text-center lg:text-left text-3xl sm:text-4xl lg:text-[52px]"
             style={{ lineHeight: 1.28, letterSpacing: "-0.2px" }}
           >
             Crafting digital
