@@ -1,14 +1,25 @@
-import Footer from '@/components/Global/Footer'
-import Navbar from '@/components/Global/Navbar'
-import React from 'react'
+"use client"
+import { useState } from "react";
+import Navbar from "@/components/Global/Navbar";
+import Footer from "@/components/Global/Footer";
+import InsightHero from "@/components/InsightPage/insightHero";
+import InsightFilter from "@/components/InsightPage/InsightFilter";
+import InsightGrid from "@/components/InsightPage/InsightGrid";
 
-const BlogPage = () => {
+export default function InsightPage() {
+  const [activeCategory, setActiveCategory] = useState("Explore All");
+
   return (
-    <div>
-     <Navbar />
-     <Footer />
+    <div className="min-h-screen bg-black">
+      <Navbar />
+      <InsightHero />
+      <InsightFilter
+        active={activeCategory}
+        onChange={setActiveCategory}
+      />
+      <div className="bg-black h-8 md:h-10" />
+      <InsightGrid activeCategory={activeCategory} />
+      <Footer />
     </div>
-  )
+  );
 }
-
-export default BlogPage

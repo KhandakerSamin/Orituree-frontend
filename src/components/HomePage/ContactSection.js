@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, CircleCheckBig } from "lucide-react";
 import Image from "next/image";
 
 const services = [
@@ -84,6 +84,17 @@ export default function ContactSection() {
     service: "", budget: "", details: "",
   });
 
+  const [status, setStatus] = useState("idle");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (status !== "idle") return;
+    setStatus("animating");
+    setTimeout(() => {
+      setStatus("sent");
+    }, 1500);
+  };
+
   const set = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
   const setField = (k) => (v) => setForm((p) => ({ ...p, [k]: v }));
 
@@ -92,6 +103,147 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="relative w-full overflow-hidden py-16 sm:py-28 px-5 sm:px-6 flex items-center justify-center min-h-[auto] sm:min-h-screen">
+      <style dangerouslySetInnerHTML={{__html: `
+        /* ── Letter slide-in on mount ── */
+        .sbtn-letter {
+          display: inline-block;
+          opacity: 0;
+          animation: sbtnSlideIn 0.8s ease forwards calc(var(--i) * 0.03s);
+        }
+        /* Hover: wave bounce on each letter */
+        .sbtn-main:hover .sbtn-letter {
+          animation: sbtnWave 0.5s ease forwards calc(var(--i) * 0.02s) !important;
+          opacity: 1;
+        }
+        /* ── Plane icon ── */
+        .sbtn-plane {
+          transition: transform 0.3s ease;
+          position: relative;
+          z-index: 2;
+        }
+        .sbtn-main:hover .sbtn-plane {
+          transform: rotate(45deg) scale(1.25);
+        }
+        /* ── Contrail (pseudo on plane wrapper) ── */
+        .sbtn-plane-wrap {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .sbtn-plane-wrap::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          margin-top: -1px;
+          height: 2px;
+          width: 0;
+          right: calc(100% + 3px);
+          background: linear-gradient(to right, transparent, rgba(0,0,0,0.45));
+        }
+        /* ── Spinning outline glow on hover ── */
+        .sbtn-outline {
+          position: absolute;
+          border-radius: inherit;
+          overflow: hidden;
+          z-index: 0;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          inset: -2px -3.5px;
+          pointer-events: none;
+        }
+        .sbtn-outline::before {
+          content: "";
+          position: absolute;
+          inset: -100%;
+          background: conic-gradient(from 180deg, transparent 60%, rgba(255,255,255,0.75) 80%, transparent 100%);
+          animation: sbtnSpin 2s linear infinite;
+          animation-play-state: paused;
+        }
+        .sbtn-main:hover .sbtn-outline { opacity: 1; }
+        .sbtn-main:hover .sbtn-outline::before { animation-play-state: running; }
+        /* ── Animating pill ── */
+        .sbtn-anim-pill {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          background: #D1FF52;
+          border-radius: 9999px;
+          overflow: hidden;
+          height: 46px;
+          width: 260px;
+          padding: 0 22px;
+        }
+        .sbtn-fly-letters {
+          display: flex;
+          align-items: center;
+          color: black;
+          font-size: 14px;
+          font-weight: 600;
+          pointer-events: none;
+          position: relative;
+          z-index: 1;
+        }
+        .sbtn-fly-letters span {
+          display: inline-block;
+          animation: sbtnGone 0.45s ease forwards calc(var(--i) * 0.025s);
+        }
+        .sbtn-fly-plane {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          pointer-events: none;
+          z-index: 3;
+          animation: sbtnFlyAcross 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        /* ── Sent state ── */
+        .sbtn-check-icon {
+          opacity: 0;
+          animation: sbtnAppear 0.7s ease forwards 0.05s;
+          flex-shrink: 0;
+        }
+        .sbtn-success-letter {
+          display: inline-block;
+          opacity: 0;
+          animation: sbtnSlideIn 0.7s ease forwards calc(var(--i) * 0.028s);
+        }
+        /* ── Keyframes ── */
+        @keyframes sbtnSlideIn {
+          0%   { opacity: 0; transform: translateY(-20px) translateX(4px) rotate(-90deg); filter: blur(5px); }
+          30%  { opacity: 1; transform: translateY(3px) rotate(0); filter: blur(0); }
+          50%  { opacity: 1; transform: translateY(-2px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes sbtnWave {
+          30%  { opacity: 1; transform: translateY(4px) translateX(0) rotate(0); }
+          50%  { opacity: 1; transform: translateY(-3px) translateX(0) rotate(0); }
+          100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); }
+        }
+        @keyframes sbtnGone {
+          from { opacity: 1; }
+          to   { opacity: 0; transform: translateX(5px) translateY(18px); filter: blur(5px); }
+        }
+        @keyframes sbtnFlyAcross {
+          0%   { transform: translateX(-28px); opacity: 0; }
+          7%   { opacity: 1; }
+          91%  { opacity: 1; }
+          100% { transform: translateX(268px); opacity: 0; }
+        }
+        @keyframes sbtnAppear {
+          0%   { opacity: 0; transform: scale(3.5) rotate(-40deg); filter: blur(4px); }
+          35%  { opacity: 1; transform: scale(0.7); filter: blur(1px); }
+          55%  { opacity: 1; transform: scale(1.15); filter: blur(0); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes sbtnSpin {
+          0%   { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}} />
 
       {/* ── GRADIENT LAYERS ── */}
 
@@ -305,15 +457,97 @@ export default function ContactSection() {
           </div>
 
           {/* Submit */}
-          <div className="flex items-center gap-2 pt-1 group/submit">
-            <button
-              className="bg-[#D1FF52] text-black px-6 py-3 rounded-full text-sm font-semibold cursor-pointer transition-all duration-300"
-            >
-              Send Message
-            </button>
-            <button className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/submit:rounded-t-full group-hover/submit:rounded-bl-none group-hover/submit:bg-[#D1FF52] cursor-pointer">
-              <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/submit:rotate-45 group-hover/submit:text-black transition-all duration-300" />
-            </button>
+          <div className="pt-1">
+
+            {/* ── IDLE: plane icon + wave letters + spinning outline glow ── */}
+            {status === 'idle' && (
+              <div className="flex items-center gap-2 group/submit w-fit" onClick={handleSubmit}>
+
+                <button
+                  type="button"
+                  className="sbtn-main relative bg-[#D1FF52] text-black rounded-full text-sm font-semibold cursor-pointer flex items-center gap-2 overflow-hidden"
+                  style={{ padding: '12px 22px', height: '46px' }}
+                >
+                  {/* Spinning border glow on hover */}
+                  <div className="sbtn-outline" />
+
+                  {/* Paper-plane icon */}
+                  <div className="sbtn-plane-wrap">
+                    <svg
+                      className="sbtn-plane"
+                      width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="rgba(0,0,0,0.85)" />
+                      <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="rgba(0,0,0,0.85)" />
+                    </svg>
+                  </div>
+
+                  {/* Letters — wave on hover, slide-in on mount */}
+                  <div className="flex relative z-10">
+                    {"Send\u00A0Message".split('').map((char, i) => (
+                      <span key={i} className="sbtn-letter" style={{ '--i': i }}>
+                        {char}
+                      </span>
+                    ))}
+                  </div>
+                </button>
+
+                {/* Arrow button */}
+                <button
+                  type="button"
+                  className="border border-[#D1FF52]/50 bg-transparent p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/submit:rounded-t-full group-hover/submit:rounded-bl-none group-hover/submit:bg-[#D1FF52] cursor-pointer"
+                >
+                  <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/submit:rotate-45 group-hover/submit:text-black transition-all duration-300" />
+                </button>
+
+              </div>
+            )}
+
+            {/* ── ANIMATING: letters fade out, plane flies clearly L → R ── */}
+            {status === 'animating' && (
+              <div className="sbtn-anim-pill">
+                {/* Letters fading out */}
+                <div className="sbtn-fly-letters">
+                  {"Send\u00A0Message".split('').map((char, i) => (
+                    <span key={i} style={{ '--i': i }}>{char}</span>
+                  ))}
+                </div>
+
+                {/* Plane — enters from left edge, exits from right edge */}
+                <div className="sbtn-fly-plane">
+                  {/* Contrail trail behind the plane */}
+                  <div style={{
+                    position: 'absolute',
+                    right: '100%',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    height: '2px',
+                    width: '36px',
+                    background: 'linear-gradient(to right, transparent, rgba(0,0,0,0.35))',
+                  }} />
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="rgba(0,0,0,0.85)" />
+                    <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="rgba(0,0,0,0.85)" />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {/* ── SENT: CircleCheckBig + letter-by-letter reveal ── */}
+            {status === 'sent' && (
+              <div className="inline-flex items-center gap-2.5 bg-[#D1FF52] rounded-full px-5 py-3">
+                <CircleCheckBig className="sbtn-check-icon w-[17px] h-[17px] text-black" />
+                <div className="flex text-black text-sm font-semibold whitespace-nowrap">
+                  {"Thanks for contacting us!".split('').map((char, i) => (
+                    <span key={i} className="sbtn-success-letter" style={{ '--i': i }}>
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
 
         </div>
