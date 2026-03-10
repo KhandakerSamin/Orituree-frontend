@@ -1,6 +1,7 @@
 "use client";
 import { MoveUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const row1 = [1, 2, 3, 4, 5, 6, 7];
@@ -113,14 +114,14 @@ export default function Hero() {
           companies worldwide.
         </p>
 
-        {/* CTA — Desktop */}
-        <div className="flex items-center space-x-2 mt-6 sm:mt-7 md:mt-5 group">
-          <button className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium cursor-pointer">
-            Start Your Project
-          </button>
-          <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 sm:p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer">
-            <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
-          </button>
+{/* CTA — Desktop */}
+          <div className="flex items-center space-x-2 mt-6 sm:mt-7 md:mt-5 group">
+            <Link href="#contact" className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium cursor-pointer flex items-center justify-center">
+              Start Your Project
+            </Link>
+            <Link href="#contact" className="border border-[#D1FF52]/50 bg-transparent p-2.5 sm:p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer flex items-center justify-center">
+              <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
+            </Link>
         </div>
 
 

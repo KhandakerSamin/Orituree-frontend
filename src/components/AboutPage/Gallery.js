@@ -301,14 +301,17 @@ export default function Gallery() {
         {/* CTA Button */}
         <div className="flex items-center justify-center gap-2 mt-14 md:mt-20 group/cta">
           <a
-            href="/contact"
+            href="mailto:hr@oriture.co"
             className="border border-[#D1FF52]/50  text-black bg-[#D1FF52] group-hover/cta:border-[#D1FF52]  px-6 py-3 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
           >
             Send your CV to Join
           </a>
-          <button className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer">
+          <a
+            href="mailto:hr@oriture.co"
+            className="border border-[#D1FF52]/50 bg-transparent p-2.5 rounded-tr-full rounded-b-full group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] transition-all duration-300 cursor-pointer flex items-center justify-center"
+          >
             <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
-          </button>
+          </a>
         </div>
 
       </div>

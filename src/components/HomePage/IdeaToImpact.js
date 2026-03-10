@@ -4,23 +4,21 @@ import React from "react";
 
 const noise = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`;
 
-const services = [
-  "Pitch Deck",
-  "Brand Identity",
-  "Logo Design",
-  "Visual Design",
-  "Rebranding",
-];
-
 const cards = [
   {
     title: "Branding",
     description:
       "We craft scalable, user-first digital experiences for startups and growing companies worldwide.",
-    // 40% solid black → 20% fade → 40% full color
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
     accentLine: "#29205E66",
     isGreen: false,
+    services: [
+      "Pitch Deck",
+      "Brand Identity",
+      "Logo Design",
+      "Graphic Design",
+      "Rebranding",
+    ],
   },
   {
     title: "Product Design",
@@ -29,6 +27,13 @@ const cards = [
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #5a7a00 60%, #7aaa00 100%)",
     accentLine: "#D1FF5233",
     isGreen: true,
+    services: [
+      "UI/UX Design",
+      "Web Design",
+      "Mobile App Design",
+      "Website Redesign",
+      "UX/UI Audit",
+    ],
   },
   {
     title: "Development",
@@ -37,6 +42,13 @@ const cards = [
     gradient: "linear-gradient(180deg, #000000 0%, #000000 40%, #29205E 60%, #29205E 100%)",
     accentLine: "#29205E66",
     isGreen: false,
+    services: [
+      "Web Development",
+      "MVP Development",
+      "Webflow Development",
+      "Landing page",
+      "Mobile Development",
+    ],
   },
 ];
 
@@ -121,7 +133,7 @@ export default function IdeaToImpact() {
 
               {/* Service List */}
               <div className="flex flex-col gap-0.5">
-                {services.map((service) => (
+                {card.services.map((service) => (
                   <button
                     key={service}
                     className="flex items-center justify-between bg- border bg-black/[0.1] border-white/3 rounded-[8px] py-2.5 sm:py-3 px-3 sm:px-4 text-white/85 text-sm cursor-pointer transition-all duration-200 hover:bg-white/[0.08] hover:border-white/[0.18]"

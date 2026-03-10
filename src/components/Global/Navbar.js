@@ -99,7 +99,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ─── DESKTOP NAVBAR ───────────────────────────────────────── */}
+      {/* ????????? DESKTOP NAVBAR ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????? */}
       <div className="fixed top-0 left-0 w-full z-[100] pointer-events-none hidden md:block">
         <div
           className={`max-w-[1400px] mx-auto px-6 lg:px-12 transition-all duration-700 ease-in-out ${
@@ -108,7 +108,7 @@ export default function Navbar() {
         >
           <div className="relative flex items-center pointer-events-auto">
 
-            {/* ── STANDALONE LOGO — slides out left on scroll ── */}
+            {/* ?????? STANDALONE LOGO ??? slides out left on scroll ?????? */}
             <div
               className={`shrink-0 transition-all duration-700 ease-in-out ${
                 isScrolled
@@ -129,7 +129,7 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* ── PILL ── */}
+            {/* ?????? PILL ?????? */}
             <div className="flex-1 flex justify-center">
               <div
                 className={`flex items-center transition-all duration-700 ease-in-out ${
@@ -238,7 +238,7 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-2 pr-1 group/ctabtn">
                     <Link
-                      href="/contact"
+                      href="/#contact"
                       className="border border-[#D1FF52]/40 text-white group-hover/ctabtn:text-black group-hover/ctabtn:bg-[#D1FF52] group-hover/ctabtn:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
                     >
                       Hire Us
@@ -251,7 +251,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* ── STANDALONE CTA — slides out right on scroll ── */}
+            {/* ?????? STANDALONE CTA ??? slides out right on scroll ?????? */}
             <div
               className={`flex items-center gap-2 shrink-0 group/ctatop transition-all duration-700 ease-in-out ${
                 isScrolled
@@ -260,7 +260,7 @@ export default function Navbar() {
               }`}
             >
               <Link
-                href="/contact"
+                href="/#contact"
                 className="border border-[#D1FF52]/50 text-white group-hover/ctatop:text-black group-hover/ctatop:bg-[#D1FF52] group-hover/ctatop:border-[#D1FF52] bg-transparent px-5 py-2 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
               >
                 Hire Us
@@ -273,7 +273,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ─── MOBILE NAVBAR ────────────────────────────────────────── */}
+      {/* ????????? MOBILE NAVBAR ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????? */}
       <div className="fixed top-0 left-0 w-full z-[100] md:hidden">
         <div className="mx-4 mt-3">
           <div className="flex items-center border border-white/12 bg-black/65 backdrop-blur-2xl rounded-full px-3 py-2 shadow-[0_4px_32px_rgba(0,0,0,0.45)] gap-2">
@@ -291,7 +291,7 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* Menu button — centered */}
+            {/* Menu button ??? centered */}
             <div className="flex-1 flex justify-center">
               <button
                 onClick={() => setIsMenuOpen(true)}
@@ -304,7 +304,7 @@ export default function Navbar() {
             {/* Mobile CTA */}
             <div className="flex items-center gap-1.5 pl-2 border-l border-white/10 ml-1">
               <Link
-                href="/contact"
+                href="/#contact"
                 className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-3.5 py-1.5 rounded-full transition-all duration-300 text-[12px] font-medium whitespace-nowrap"
               >
                 Hire Us
@@ -317,13 +317,13 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ─── MOBILE MENU MODAL ────────────────────────────────────── */}
+      {/* ????????? MOBILE MENU MODAL ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????? */}
       <div
         className={`fixed inset-0 z-[200] flex items-center justify-center md:hidden transition-all duration-400 ease-out ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop — frosted glass, see-through blur */}
+        {/* Backdrop ??? frosted glass, see-through blur */}
         <div
           className={`absolute inset-0 transition-opacity duration-400 ${
             isMenuOpen ? "opacity-100" : "opacity-0"
@@ -336,7 +336,7 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(false)}
         />
 
-        {/* Modal — Glass Effect */}
+        {/* Modal ??? Glass Effect */}
         <div
           className={`relative w-[92vw] max-w-[400px] max-h-[85vh] overflow-y-auto transition-all duration-400 ease-out ${
             isMenuOpen ? "scale-100 opacity-100 translate-y-0" : "scale-90 opacity-0 translate-y-6"
@@ -369,7 +369,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Nav links — 2 column with expandable dropdowns */}
+          {/* Nav links ??? 2 column with expandable dropdowns */}
           <div className="relative z-10 px-4 pb-5">
             <div className="grid grid-cols-2 gap-2">
               {mobileNavigationItems.map((item, index) => (
@@ -465,14 +465,14 @@ export default function Navbar() {
             {/* Divider */}
             <div className="my-4 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(209,255,82,0.12), rgba(255,255,255,0.05), transparent)" }} />
 
-            {/* Bottom CTA — Hero style */}
+            {/* Bottom CTA ??? Hero style */}
             <div
               className={`${isMenuOpen ? "animate-modalItemIn" : ""}`}
               style={{ animationDelay: "420ms" }}
             >
               <div className="flex items-center gap-2 group/cta">
                 <Link
-                  href="/contact"
+                  href="/#contact"
                   className="flex-1 flex items-center justify-center bg-[#D1FF52] text-black px-5 py-3.5 rounded-full font-semibold text-[14px] transition-all duration-300 hover:shadow-[0_0_28px_rgba(209,255,82,0.3)]"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -512,3 +512,4 @@ export default function Navbar() {
     </>
   );
 }
+

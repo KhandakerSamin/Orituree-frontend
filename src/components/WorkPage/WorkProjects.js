@@ -249,11 +249,11 @@ export default function WorkProjects() {
           
           {/* LEFT PANEL - 35% width, sticky to screen */}
           <div
-            className="hidden lg:flex flex-col w-full lg:w-[40%] sticky top-32 self-start h-fit"
+            className="hidden lg:flex flex-col w-full lg:w-[50%] sticky top-32 self-start h-fit"
           >
             {/* Heading */}
             <div className="mb-8">
-              <h2 className="text-white font-normal leading-tight font-serif text-3xl lg:text-[52px]">
+              <h2 className="text-white font-normal leading-tight font-serif text-3xl lg:text-[48px]">
                 Digital Work That
                 <br />
                 Moves{" "}
@@ -284,7 +284,7 @@ export default function WorkProjects() {
                     />
                     
                     <span
-                      className={`text-xs font-medium whitespace-nowrap transition-colors duration-300 ${isActive ? "text-white" : "text-gray-500"}`}
+                      className={`text-sm font-medium whitespace-nowrap transition-colors duration-300 ${isActive ? "text-white" : "text-gray-500"}`}
                     >
                       {label}
                     </span>
@@ -309,7 +309,7 @@ export default function WorkProjects() {
 
             {/* CTA CARD */}
             <div
-              className="rounded-2xl p-5 flex flex-col gap-4 backdrop-blur-xl"
+              className="rounded-2xl p-5 mt-5 flex flex-col gap-4 backdrop-blur-xl"
               style={{
                 background: "linear-gradient(360deg, rgba(0,0,0,0.2) 0%, rgba(109,85,255,0.2) 100%)",
               }}
@@ -352,7 +352,7 @@ export default function WorkProjects() {
           {/* RIGHT PANEL - 45% width, min-height prevents scroll jump on tab change */}
           <div
             ref={rightPanelRef}
-            className="w-full lg:w-[55%] min-h-[100vh]"
+            className="w-full lg:w-[50%] min-h-[100vh]"
             style={{
               transition: "opacity 0.25s ease-out",
               opacity: rightVisible ? 1 : 0,

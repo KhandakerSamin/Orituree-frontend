@@ -91,7 +91,7 @@ export default function ContactSection() {
     "w-full bg-white/10 rounded-sm px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base placeholder-white/60 outline-none focus:border-white/25 transition-colors";
 
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-28 px-5 sm:px-6 flex items-center justify-center min-h-[auto] sm:min-h-screen">
+    <section id="contact" className="relative w-full overflow-hidden py-16 sm:py-28 px-5 sm:px-6 flex items-center justify-center min-h-[auto] sm:min-h-screen">
 
       {/* ── GRADIENT LAYERS ── */}
 
