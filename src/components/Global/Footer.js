@@ -10,27 +10,36 @@ import {
   Youtube,
 } from "lucide-react";
 
-const services = [
+const brandingServices = [
+  { label: "Pitch Deck", href: "#" },
+  { label: "Brand Identity", href: "#" },
+  { label: "Logo Design", href: "#" },
+  { label: "Graphic Design", href: "#" },
+  { label: "Rebranding", href: "#" },
+];
+
+const designServices = [
   { label: "UI/UX Design", href: "#" },
-  { label: "Branding", href: "#" },
-  { label: "App Design", href: "#" },
   { label: "Web Design", href: "#" },
-  { label: "SaaS Design", href: "#" },
+  { label: "Mobile App Design", href: "#" },
+  { label: "Website Redesign", href: "#" },
+  { label: "UX/UI Audit", href: "#" },
+];
+
+const developmentServices = [
+  { label: "Web Development", href: "#" },
+  { label: "MVP Development", href: "#" },
+  { label: "Webflow Development", href: "#" },
+  { label: "Landing page", href: "#" },
+  { label: "Mobile Development", href: "#" },
 ];
 
 const company = [
   { label: "Home", href: "/" },
-  { label: "Case Study", href: "/case-studies" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "About Us", href: "/about" },
-  { label: "Blog", href: "/blog" },
-];
-
-const reviews = [
-  { label: "Clutch", href: "#" },
-  { label: "Behance", href: "#" },
-  { label: "Dribbble", href: "#" },
-  { label: "LinkedIn", href: "#" },
+  { label: "Work", href: "/case-studies" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Insight", href: "/blog" },
 ];
 
 const socials = [
@@ -250,12 +259,40 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right — Three nav columns (start from ~2/3 width) */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 lg:pl-8">
-            {/* Services */}
+          {/* Right — Four nav columns */}
+          <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 lg:pl-8">
+            {/* Branding Services */}
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Services</h4>
-              {services.map((l) => (
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Branding Services</h4>
+              {brandingServices.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Design Services */}
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Design Services</h4>
+              {designServices.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Development Services */}
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Development Services</h4>
+              {developmentServices.map((l) => (
                 <Link
                   key={l.label}
                   href={l.href}
@@ -278,22 +315,6 @@ export default function Footer() {
                   {l.label}
                 </Link>
               ))}
-            </div>
-
-            {/* Review */}
-            <div className="flex flex-col gap-3 sm:gap-4 col-span-2 sm:col-span-1">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Review</h4>
-              <div className="flex flex-wrap sm:flex-col gap-3 sm:gap-4">
-                {reviews.map((l) => (
-                  <Link
-                    key={l.label}
-                    href={l.href}
-                    className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
             </div>
           </div>
         </div>
