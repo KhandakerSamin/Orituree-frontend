@@ -86,13 +86,24 @@ export default function ContactSection() {
 
   const [status, setStatus] = useState("idle");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (status !== "idle") return;
     setStatus("animating");
-    setTimeout(() => {
-      setStatus("sent");
-    }, 1500);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("send failed");
+    } catch (err) {
+      console.error(err);
+    }
+
+    // Keep animating for the full flight duration, then show sent
+    setTimeout(() => setStatus("sent"), 2200);
   };
 
   const set = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
@@ -153,16 +164,8 @@ export default function ContactSection() {
           inset: -2px -3.5px;
           pointer-events: none;
         }
-        .sbtn-outline::before {
-          content: "";
-          position: absolute;
-          inset: -100%;
-          background: conic-gradient(from 180deg, transparent 60%, rgba(255,255,255,0.75) 80%, transparent 100%);
-          animation: sbtnSpin 2s linear infinite;
-          animation-play-state: paused;
-        }
-        .sbtn-main:hover .sbtn-outline { opacity: 1; }
-        .sbtn-main:hover .sbtn-outline::before { animation-play-state: running; }
+        .sbtn-outline::before { content: ""; }
+        .sbtn-main:hover .sbtn-outline { opacity: 0; }
         /* ── Animating pill ── */
         .sbtn-anim-pill {
           position: relative;
@@ -198,7 +201,7 @@ export default function ContactSection() {
           align-items: center;
           pointer-events: none;
           z-index: 3;
-          animation: sbtnFlyAcross 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+          animation: sbtnFlyAcross 2.2s cubic-bezier(0.25,0.1,0.25,1) forwards;
         }
         /* ── Sent state ── */
         .sbtn-check-icon {
@@ -228,10 +231,11 @@ export default function ContactSection() {
           to   { opacity: 0; transform: translateX(5px) translateY(18px); filter: blur(5px); }
         }
         @keyframes sbtnFlyAcross {
-          0%   { transform: translateX(-28px); opacity: 0; }
-          7%   { opacity: 1; }
-          91%  { opacity: 1; }
-          100% { transform: translateX(268px); opacity: 0; }
+          0%   { transform: translateX(-36px) rotate(-8deg); opacity: 0; }
+          8%   { opacity: 1; transform: translateX(-10px) rotate(-8deg); }
+          20%  { transform: translateX(30px) rotate(0deg); }
+          85%  { opacity: 1; transform: translateX(230px) rotate(0deg); }
+          100% { transform: translateX(290px) rotate(8deg); opacity: 0; }
         }
         @keyframes sbtnAppear {
           0%   { opacity: 0; transform: scale(3.5) rotate(-40deg); filter: blur(4px); }
@@ -239,10 +243,7 @@ export default function ContactSection() {
           55%  { opacity: 1; transform: scale(1.15); filter: blur(0); }
           100% { opacity: 1; transform: scale(1); }
         }
-        @keyframes sbtnSpin {
-          0%   { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
+
       `}} />
 
       {/* ── GRADIENT LAYERS ── */}
