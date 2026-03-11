@@ -193,8 +193,8 @@ function MobileCarousel({ projects }) {
         {/* Render only the first image */}
         <div className="w-full mb-6 animate-in fade-in zoom-in-95 duration-500">
           <div
-            className="w-full rounded-2xl overflow-hidden shadow-2xl"
-            style={{ aspectRatio: "16/10" }}
+            className="w-full rounded-lg overflow-hidden shadow-2xl"
+            style={{ aspectRatio: "4/3" }}
           >
             <img
               src={project.images[0]}
@@ -370,8 +370,8 @@ export default function HomeProjects() {
                     className="w-full mb-8 lg:mb-12"
                   >
                     <div
-                      className="w-full rounded-2xl overflow-hidden shadow-2xl"
-                      style={{ aspectRatio: "16/10" }}
+                      className="w-full rounded-lg overflow-hidden shadow-2xl"
+                      style={{ aspectRatio: "4/3" }}
                     >
                       <img
                         src={src}

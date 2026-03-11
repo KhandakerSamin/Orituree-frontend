@@ -311,7 +311,7 @@ export default function Footer() {
                 <Link
                   key={l.label}
                   href={l.href}
-                  className="text-white/70 text-sm sm:text-base hover:text-white transition-colors"
+                  className="text-white/70 text-xs sm:text-base hover:text-white transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -326,7 +326,7 @@ export default function Footer() {
         {/* ── MIDDLE ROW: company deck + copyright + socials ── */}
         <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 sm:gap-5 py-5">
 
-          {/* Company deck download */}
+          {/* Figma */}
           <Link href="https://www.figma.com/design/c4QNlJIpbOhtrcz1y5RhH1/Oriture-Projects?node-id=2-2&p=f&t=AXTju7MGzTI7z3Ll-0" >
           <button className="flex items-center gap-3 group/deck cursor-pointer">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
