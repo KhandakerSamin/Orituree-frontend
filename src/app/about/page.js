@@ -7,6 +7,18 @@ import Footer from '@/components/Global/Footer';
 import Navbar from '@/components/Global/Navbar';
 import React from 'react';
 
+export const metadata = {
+  title: "About Oriture — Our Team, Story & Mission",
+  description: "Meet the Oriture team — 7 designers, developers, and creatives building scalable digital products for startups and growing companies across 11 countries.",
+  alternates: { canonical: "https://www.oriture.co/about" },
+  openGraph: {
+    title: "About Oriture — Our Team, Story & Mission",
+    description: "Meet the Oriture team — 7 designers, developers, and creatives building scalable digital products for startups and growing companies across 11 countries.",
+    url: "https://www.oriture.co/about",
+    type: "website",
+  },
+};
+
 const AboutPage = () => {
      return (
           <div>
