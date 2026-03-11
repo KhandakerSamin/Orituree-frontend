@@ -26,22 +26,114 @@ export default function Navbar() {
       name: "Services",
       href: "/services",
       hasDropdown: true,
-      dropdown: ["Web Design", "Branding", "Motion", "Development"],
+      megaMenu: [
+        {
+          title: "BRANDING",
+          items: [
+            { label: "Pitch Deck", desc: "Get visuals that raise capital" },
+            { label: "Brand Identity", desc: "Build trust with design" },
+            { label: "Logo Design", desc: "Become unforgettable" },
+            { label: "Graphic Design", desc: "Illustration, Icons, Social Media" },
+            { label: "Rebranding", desc: "Rebrand to grow & convert" },
+          ],
+        },
+        {
+          title: "DESIGN",
+          items: [
+            { label: "Ui/Ux Design", desc: "Web & mobile app design" },
+            { label: "Website Design", desc: "Custom website & landings" },
+            { label: "Mobile App Design", desc: "Apps your users love" },
+            { label: "Website Redesign", desc: "Modern look, higher impact" },
+            { label: "Product Ui/Ux Audit", desc: "Insights that drive results" },
+          ],
+        },
+        {
+          title: "DEVELOPMENT",
+          items: [
+            { label: "Web Development", desc: "Full-Stack web development" },
+            { label: "MVP Development", desc: "MVPs that attract funding" },
+            { label: "Landing Page", desc: "High converting website" },
+            { label: "Corporate Websites", desc: "Build for scale & trust" },
+            { label: "WOW Websites", desc: "Professional, scalable, fast website" },
+          ],
+        },
+      ],
     },
     {
       name: "Industries",
       href: "/industries",
       hasDropdown: true,
-      dropdown: ["Tech", "Fashion", "Finance", "Healthcare"],
+      megaMenu: [
+        {
+          title: "INDUSTRIES",
+          items: [
+            { label: "All Industries" },
+            { label: "AI" },
+            { label: "EdTech" },
+            { label: "Restaurant" },
+            { label: "Podcast" },
+          ],
+        },
+        {
+          title: "MORE",
+          items: [
+            { label: "E-Commerce" },
+            { label: "Music" },
+            { label: "Automobile" },
+            { label: "Productivity" },
+            { label: "Green Tech" },
+          ],
+        },
+        {
+          title: "NICHES",
+          items: [
+            { label: "News" },
+            { label: "Association" },
+            { label: "Marketing" },
+            { label: "Agency" },
+          ],
+        },
+      ],
     },
     {
       name: "Technologies",
       href: "/technologies",
       hasDropdown: true,
-      dropdown: ["React", "Next.js", "Figma", "Framer"],
+      megaMenu: [
+        {
+          title: "FRONTEND",
+          items: [
+            { label: "React.js", desc: "Interactive UI development" },
+            { label: "Next.js", desc: "Server-side rendered apps" },
+            { label: "Tailwind CSS", desc: "Utility-first styling" },
+            { label: "Framer Motion", desc: "Animated UI elements" },
+            { label: "Zustand", desc: "State management" },
+          ],
+        },
+        {
+          title: "BACKEND",
+          items: [
+            { label: "Node.js", desc: "Scalable server environments" },
+            { label: "Express.js", desc: "Fast web framework" },
+            { label: "GraphQL", desc: "Flexible API queries" },
+            { label: "REST APIs", desc: "Robust data communication" },
+            { label: "JWT", desc: "Secure authentication" },
+          ],
+        },
+        {
+          title: "DATABASE & TOOLS",
+          items: [
+            { label: "MongoDB", desc: "NoSQL document database" },
+            { label: "PostgreSQL", desc: "Relational SQL database" },
+            { label: "Prisma", desc: "Next-generation ORM" },
+            { label: "Vercel", desc: "Edge deployment & hosting" },
+            { label: "Git / GitHub", desc: "Version control system" },
+          ],
+        },
+      ],
     },
     { name: "About", href: "/about", hasDropdown: false },
-    { name: "Insight", href: "/insight", hasDropdown: false },
+    // { name: "Insight", href: "/insight", hasDropdown: false },
   ];
 
   const mobileNavigationItems = [
@@ -51,23 +143,23 @@ export default function Navbar() {
       name: "Services", 
       href: "/services",
       hasDropdown: true,
-      dropdown: ["Web Design", "Branding", "Motion", "Development"]
+      dropdown: ["Pitch Deck", "Brand Identity", "Logo Design", "Graphic Design", "Rebranding", "Ui/Ux Design", "Website Design", "Mobile App Design", "Website Redesign", "Product Ui/Ux Audit", "Web Development", "MVP Development", "Landing Page", "Corporate Websites", "WOW Websites"]
     },
     { 
       name: "Industries", 
       href: "/industries",
       hasDropdown: true,
-      dropdown: ["Tech", "Fashion", "Finance", "Healthcare"]
+      dropdown: ["All Industries", "AI", "EdTech", "Restaurant", "Podcast", "E-Commerce", "Music", "Automobile", "Productivity", "Green Tech", "News", "Association", "Marketing", "Agency"]
     },
     { 
       name: "Technologies", 
       href: "/technologies",
       hasDropdown: true,
-      dropdown: ["React", "Next.js", "Figma", "Framer"]
+      dropdown: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "Zustand", "Node.js", "Express.js", "GraphQL", "REST APIs", "JWT", "MongoDB", "PostgreSQL", "Prisma", "Vercel", "Git / GitHub"]
     },
     { name: "About", href: "/about" },
     { name: "Insight", href: "/insight" },
-    { name: "Contact", href: "/contact" },
+    // { name: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -205,22 +297,49 @@ export default function Navbar() {
                     {/* Dropdown */}
                     {item.hasDropdown && (
                       <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
+                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-5 transition-all duration-300 ${
                           openDropdown === item.name
                             ? "opacity-100 translate-y-0 pointer-events-auto"
                             : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
                       >
-                        <div className="w-48 bg-[#0c0c0c]/96 backdrop-blur-xl rounded-2xl py-2 shadow-2xl shadow-black/60">
-                          {item.dropdown.map((sub) => (
-                            <a
-                              key={sub}
-                              href="#"
-                              className="flex items-center justify-between px-4 py-2.5 mx-1 rounded-xl text-[13px] text-white/65 hover:text-[#D1FF52] hover:bg-white/5 transition-all duration-150 group/sub"
-                            >
-                              {sub}
-                              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150" />
-                            </a>
+                        <div 
+                          className="relative flex gap-10 p-10 rounded-[28px] rounded-tl-none overflow-hidden w-max  "
+                          style={{
+                            background: "linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(55, 40, 130, 0.98) 100%)",
+                            backdropFilter: "blur(24px)",
+                          }}
+                        >
+                          {/* Noise background */}
+                          <div 
+                            className="absolute inset-0 pointer-events-none mix-blend-overlay"
+                            style={{
+                              opacity: 0.35,
+                              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                              backgroundSize: "200px 200px",
+                            }} 
+                          />
+
+                          {/* Left Button */}
+                          <div className="relative z-10 pr-6 mr-2">
+                            <div className="bg-[#D1FF52] text-black px-5 py-2 rounded-full font-medium text-[14px]">
+                              {item.name}
+                            </div>
+                          </div>
+
+                          {/* Mega Menu Columns */}
+                          {item.megaMenu?.map((column, cIdx) => (
+                            <div key={cIdx} className="flex flex-col relative z-10 min-w-[220px]">
+                              <h4 className="text-white font-serif tracking-widest text-[14.5px] uppercase mb-6">{column.title}</h4>
+                              <div className="flex flex-col gap-6">
+                                {column.items.map((link, lIdx) => (
+                                  <Link key={lIdx} href={item.href} className="group flex flex-col hover:opacity-100 transition-opacity duration-200" onClick={() => setOpenDropdown(null)}>
+                                    <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] transition-colors">{link.label}</span>
+                                    {link.desc && <span className="text-[13px] text-white/50 mt-1.5 leading-snug font-light">{link.desc}</span>}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
                           ))}
                         </div>
                       </div>
@@ -413,7 +532,7 @@ export default function Navbar() {
                       {/* Sub-items */}
                       <div
                         className={`grid grid-cols-2 gap-1.5 overflow-hidden transition-all duration-300 ${
-                          mobileDropdown === item.name ? "max-h-40 opacity-100 mt-2 px-1" : "max-h-0 opacity-0 mt-0"
+                          mobileDropdown === item.name ? "max-h-[600px] opacity-100 mt-2 px-1" : "max-h-0 opacity-0 mt-0"
                         }`}
                       >
                         {item.dropdown?.map((sub) => (
