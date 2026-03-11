@@ -158,7 +158,7 @@ export default function Navbar() {
       dropdown: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "Zustand", "Node.js", "Express.js", "GraphQL", "REST APIs", "JWT", "MongoDB", "PostgreSQL", "Prisma", "Vercel", "Git / GitHub"]
     },
     { name: "About", href: "/about" },
-    { name: "Insight", href: "/insight" },
+    // { name: "Insight", href: "/insight" },
     // { name: "Contact", href: "/contact" },
   ];
 
@@ -304,7 +304,7 @@ export default function Navbar() {
                         }`}
                       >
                         <div 
-                          className="relative flex gap-10 p-10 rounded-[28px] rounded-tl-none overflow-hidden w-max  "
+                          className="relative flex gap-10 p-10 rounded-[28px] rounded-tl-none overflow-hidden w-max border border-[#D1FF52]/30 "
                           style={{
                             background: "linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(55, 40, 130, 0.98) 100%)",
                             backdropFilter: "blur(24px)",
@@ -334,7 +334,7 @@ export default function Navbar() {
                               <div className="flex flex-col gap-6">
                                 {column.items.map((link, lIdx) => (
                                   <Link key={lIdx} href={item.href} className="group flex flex-col hover:opacity-100 transition-opacity duration-200" onClick={() => setOpenDropdown(null)}>
-                                    <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] transition-colors">{link.label}</span>
+                                    <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] font-newsreader transition-colors">{link.label}</span>
                                     {link.desc && <span className="text-[13px] text-white/50 mt-1.5 leading-snug font-light">{link.desc}</span>}
                                   </Link>
                                 ))}
@@ -457,19 +457,19 @@ export default function Navbar() {
 
         {/* Modal ??? Glass Effect */}
         <div
-          className={`relative w-[92vw] max-w-[400px] max-h-[85vh] overflow-y-auto transition-all duration-400 ease-out ${
+          className={`relative w-[92vw] max-w-[350px] max-h-[85vh] overflow-y-auto transition-all duration-400 ease-out ${
             isMenuOpen ? "scale-100 opacity-100 translate-y-0" : "scale-90 opacity-0 translate-y-6"
           }`}
           style={{
             background: "rgba(20, 18, 30, 0.65)",
             backdropFilter: "blur(40px) saturate(1.3)",
             WebkitBackdropFilter: "blur(40px) saturate(1.3)",
-            borderRadius: "28px",
+            borderRadius: "0 28px 28px 28px",
             boxShadow: "0 32px 80px -16px rgba(0,0,0,0.4)",
           }}
         >
           {/* Modal header */}
-          <div className="relative z-10 flex items-center justify-between px-5 pt-5 pb-3">
+          <div className="relative z-10 flex items-center justify-between px-5 pt-7 pb-7">
             <Link href="/" onClick={() => setIsMenuOpen(false)}>
               <Image
                 src="/LOGO.svg"
@@ -504,23 +504,17 @@ export default function Navbar() {
                     <div className="relative">
                       <button
                         onClick={() => setMobileDropdown(mobileDropdown === item.name ? null : item.name)}
-                        className={`group relative w-full flex items-center justify-between p-4 rounded-2xl overflow-hidden transition-all duration-300 ${
+                        className={`group relative w-full flex items-center justify-between p-4 rounded-2xl rounded-tl-none overflow-hidden transition-all duration-300 ${
                           mobileDropdown === item.name ? "bg-[#D1FF52]/10" : ""
                         }`}
                         style={{ 
                           background: mobileDropdown === item.name ? "rgba(209,255,82,0.08)" : "rgba(255,255,255,0.03)",
                         }}
                       >
-                        {/* Gradient pill indicator */}
-                        <div 
-                          className={`absolute left-3 top-1/2 -translate-y-1/2 w-1 h-5 rounded-full transition-all duration-300 ${
-                            mobileDropdown === item.name ? "opacity-100" : "opacity-40 group-hover:opacity-70"
-                          }`}
-                          style={{ background: "linear-gradient(180deg, #D1FF52 0%, rgba(120,80,200,0.6) 100%)" }}
-                        />
+                        
                         
                         <span className={`text-[14px] font-medium pl-5 transition-colors duration-300 ${
-                          mobileDropdown === item.name ? "text-[#D1FF52]" : "text-white/70 group-hover:text-white"
+                          mobileDropdown === item.name ? "text-[#D1FF52]" : "text-white/80 group-hover:text-white"
                         }`}>
                           {item.name}
                         </span>
@@ -539,7 +533,7 @@ export default function Navbar() {
                           <a
                             key={sub}
                             href="#"
-                            className="group/sub flex items-center gap-2 px-3 py-2.5 rounded-xl text-[13px] text-white/55 hover:text-white transition-all duration-200"
+                            className="group/sub flex items-center gap-2 px-3 py-2.5 rounded-xl rounded-tl-none text-[13px] text-white/55 hover:text-white transition-all duration-200"
                             style={{ background: "rgba(255,255,255,0.02)" }}
                             onClick={() => {
                               setIsMenuOpen(false);
@@ -556,17 +550,13 @@ export default function Navbar() {
                     // Regular nav item
                     <Link
                       href={item.href}
-                      className="group relative flex items-center justify-between p-4 rounded-2xl overflow-hidden transition-all duration-300"
+                      className="group relative flex items-center justify-between p-4  rounded-2xl rounded-tl-none overflow-hidden transition-all duration-300"
                       style={{ background: "rgba(255,255,255,0.03)" }}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {/* Gradient pill indicator */}
-                      <div 
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-1 h-5 rounded-full opacity-40 group-hover:opacity-100 transition-all duration-300"
-                        style={{ background: "linear-gradient(180deg, #D1FF52 0%, rgba(120,80,200,0.6) 100%)" }}
-                      />
+                     
                       
-                      <span className="text-white/70 group-hover:text-white text-[14px] font-medium pl-5 transition-colors duration-300">
+                      <span className="text-white/80 group-hover:text-white text-[14px] font-medium pl-5 transition-colors duration-300">
                         {item.name}
                       </span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-white/25 group-hover:text-[#D1FF52] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
