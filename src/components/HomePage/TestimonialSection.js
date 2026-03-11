@@ -6,33 +6,63 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    name: "Sakhawat Hossain",
-    position: "Brand Manager, Lori",
-    avatar: "/avatar.png",
+    name: "Shakil Shareef",
+    position: "Development Lead, Tripking",
+    avatar: "/hp1-avatar.png",
     testimonial:
-      "Mohon is really talented, creative and also incredibly analytical. He so easily knocked out some of the most challenging designs we had to work on. I recommend him to anyone who looking for someone they can trust to take any task under their wing and find solutions that work!",
-    company: "Tintype",
-    logo: "/testoLogo.png",
+      "Oriture delivered an excellent design for TripKing. The platform feels modern, organized, and easy to navigate for booking hotels, flights, and travel services. His design thinking helped simplify a complex travel system into a smooth user experience.",
+    company: "Tripking",
+    logo: "/hp1-logo.png",
   },
   {
     id: 2,
-    name: "Sarah L.",
-    position: "Product Manager at E-Commerce",
-    avatar: "/avatar.png",
+    name: "Faheem Noman",
+    position: "CEO, Golpo",
+    avatar: "/hp2-avatar.png",
     testimonial:
-      "Outstanding work on our mobile app redesign. The user experience is now seamless and our conversion rates have improved by 40%. Truly exceptional design thinking.",
-    company: "ShopFlow",
-    logo: "/brand3.png",
+      "Working with Oriture was a great experience. He understood the vision of Golpo and translated it into a clean, intuitive, and engaging app design. The storytelling experience feels smooth and user-friendly. Highly recommended for anyone looking for thoughtful product design.",
+    company: "Golpo",
+    logo: "/hp2-logo.png",
   },
   {
     id: 3,
-    name: "David K.",
-    position: "CTO at Healthcare Tech",
+    name: "Sakhawat Hossain",
+    position: "Brand Manager, LGH",
     avatar: "/avatar.png",
     testimonial:
-      "Incredible attention to detail and user-centered design approach. Our healthcare platform is now more accessible and user-friendly than ever before.",
-    company: "MedTech Pro",
+      "Oriture excels with meticulous attention to detail, commitment to excellence, and creative problem-solving. Their inventive solutions captivate visually and significantly enhance the user experience.",
+    company: "Lebanese Green House",
+    logo: "/brand3.png",
+  },
+  {
+    id: 4,
+    name: "Mahadi Mosia",
+    position: "Founder, Ntate Jane Foundation",
+    avatar: "/workHeroAv1.png",
+    testimonial:
+      "Mohon and his team created a thoughtful and user-centered design for LiftUp AI. The interface feels modern, clean, and easy to navigate, making the learning experience much smoother for students. His design approach truly helped shape the product vision.",
+    company: "LiftUp AI",
     logo: "/brand6.png",
+  },
+  {
+    id: 5,
+    name: "Ahnaf Tahmid Uddin",
+    position: "CTO, AP Classroom",
+    avatar: "/workHeroAv2.png",
+    testimonial:
+      "Oriture delivered a clean and professional brand identity for AP Classroom. The design perfectly reflects the spirit of education and makes the brand feel modern, trustworthy, and student-friendly. It was a smooth and collaborative experience working together.",
+    company: "AP Classroom",
+    logo: "/brand5.png",
+  },
+  {
+    id: 6,
+    name: "Md Al Amin",
+    position: "CTO, Ghurni Bangladesh",
+    avatar: "/workHeroAv3.png",
+    testimonial:
+      "Oriture did an excellent job translating our vision for Ghurni Bangladesh into a clean and culturally meaningful design. The platform beautifully represents local artisans and their crafts while keeping the user experience simple and accessible. A very professional and thoughtful designer to work with.",
+    company: "Ghurni Bangladesh",
+    logo: "/brand7.png",
   },
 ];
 

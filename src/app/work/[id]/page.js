@@ -301,6 +301,7 @@ function ProjectSection({ section }) {
               <div
                 key={i}
                 className="group relative rounded-2xl overflow-hidden cursor-zoom-in"
+                style={img.bgColor ? { background: img.bgColor } : {}}
                 onClick={() => setModalIndex(i)}
               >
                 <img

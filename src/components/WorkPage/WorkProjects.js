@@ -39,8 +39,8 @@ const CATEGORY_ICONS = {
   "Agency": Building2,
 };
 
-// Build PROJECTS array from centralized data
-export const PROJECTS = projectsData.map((p) => ({
+// Build PROJECTS array from centralized data — exclude hidden entries
+export const PROJECTS = projectsData.filter((p) => !p.hidden).map((p) => ({
   id: p.id,
   category: p.category,
   services: p.services || [],
@@ -53,8 +53,8 @@ export const PROJECTS = projectsData.map((p) => ({
   hasDetail: !!p.detailPage,
 }));
 
-// Tabs arranged to balance row widths (mix of long and short labels)
-const REAL_TABS = [
+// All possible tabs — filtered at render time to only show categories with projects
+const ALL_INDUSTRY_TABS = [
   { label: "All Industries", key: "All Industries" },
   { label: "AI", key: "AI" },
   { label: "EdTech", key: "EdTech" },
@@ -71,12 +71,7 @@ const REAL_TABS = [
   { label: "Agency", key: "Agency" },
 ];
 
-function getCount(key) {
-  if (key === "All Industries") return PROJECTS.length;
-  return PROJECTS.filter((p) => p.category === key).length;
-}
-
-const SERVICE_TABS = [
+const ALL_SERVICE_TABS = [
   { label: "All Services", key: "All Services" },
   { label: "UI/UX Design", key: "UI/UX Design" },
   { label: "Web Development", key: "Web Development" },
@@ -86,9 +81,28 @@ const SERVICE_TABS = [
   { label: "MVP", key: "MVP" },
 ];
 
-function getServiceCount(key) {
-  if (key === "All Services") return PROJECTS.length;
-  return PROJECTS.filter((p) => p.services && p.services.includes(key)).length;
+// Only show industry tabs that have at least one project
+const REAL_TABS = ALL_INDUSTRY_TABS.filter(
+  ({ key }) => key === "All Industries" || PROJECTS.some((p) => p.category === key)
+);
+
+// Only show service tabs that have at least one project
+const SERVICE_TABS = ALL_SERVICE_TABS.filter(
+  ({ key }) => key === "All Services" || PROJECTS.some((p) => p.services && p.services.includes(key))
+);
+
+// Count projects for an industry tab, optionally filtered by active service
+function getCount(key, activeService = "All Services") {
+  const byIndustry = key === "All Industries" ? PROJECTS : PROJECTS.filter((p) => p.category === key);
+  if (activeService === "All Services") return byIndustry.length;
+  return byIndustry.filter((p) => p.services && p.services.includes(activeService)).length;
+}
+
+// Count projects for a service tab, optionally filtered by active industry
+function getServiceCount(key, activeTab = "All Industries") {
+  const byIndustry = activeTab === "All Industries" ? PROJECTS : PROJECTS.filter((p) => p.category === activeTab);
+  if (key === "All Services") return byIndustry.length;
+  return byIndustry.filter((p) => p.services && p.services.includes(key)).length;
 }
 
 // --- PROJECT CARD ---
@@ -307,7 +321,7 @@ export default function WorkProjects() {
             {/* TABS */}
             <div className="flex flex-wrap gap-2 mb-6">
               {REAL_TABS.map(({ label, key }) => {
-                const count = getCount(key);
+                const count = getCount(key, activeService);
                 const isActive = activeTab === key;
                 const IconComponent = CATEGORY_ICONS[key] || Layers;
                 return (
@@ -359,7 +373,7 @@ export default function WorkProjects() {
               {servicesOpen && (
                 <div className="flex flex-wrap gap-2">
                   {SERVICE_TABS.map(({ label, key }) => {
-                    const count = getServiceCount(key);
+                    const count = getServiceCount(key, activeTab);
                     const isActive = activeService === key;
                     return (
                       <button
@@ -463,7 +477,7 @@ export default function WorkProjects() {
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {REAL_TABS.map(({ label, key }) => {
-                const count = getCount(key);
+                const count = getCount(key, activeService);
                 const isActive = activeTab === key;
                 return (
                   <button
@@ -498,7 +512,7 @@ export default function WorkProjects() {
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {SERVICE_TABS.map(({ label, key }) => {
-                const count = getServiceCount(key);
+                const count = getServiceCount(key, activeTab);
                 const isActive = activeService === key;
                 return (
                   <button
@@ -551,8 +565,45 @@ export default function WorkProjects() {
             </div>
 
             {displayedProjects.length === 0 && (
-              <div className="flex items-center justify-center py-24 text-gray-600 text-sm">
-                No projects in this category yet.
+              <div className="flex flex-col items-center justify-center py-24 px-6 text-center">
+                {/* Glow rings */}
+                <div className="relative mb-8">
+                  <div
+                    className="w-28 h-28 rounded-full flex items-center justify-center"
+                    style={{
+                      background: "radial-gradient(circle, rgba(209,255,82,0.07) 0%, transparent 70%)",
+                      border: "1px solid rgba(209,255,82,0.1)",
+                    }}
+                  >
+                    <div
+                      className="w-16 h-16 rounded-full flex items-center justify-center"
+                      style={{
+                        background: "radial-gradient(circle, rgba(209,255,82,0.1) 0%, transparent 70%)",
+                        border: "1px solid rgba(209,255,82,0.18)",
+                      }}
+                    >
+                      <Layers className="w-6 h-6" style={{ color: "rgba(209,255,82,0.45)" }} />
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-white text-2xl font-normal font-newsreader mb-3 leading-snug">
+                  No projects{" "}
+                  <em className="text-[#D1FF52] italic font-newsreader">yet</em>
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-[260px]">
+                  We&apos;re adding projects to this category soon. Explore all our work in the meantime.
+                </p>
+                <button
+                  onClick={() => {
+                    handleTabChange("All Industries");
+                    handleServiceChange("All Services");
+                  }}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#D1FF52] border border-[#D1FF52]/30 px-5 py-2.5 rounded-full hover:bg-[#D1FF52]/10 transition-colors duration-300"
+                >
+                  View all projects
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             )}
           </div>

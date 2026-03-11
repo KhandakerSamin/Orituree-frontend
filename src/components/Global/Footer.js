@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ArrowUpRight,
   Download,
@@ -35,11 +36,11 @@ const developmentServices = [
   { label: "Mobile Development", href: "#" },
 ];
 
-const company = [
+const baseCompany = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/case-studies" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "CONTACT_PLACEHOLDER" },
   { label: "Insight", href: "/blog" },
 ];
 
@@ -52,6 +53,12 @@ const socials = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const contactHref = pathname === "/" ? "#contact" : "/contact";
+  const company = baseCompany.map((l) =>
+    l.href === "CONTACT_PLACEHOLDER" ? { ...l, href: contactHref } : l
+  );
+
   return (
     <footer className="relative w-full overflow-hidden bg-black">
 
@@ -249,7 +256,7 @@ export default function Footer() {
             {/* CTA */}
             <div className="flex items-center gap-2 group/cta">
               <Link
-                href="/contact"
+                href={contactHref}
                 className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
               >
                 Contact Us

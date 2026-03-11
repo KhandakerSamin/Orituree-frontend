@@ -3,9 +3,31 @@ import AnimatedFavicon from "@/components/Global/AnimatedFavicon"
 
 
 export const metadata = {
-  title: "Oriture - Digital Agency",
-  description: "Professional digital agency services for modern businesses",
-  generator: "v0.app",
+  title: "Oriture — UI/UX Design & Development Agency",
+  description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
+  metadataBase: new URL("https://www.oriture.co"),
+  openGraph: {
+    title: "Oriture — UI/UX Design & Development Agency",
+    description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
+    url: "https://www.oriture.co",
+    siteName: "Oriture",
+    images: [
+      {
+        url: "/OritureCover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Oriture — UI/UX Design & Development Agency",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oriture — UI/UX Design & Development Agency",
+    description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
+    images: ["/OritureCover.jpg"],
+  },
 }
 
 export default function RootLayout({ children }) {
