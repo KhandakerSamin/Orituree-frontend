@@ -16,7 +16,8 @@ import {
   Newspaper, 
   Users, 
   Megaphone, 
-  Building2 
+  Building2,
+  ChevronDown,
 } from "lucide-react";
 import projectsData from "@/data/projectsData";
 
@@ -42,6 +43,7 @@ const CATEGORY_ICONS = {
 export const PROJECTS = projectsData.map((p) => ({
   id: p.id,
   category: p.category,
+  services: p.services || [],
   workPage: {
     image: p.homepage.homepageThumbnail,
     heading: p.homepage.projectTitle,
@@ -72,6 +74,21 @@ const REAL_TABS = [
 function getCount(key) {
   if (key === "All Industries") return PROJECTS.length;
   return PROJECTS.filter((p) => p.category === key).length;
+}
+
+const SERVICE_TABS = [
+  { label: "All Services", key: "All Services" },
+  { label: "UI/UX Design", key: "UI/UX Design" },
+  { label: "Web Development", key: "Web Development" },
+  { label: "Branding", key: "Branding" },
+  { label: "Website Design", key: "Website Design" },
+  { label: "Graphic Design", key: "Graphic Design" },
+  { label: "MVP", key: "MVP" },
+];
+
+function getServiceCount(key) {
+  if (key === "All Services") return PROJECTS.length;
+  return PROJECTS.filter((p) => p.services && p.services.includes(key)).length;
 }
 
 // --- PROJECT CARD ---
@@ -164,6 +181,8 @@ function ProjectCard({ project, index, shouldAnimate }) {
 // --- MAIN COMPONENT ---
 export default function WorkProjects() {
   const [activeTab, setActiveTab] = useState("All Industries");
+  const [activeService, setActiveService] = useState("All Services");
+  const [servicesOpen, setServicesOpen] = useState(true);
   const [displayedProjects, setDisplayedProjects] = useState(PROJECTS);
   const [rightVisible, setRightVisible] = useState(true);
   const [sectionInView, setSectionInView] = useState(false);
@@ -202,29 +221,51 @@ export default function WorkProjects() {
       e.stopPropagation();
     }
     const sectionTop = sectionRef.current?.getBoundingClientRect().top + window.scrollY || 0;
-    const stickyTriggerScroll = sectionTop + 16; // Position where tabs become sticky
+    const stickyTriggerScroll = sectionTop + 16;
     
-    // Fade out right panel
     setRightVisible(false);
     
     setTimeout(() => {
       setActiveTab(key);
-      const newProjects = key === "All Industries" 
-        ? PROJECTS 
-        : PROJECTS.filter((p) => p.category === key);
+      const newProjects = PROJECTS.filter((p) => {
+        const matchIndustry = key === "All Industries" || p.category === key;
+        const matchService = activeService === "All Services" || (p.services && p.services.includes(activeService));
+        return matchIndustry && matchService;
+      });
       setDisplayedProjects(newProjects);
       
-      // Scroll to sticky trigger point - tabs stay in place, cards reset
       window.scrollTo({ top: Math.max(0, stickyTriggerScroll), behavior: "smooth" });
       
-      // Reset and trigger card animations
       setShouldAnimateCards(false);
       setTimeout(() => {
         setRightVisible(true);
         setShouldAnimateCards(true);
       }, 50);
     }, 200);
-  }, [activeTab]);
+  }, [activeTab, activeService]);
+
+  const handleServiceChange = useCallback((key) => {
+    if (key === activeService) return;
+    const sectionTop = sectionRef.current?.getBoundingClientRect().top + window.scrollY || 0;
+    const stickyTriggerScroll = sectionTop + 16;
+
+    setRightVisible(false);
+    setTimeout(() => {
+      setActiveService(key);
+      const newProjects = PROJECTS.filter((p) => {
+        const matchIndustry = activeTab === "All Industries" || p.category === activeTab;
+        const matchService = key === "All Services" || (p.services && p.services.includes(key));
+        return matchIndustry && matchService;
+      });
+      setDisplayedProjects(newProjects);
+      window.scrollTo({ top: Math.max(0, stickyTriggerScroll), behavior: "smooth" });
+      setShouldAnimateCards(false);
+      setTimeout(() => {
+        setRightVisible(true);
+        setShouldAnimateCards(true);
+      }, 50);
+    }, 200);
+  }, [activeService, activeTab]);
 
   return (
     <section
@@ -263,7 +304,7 @@ export default function WorkProjects() {
               </h2>
             </div>
 
-            {/* TABS - Dynamic width, wrapped in grid-like layout */}
+            {/* TABS */}
             <div className="flex flex-wrap gap-2 mb-6">
               {REAL_TABS.map(({ label, key }) => {
                 const count = getCount(key);
@@ -278,18 +319,14 @@ export default function WorkProjects() {
                       background: "linear-gradient(270deg, rgba(109, 85, 255, 0.05) 0%, rgba(109, 85, 255, 0.1) 100%)",
                     }}
                   >
-                    {/* Category icon */}
                     <IconComponent 
                       className={`w-3.5 h-3.5 flex-shrink-0 transition-colors duration-300 ${isActive ? "text-[#D1FF52]" : "text-gray-600"}`}
                     />
-                    
                     <span
                       className={`text-sm font-medium whitespace-nowrap transition-colors duration-300 ${isActive ? "text-white" : "text-gray-500"}`}
                     >
                       {label}
                     </span>
-                    
-                    {/* Count badge */}
                     <span
                       className={`
                         w-5 h-5 text-[10px] font-bold rounded-full flex-shrink-0 
@@ -307,6 +344,57 @@ export default function WorkProjects() {
               })}
             </div>
 
+            {/* SERVICES ACCORDION */}
+            <div className="mb-6">
+              <button
+                type="button"
+                onClick={() => setServicesOpen((o) => !o)}
+                className="flex items-center justify-between w-full mb-3 group"
+              >
+                <span className="text-[14px] font-bold tracking-[2.5px] uppercase text-white/70">Services</span>
+                <ChevronDown
+                  className={`w-5 h-5 text-white/70 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {servicesOpen && (
+                <div className="flex flex-wrap gap-2">
+                  {SERVICE_TABS.map(({ label, key }) => {
+                    const count = getServiceCount(key);
+                    const isActive = activeService === key;
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => handleServiceChange(key)}
+                        className="flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all duration-300 cursor-pointer"
+                        style={{
+                          background: "linear-gradient(270deg, rgba(109, 85, 255, 0.05) 0%, rgba(109, 85, 255, 0.1) 100%)",
+                        }}
+                      >
+                        <span
+                          className={`text-sm font-medium whitespace-nowrap transition-colors duration-300 ${isActive ? "text-white" : "text-gray-500"}`}
+                        >
+                          {label}
+                        </span>
+                        <span
+                          className={`
+                            w-5 h-5 text-[10px] font-bold rounded-full flex-shrink-0 
+                            flex items-center justify-center transition-all duration-300
+                            ${isActive
+                              ? "bg-[#D1FF52] text-black"
+                              : "bg-transparent text-white/60 border border-[#D1FF52]/20"
+                            }
+                          `}
+                        >
+                          {count < 10 ? `0${count}` : count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
             {/* CTA CARD */}
             <div
               className="rounded-2xl p-5 mt-5 flex flex-col gap-4 backdrop-blur-xl"
@@ -316,7 +404,7 @@ export default function WorkProjects() {
             >
               {/* Avatar stack */}
               <div className="flex -space-x-3">
-                {["/saminAA.png", "/nafisAA.png", "/mohon.png"].map((src, i) => (
+                {["/mohon.png", "/nafisAA.png", "/saminA.png"].map((src, i) => (
                   <div
                     key={i}
                     className="w-9 h-9 rounded-full overflow-hidden bg-gray-300 border-2 border-white/15 relative"
@@ -369,9 +457,9 @@ export default function WorkProjects() {
                 </em>
               </h2>
             </div>
-            {/* Mobile tab strip */}
+            {/* Mobile industry tab strip */}
             <div
-              className="flex lg:hidden gap-2 overflow-x-auto pb-4 mb-6"
+              className="flex lg:hidden gap-2 overflow-x-auto pb-2 mb-3"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {REAL_TABS.map(({ label, key }) => {
@@ -387,6 +475,42 @@ export default function WorkProjects() {
                       ${isActive 
                         ? "bg-violet-500/30 border border-[#D1FF52]/30 text-white" 
                         : "bg-white/[0.06] border border-white/[0.08] text-gray-500"
+                      }
+                    `}
+                  >
+                    {label}
+                    <span
+                      className={`
+                        text-xs rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0
+                        ${isActive ? "bg-[#D1FF52] text-black" : "bg-white/10 text-gray-500"}
+                      `}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile services tab strip */}
+            <div
+              className="flex lg:hidden gap-2 overflow-x-auto pb-4 mb-6"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {SERVICE_TABS.map(({ label, key }) => {
+                const count = getServiceCount(key);
+                const isActive = activeService === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => handleServiceChange(key)}
+                    className={`
+                      flex items-center gap-1.5 px-3 py-1.5 rounded-full flex-shrink-0 
+                      text-sm whitespace-nowrap cursor-pointer transition-all duration-300
+                      ${isActive 
+                        ? "bg-white/15 border border-white/20 text-white" 
+                        : "bg-white/[0.04] border border-white/[0.06] text-gray-500"
                       }
                     `}
                   >

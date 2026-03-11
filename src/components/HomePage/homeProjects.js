@@ -12,8 +12,8 @@ const PROJECTS = [
     tags: ["Booking Platform", "Booking Platform", "Booking Platform"],
     testimonial: {
       text: "Oriture delivered an excellent design for TripKing. The platform feels modern, organized, and easy to navigate for booking hotels, flights, and travel services. His design thinking helped simplify a complex travel system into a smooth user experience.",
-      author: "Mahfuzar Rahman",
-      role: "Founder at TripKing International",
+      author: "Shakil Shareef",
+      role: "Development Lead, Tripking",
       avatar: "/hp1-avatar.png",
     },
     images: ["/hp1-1.png", "/hp1-2.png", "/hp1-3.png"],

@@ -151,7 +151,7 @@ export default function FAQSection() {
           >
             {/* Avatars */}
             <div className="flex -space-x-3">
-              {["/saminA.png", "/nafisAA.png", "/mohon.png"].map((src, i) => (
+              {["/mohon.png", "/nafisAA.png", "/saminA.png"].map((src, i) => (
                 <div
                   key={i}
                   className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white/20 relative bg-gray-300"

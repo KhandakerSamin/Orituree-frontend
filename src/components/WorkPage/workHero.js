@@ -4,47 +4,47 @@ import { useState, useEffect, useRef } from "react";
 const projects = [
   {
     id: 1,
-    image: "/workhero1.png",
-    title: "Lebanese Grill House",
+    image: "/workHero1.png",
+    title: "LiftUp Ai",
     description:
-      "We Partnered With Lebanese Green House To Craft A Clean, Elegant, And Conversion-Focused Digital Experience That Reflects Their Brand Identity And Elevates Their Online Presence.",
-    tags: ["Hospitality", "Restaurant"],
+      "LiftUp AI is an AI-powered learning platform designed to provide personalized education experiences for students. The project focused on designing a clean, intuitive, and engaging interface that helps users easily navigate lessons, track progress, and interact with AI-driven learning features.",
+    tags: ["EdTech", "App Design"],
     testimonial:
-      "Oriture Excels With Meticulous Attention To Detail, Commitment To Excellence, And Creative Problem-Solving. Their Inventive Solutions Captivate Visually And Significantly Enhance The User Experience.",
+      "Mohon and his team created a thoughtful and user-centered design for LiftUp AI. The interface feels modern, clean, and easy to navigate, making the learning experience much smoother for students. His design approach truly helped shape the product vision.”",
     reviewer: {
-      name: "Sakhawat Hossain",
-      role: "Brand Manager, LGH",
-      avatar: "/avatar.png",
+      name: "Mahadi Mosia",
+      role: "Founder, Ntate Jane Foundation",
+      avatar: "/workHeroAv1.png",
     },
   },
   {
     id: 2,
     image: "/workHero2.png",
-    title: "Nova Tech Solutions",
+    title: "AP Classroom",
     description:
-      "We Collaborated With Nova Tech To Build A Sleek, Performance-Driven SaaS Dashboard That Streamlines Workflows And Delivers An Intuitive Experience For Their Enterprise Clients.",
-    tags: ["SaaS", "Technology"],
+      "AP Classroom is an educational initiative focused on creating a strong and engaging learning environment for students. The branding project aimed to build a clear visual identity that reflects education, growth, and accessibility.",
+    tags: ["EdTech", "Visual Branding"],
     testimonial:
-      "The Team Delivered Beyond Our Expectations. The Interface Is Polished, Fast, And Our Users Love The New Experience. It Truly Transformed How Our Clients Interact With Our Platform.",
+      "Oriture delivered a clean and professional brand identity for AP Classroom. The design perfectly reflects the spirit of education and makes the brand feel modern, trustworthy, and student-friendly. It was a smooth and collaborative experience working together.",
     reviewer: {
-      name: "Ariana Patel",
-      role: "Product Lead, Nova Tech",
-      avatar: "/workhero1.png",
+      name: "Ahnaf Tahmid Uddin",
+      role: "CTO, AP Classrom",
+      avatar: "/workHeroAv2.png",
     },
   },
   {
     id: 3,
     image: "/workHero3.png",
-    title: "Bloom Fashion Studio",
+    title: "Ghuri Bangladesh",
     description:
-      "We Designed An Immersive E-Commerce Experience For Bloom Fashion Studio That Blends Editorial Storytelling With Seamless Shopping — Increasing Conversions By 40% In The First Month.",
-    tags: ["E-Commerce", "Fashion"],
+      "Ghurni Bangladesh is a reverse vending machine project designed to encourage recycling by allowing users to deposit plastic bottles and receive rewards in return. The goal of the project is to promote environmental awareness and sustainable waste management through an easy and engaging digital experience.",
+    tags: ["Sustainability", "Interface Design"],
     testimonial:
-      "Our Online Store Finally Feels Like Us. The Design Is Stunning And The User Journey Is So Smooth. Sales Have Never Been Better Since The Relaunch. Absolutely Recommend Oriture.",
+      "Oriture did an excellent job translating our vision for Ghurni Bangladesh into a clean and culturally meaningful design. The platform beautifully represents local artisans and their crafts while keeping the user experience simple and accessible. A very professional and thoughtful designer to work with.",
     reviewer: {
-      name: "Mia Johansson",
-      role: "Creative Director, Bloom",
-      avatar: "/avatar.png",
+      name: "Md Al Amin",
+      role: "CTO, Ghurni Bangladesh",
+      avatar: "/workHeroAv3.png",
     },
   },
 ];
@@ -226,12 +226,12 @@ export default function WorkHero() {
       />
 
       {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-8 pt-15 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-8 pt-14 flex flex-col items-center">
 
         {/* Heading */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight tracking-tight font-serif"
+            className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight tracking-tight font-newsreader"
           >
             From Concept to
           </h1>
@@ -252,30 +252,30 @@ export default function WorkHero() {
           </h1>
 
           {/* Avatars + count */}
-          <div className="flex items-center justify-center gap-3 mt-5">
-            <div className="flex -space-x-3">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="w-9 h-9 rounded-full border-2 border-black overflow-hidden"
-                  style={{ zIndex: 3 - i }}
-                >
-                  <img
-                    src="/avatar.png"
-                    alt="avatar"
+                <div className="flex items-center justify-center gap-3 mt-5">
+                <div className="flex -space-x-3">
+                  {projects.map((p, i) => (
+                  <div
+                    key={p.id}
+                    className="w-9 h-9 rounded-full border-2 border-black overflow-hidden"
+                    style={{ zIndex: projects.length - i }}
+                  >
+                    <img
+                    src={p.reviewer.avatar}
+                    alt={p.reviewer.name}
                     className="w-full h-full object-cover"
-                  />
+                    />
+                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <span className="text-white font-bold text-lg leading-none">30+</span>
-              <p className="text-gray-400 text-xs leading-none mt-0.5">Project Done</p>
-            </div>
-          </div>
-        </div>
+                <div className="text-left">
+                  <span className="text-white font-bold text-lg leading-none">30+</span>
+                  <p className="text-gray-400 text-xs leading-none mt-0.5">Project Done</p>
+                </div>
+                </div>
+              </div>
 
-        {/* Main carousel area */}
+              {/* Main carousel area */}
         <div className="w-full flex items-center justify-center gap-5 lg:gap-7">
 
           {/* LEFT CARD - Static container, animated content */}

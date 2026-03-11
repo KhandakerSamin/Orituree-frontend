@@ -2,6 +2,7 @@ const projectsData = [
   {
     id: "golpo-app",
     category: "Music",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/cs1-1.png",
       projectTitle: "Golpo",
@@ -158,6 +159,7 @@ const projectsData = [
   {
     id: "tripking",
     category: "E-Commerce",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/cs2-2.png",
       projectTitle: "TripKing",
@@ -301,6 +303,7 @@ const projectsData = [
   {
     id: "factwatch",
     category: "News",
+    services: ["UI/UX Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/cs3-2.png",
       projectTitle: "FactWatch",
@@ -419,6 +422,7 @@ const projectsData = [
   {
     id: "lgh",
     category: "Restaurant",
+    services: ["Branding", "Graphic Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Lebanese Grill House",
@@ -433,6 +437,7 @@ const projectsData = [
   {
     id: "liftup",
     category: "EdTech",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "LiftUP",
@@ -445,6 +450,7 @@ const projectsData = [
   {
     id: "fahad-tutorial",
     category: "EdTech",
+    services: ["Branding", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "Fahad Tutorial",
@@ -457,6 +463,7 @@ const projectsData = [
   {
     id: "kanonic-edtech",
     category: "EdTech",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Kanonic",
@@ -469,6 +476,7 @@ const projectsData = [
   {
     id: "nexus",
     category: "EdTech",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Nexus",
@@ -481,6 +489,7 @@ const projectsData = [
   {
     id: "diu-ds-lab",
     category: "EdTech",
+    services: ["Branding", "Graphic Design"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "DIU DS Lab",
@@ -493,6 +502,7 @@ const projectsData = [
   {
     id: "ap",
     category: "EdTech",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "AP",
@@ -505,6 +515,7 @@ const projectsData = [
   {
     id: "eclips",
     category: "EdTech",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Eclips",
@@ -517,6 +528,7 @@ const projectsData = [
   {
     id: "we-pilot",
     category: "AI",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "We Pilot",
@@ -529,6 +541,7 @@ const projectsData = [
   {
     id: "kanonic-ai",
     category: "AI",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Kanonic AI",
@@ -541,6 +554,7 @@ const projectsData = [
   {
     id: "hf",
     category: "Restaurant",
+    services: ["Branding", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "HF Restaurant",
@@ -553,6 +567,7 @@ const projectsData = [
   {
     id: "burger-buddy",
     category: "Restaurant",
+    services: ["UI/UX Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Burger Buddy",
@@ -565,6 +580,7 @@ const projectsData = [
   {
     id: "trs",
     category: "Podcast",
+    services: ["Branding", "Graphic Design"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "TRS",
@@ -577,6 +593,7 @@ const projectsData = [
   {
     id: "ucast",
     category: "Podcast",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "Ucast",
@@ -589,6 +606,7 @@ const projectsData = [
   {
     id: "marshan",
     category: "E-Commerce",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Marshan",
@@ -601,6 +619,7 @@ const projectsData = [
   {
     id: "ray-task",
     category: "Automobile",
+    services: ["UI/UX Design", "MVP"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Ray Task",
@@ -613,6 +632,7 @@ const projectsData = [
   {
     id: "dm-task",
     category: "Automobile",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "DM Task",
@@ -625,6 +645,7 @@ const projectsData = [
   {
     id: "gofast",
     category: "Automobile",
+    services: ["Branding", "Graphic Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "GoFast",
@@ -637,6 +658,7 @@ const projectsData = [
   {
     id: "tintype",
     category: "Productivity",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Tintype",
@@ -649,6 +671,7 @@ const projectsData = [
   {
     id: "ghurni",
     category: "Green Tech",
+    services: ["UI/UX Design", "Web Development"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Ghurni",
@@ -661,6 +684,7 @@ const projectsData = [
   {
     id: "trending-today",
     category: "News",
+    services: ["UI/UX Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Trending Today",
@@ -673,6 +697,7 @@ const projectsData = [
   {
     id: "nuo",
     category: "News",
+    services: ["UI/UX Design", "Branding", "Graphic Design"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Nuo",
@@ -685,6 +710,7 @@ const projectsData = [
   {
     id: "pzs",
     category: "Association",
+    services: ["Web Development", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "PZS",
@@ -697,6 +723,7 @@ const projectsData = [
   {
     id: "demand-agency",
     category: "Marketing",
+    services: ["Branding", "Graphic Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Demand Agency",
@@ -709,6 +736,7 @@ const projectsData = [
   {
     id: "codeflee",
     category: "Agency",
+    services: ["Branding", "Graphic Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workhero1.png",
       projectTitle: "Codeflee",
@@ -721,6 +749,7 @@ const projectsData = [
   {
     id: "syscomatic",
     category: "Agency",
+    services: ["Branding", "Web Development"],
     homepage: {
       homepageThumbnail: "/workHero2.png",
       projectTitle: "Syscomatic",
@@ -733,6 +762,7 @@ const projectsData = [
   {
     id: "legit-banda",
     category: "Agency",
+    services: ["Branding", "Graphic Design", "Website Design"],
     homepage: {
       homepageThumbnail: "/workHero3.png",
       projectTitle: "Legit Banda",

@@ -29,7 +29,7 @@ const TEAM = [
     id: 2,
     name: "Md.Nafis",
     position: "COO",
-    photo: "/nafis.png",
+    photo: "/nafisAA.png",
     bg: "#FFFFFF",                          // white
     socials: [
       { type: "linkedin", url: "https://linkedin.com/in/username" },
@@ -41,7 +41,7 @@ const TEAM = [
     id: 3,
     name: "Khandaker Samin Yeasar",
     position: "Development Lead",
-    photo: "/samin.png",
+    photo: "/saminAA.png",
     bg: "#D1FF52",                           // purple
     socials: [
       { type: "linkedin",  url: "https://linkedin.com/in/username" },

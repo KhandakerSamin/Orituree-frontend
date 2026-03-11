@@ -154,15 +154,16 @@ export default function IdeaToImpact() {
 
       {/* CTA Bar */}
       <div
-        className="mt-5 sm:mt-6 max-w-[1300px] w-full rounded-2xl  px-5 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+        className="mt-5 sm:mt-6 max-w-[1300px] w-full px-5 sm:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
         style={{
+          borderRadius: "0 16px 16px 16px",
           background: "linear-gradient(360deg, rgba(0,0,0,0.2) 0%, rgba(109,85,255,0.2) 100%)",
         }}
       >
         {/* Avatar + Text */}
         <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
           <img
-            src="/saminAA.png"
+            src="/mohon.png"
             alt="Team"
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover object-top flex-shrink-0"
           />

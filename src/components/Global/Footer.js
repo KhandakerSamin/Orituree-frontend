@@ -8,6 +8,7 @@ import {
   Instagram,
   Linkedin,
   Youtube,
+  Figma
 } from "lucide-react";
 
 const brandingServices = [
@@ -326,15 +327,18 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 sm:gap-5 py-5">
 
           {/* Company deck download */}
-          <button className="flex items-center gap-3 group/deck">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
-              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+          <Link href="https://www.figma.com/design/c4QNlJIpbOhtrcz1y5RhH1/Oriture-Projects?node-id=2-2&p=f&t=AXTju7MGzTI7z3Ll-0" >
+          <button className="flex items-center gap-3 group/deck cursor-pointer">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
+              <Figma  className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-black" />
             </div>
             <div className="text-left">
-              <p className="text-white text-sm sm:text-base font-medium leading-tight">Company Deck</p>
-              <p className="text-white/60 text-xs sm:text-sm">PDF, 3 MB</p>
+              <p className="text-white pb-1 text-sm sm:text-lg font-newsreader font-medium leading-tight">Live Portfolio</p>
+              <p className="text-white/60 text-xs sm:text-sm">from figma playground</p>
             </div>
           </button>
+          </Link>
+          
 
           {/* Copyright */}
           <p className="text-white/60 text-xs sm:text-sm text-center order-last sm:order-none">
