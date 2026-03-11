@@ -101,23 +101,28 @@ export default function Navbar() {
       hasDropdown: true,
       megaMenu: [
         {
-          title: "FRONTEND",
-          items: [
-            { label: "React.js", desc: "Interactive UI development" },
-            { label: "Next.js", desc: "Server-side rendered apps" },
-            { label: "Tailwind CSS", desc: "Utility-first styling" },
-            { label: "Framer Motion", desc: "Animated UI elements" },
-            { label: "Zustand", desc: "State management" },
-          ],
-        },
-        {
-          title: "BACKEND",
-          items: [
-            { label: "Node.js", desc: "Scalable server environments" },
-            { label: "Express.js", desc: "Fast web framework" },
-            { label: "GraphQL", desc: "Flexible API queries" },
-            { label: "REST APIs", desc: "Robust data communication" },
-            { label: "JWT", desc: "Secure authentication" },
+          title: "ENGINEERING",
+          subSections: [
+            {
+              subtitle: "FRONTEND",
+              items: [
+                { label: "React.js", desc: "Interactive UI development" },
+                { label: "Next.js", desc: "Server-side rendered apps" },
+                { label: "Tailwind CSS", desc: "Utility-first styling" },
+                { label: "Framer Motion", desc: "Animated UI elements" },
+                { label: "Zustand", desc: "State management" },
+              ],
+            },
+            {
+              subtitle: "BACKEND",
+              items: [
+                { label: "Node.js", desc: "Scalable server environments" },
+                { label: "Express.js", desc: "Fast web framework" },
+                { label: "GraphQL", desc: "Flexible API queries" },
+                { label: "REST APIs", desc: "Robust data communication" },
+                { label: "JWT", desc: "Secure authentication" },
+              ],
+            },
           ],
         },
         {
@@ -128,6 +133,17 @@ export default function Navbar() {
             { label: "Prisma", desc: "Next-generation ORM" },
             { label: "Vercel", desc: "Edge deployment & hosting" },
             { label: "Git / GitHub", desc: "Version control system" },
+          ],
+        },
+        {
+          title: "DESIGN TOOLS",
+          items: [
+            { label: "Figma", desc: "UI/UX design & prototyping" },
+            { label: "Adobe Illustrator", desc: "Vector art & branding" },
+            { label: "Adobe Photoshop", desc: "Image editing & compositing" },
+            { label: "Spline", desc: "3D design for the web" },
+            { label: "Webflow", desc: "Visual web development" },
+            { label: "Framer", desc: "Interactive web design" },
           ],
         },
       ],
@@ -188,6 +204,8 @@ export default function Navbar() {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
+
+  const contactHref = pathname === "/" ? "#contact" : "/#contact";
 
   return (
     <>
@@ -331,14 +349,32 @@ export default function Navbar() {
                           {item.megaMenu?.map((column, cIdx) => (
                             <div key={cIdx} className="flex flex-col relative z-10 min-w-[220px]">
                               <h4 className="text-white font-serif tracking-widest text-[14.5px] uppercase mb-6">{column.title}</h4>
-                              <div className="flex flex-col gap-6">
-                                {column.items.map((link, lIdx) => (
-                                  <Link key={lIdx} href={item.href} className="group flex flex-col hover:opacity-100 transition-opacity duration-200" onClick={() => setOpenDropdown(null)}>
-                                    <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] font-newsreader transition-colors">{link.label}</span>
-                                    {link.desc && <span className="text-[13px] text-white/50 mt-1.5 leading-snug font-light">{link.desc}</span>}
-                                  </Link>
-                                ))}
-                              </div>
+                              {column.subSections ? (
+                                <div className="flex gap-8">
+                                  {column.subSections.map((section, sIdx) => (
+                                    <div key={sIdx} className="flex flex-col min-w-[160px]">
+                                      <p className="text-[#D1FF52]/50 text-[10px] tracking-widest uppercase mb-4 font-medium">{section.subtitle}</p>
+                                      <div className="flex flex-col gap-5">
+                                        {section.items.map((link, lIdx) => (
+                                          <div key={lIdx} className="group flex flex-col cursor-default">
+                                            <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] font-newsreader transition-colors">{link.label}</span>
+                                            {link.desc && <span className="text-[13px] text-white/50 mt-1 leading-snug font-light">{link.desc}</span>}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="flex flex-col gap-6">
+                                  {column.items.map((link, lIdx) => (
+                                    <div key={lIdx} className="group flex flex-col cursor-default">
+                                      <span className="text-[14px] font-medium text-white/90 group-hover:text-[#D1FF52] font-newsreader transition-colors">{link.label}</span>
+                                      {link.desc && <span className="text-[13px] text-white/50 mt-1.5 leading-snug font-light">{link.desc}</span>}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -357,7 +393,7 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-2 pr-1 group/ctabtn">
                     <Link
-                      href="/#contact"
+                      href={contactHref}
                       className="border border-[#D1FF52]/40 text-white group-hover/ctabtn:text-black group-hover/ctabtn:bg-[#D1FF52] group-hover/ctabtn:border-[#D1FF52] bg-transparent px-4 py-1.5 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
                     >
                       Hire Us
@@ -379,7 +415,7 @@ export default function Navbar() {
               }`}
             >
               <Link
-                href="/#contact"
+                href={contactHref}
                 className="border border-[#D1FF52]/50 text-white group-hover/ctatop:text-black group-hover/ctatop:bg-[#D1FF52] group-hover/ctatop:border-[#D1FF52] bg-transparent px-5 py-2 rounded-full transition-all duration-300 text-[14px] font-medium whitespace-nowrap"
               >
                 Hire Us
@@ -423,7 +459,7 @@ export default function Navbar() {
             {/* Mobile CTA */}
             <div className="flex items-center gap-1.5 pl-2 border-l border-white/10 ml-1">
               <Link
-                href="/#contact"
+                href={contactHref}
                 className="border border-[#D1FF52]/40 text-white hover:text-black hover:bg-[#D1FF52] hover:border-[#D1FF52] bg-transparent px-3.5 py-1.5 rounded-full transition-all duration-300 text-[12px] font-medium whitespace-nowrap"
               >
                 Hire Us
@@ -581,7 +617,7 @@ export default function Navbar() {
             >
               <div className="flex items-center gap-2 group/cta">
                 <Link
-                  href="/#contact"
+                  href={contactHref}
                   className="flex-1 flex items-center justify-center bg-[#D1FF52] text-black px-5 py-3.5 rounded-full font-semibold text-[14px] transition-all duration-300 hover:shadow-[0_0_28px_rgba(209,255,82,0.3)]"
                   onClick={() => setIsMenuOpen(false)}
                 >

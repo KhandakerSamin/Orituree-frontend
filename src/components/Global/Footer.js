@@ -9,7 +9,8 @@ import {
   Instagram,
   Linkedin,
   Youtube,
-  Figma
+  Figma,
+  MoveUpRight
 } from "lucide-react";
 
 const brandingServices = [
@@ -254,24 +255,21 @@ export default function Footer() {
             </p>
 
             {/* CTA */}
-            <div className="flex items-center gap-2 group/cta">
-              <Link
-                href={contactHref}
-                className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
-              >
-                Contact Us
-              </Link>
-              <button className="border border-[#D1FF52]/50 bg-transparent p-2 sm:p-2.5 rounded-tr-full rounded-b-full transition-all duration-300 group-hover/cta:rounded-t-full group-hover/cta:rounded-bl-none group-hover/cta:bg-[#D1FF52] cursor-pointer">
-                <ArrowUpRight className="w-4 h-4 text-[#D1FF52] group-hover/cta:rotate-45 group-hover/cta:text-black transition-all duration-300" />
-              </button>
-            </div>
+            <div className="flex items-center space-x-2 mt-6 sm:mt-7 md:mt-5 group">
+            <Link href="#contact" className="bg-[#D1FF52] text-black px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium cursor-pointer flex items-center justify-center">
+              Contact Us
+            </Link>
+            <Link href="#contact" className="border border-[#D1FF52]/50 bg-transparent p-2.5 sm:p-3 rounded-tr-full rounded-b-full transition-all duration-300 group-hover:rounded-t-full group-hover:rounded-bl-none group-hover:bg-[#D1FF52] cursor-pointer flex items-center justify-center">
+              <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 text-[#D1FF52] group-hover:text-black" />
+            </Link>
+        </div>
           </div>
 
           {/* Right — Four nav columns */}
           <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 lg:pl-8">
             {/* Branding Services */}
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Branding Services</h4>
+              <h4 className="text-white font-medium text-sm sm:text-[18px] mb-1">Branding Services</h4>
               {brandingServices.map((l) => (
                 <Link
                   key={l.label}
@@ -285,7 +283,7 @@ export default function Footer() {
 
             {/* Design Services */}
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Design Services</h4>
+              <h4 className="text-white font-medium text-sm sm:text-[18px] mb-1">Design Services</h4>
               {designServices.map((l) => (
                 <Link
                   key={l.label}
@@ -299,7 +297,7 @@ export default function Footer() {
 
             {/* Development Services */}
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Development Services</h4>
+              <h4 className="text-white font-medium text-sm sm:text-[18px] mb-1">Development Services</h4>
               {developmentServices.map((l) => (
                 <Link
                   key={l.label}
@@ -313,7 +311,7 @@ export default function Footer() {
 
             {/* Company */}
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h4 className="text-white font-medium text-sm sm:text-base mb-1">Company</h4>
+              <h4 className="text-white font-medium text-sm sm:text-[18px] mb-1">Company</h4>
               {company.map((l) => (
                 <Link
                   key={l.label}
@@ -334,7 +332,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 sm:gap-5 py-5">
 
           {/* Figma */}
-          <Link href="https://www.figma.com/design/c4QNlJIpbOhtrcz1y5RhH1/Oriture-Projects?node-id=2-2&p=f&t=AXTju7MGzTI7z3Ll-0" >
+          <Link href="https://www.figma.com/design/c4QNlJIpbOhtrcz1y5RhH1/Oriture-Projects?node-id=2-2&p=f&t=AXTju7MGzTI7z3Ll-0" 
+          target="_blank">
           <button className="flex items-center gap-3 group/deck cursor-pointer">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#D1FF52] flex items-center justify-center flex-shrink-0">
               <Figma  className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-black" />
@@ -358,6 +357,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={href}
+                target="_blank"
                 className="text-white hover:text-white border p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
               >
                 {isImage ? (

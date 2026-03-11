@@ -181,50 +181,50 @@ export default function Gallery() {
 
           {/* ── Card 1 ── */}
           <PhotoFrame
-            src="/gallary1.png"
+            src="/aboutGallary1.jpeg"
             date="January 2026"
             frameBg="#D1FF52"
             frameRotate="-3deg"
-            imgRotate="9deg"
+            imgRotate="0.2deg"
             imgWidth="100%"
-            imgHeight="100%"
+            imgHeight="96%"
             imgPosition="center center"
             labelColor="#0a0a0a"
           />
 
           {/* ── Card 2 ── */}
           <PhotoFrame
-            src="/gallary2.png"
+            src="/aboutGallary2.jpeg"
             date="January 2026"
             frameBg="#C01BFD"
             frameRotate="2.5deg"
-            imgRotate="-0.5deg"
-            imgWidth="95%"
-            imgHeight="90%"
+            imgRotate=".5deg"
+            imgWidth="97%"
+            imgHeight="95%"
             imgPosition="center center"
             labelColor="#ffffff"
           />
 
           {/* ── Card 3 ── */}
           <PhotoFrame
-            src="/gallary3.png"
+            src="/aboutGallary3.jpeg"
             date="January 2026"
             frameBg="#FFFFFF"
-            frameRotate="-2deg"
-            imgRotate="-5deg"
+            frameRotate="-4deg"
+            imgRotate="-.5deg"
             imgWidth="100%"
-            imgHeight="90%"
+            imgHeight="94%"
             imgPosition="center center"
             labelColor="#0a0a0a"
           />
 
           {/* ── Card 4 ── */}
           <PhotoFrame
-            src="/gallary4.png"
+            src="/aboutGallary4.jpeg"
             date="January 2026"
             frameBg="#C01BFD"
-            frameRotate="3.5deg"
-            imgRotate="-4.5deg"
+            frameRotate="4.5deg"
+            imgRotate="-0.5deg"
             imgWidth="100%"
             imgHeight="95%"
             imgPosition="center center"
@@ -233,11 +233,11 @@ export default function Gallery() {
 
           {/* ── Card 5 ── */}
           <PhotoFrame
-            src="/gallary5.png"
+            src="/aboutGallary5.jpeg"
             date="January 2026"
             frameBg="#FFFFFF"
             frameRotate="-2.5deg"
-            imgRotate="6deg"
+            imgRotate="-0.5deg"
             imgWidth="98%"
             imgHeight="93%"
             imgPosition="center center"
@@ -246,11 +246,11 @@ export default function Gallery() {
 
           {/* ── Card 6 ── */}
           <PhotoFrame
-            src="/gallary6.png"
+            src="/aboutGallary6.jpeg"
             date="January 2026"
             frameBg="#D1FF52"
             frameRotate="2deg"
-            imgRotate="-11deg"
+            imgRotate="1deg"
             imgWidth="100%"
             imgHeight="100%"
             imgPosition="center center"
@@ -259,24 +259,24 @@ export default function Gallery() {
 
           {/* ── Card 7 ── */}
           <PhotoFrame
-            src="/gallary7.png"
+            src="/aboutGallary7.jpeg"
             date="January 2026"
             frameBg="#FFFFFF"
             frameRotate="-3.5deg"
-            imgRotate="-1.3deg"
-            imgWidth="92%"
-            imgHeight="92%"
+            imgRotate="0.5deg"
+            imgWidth="97%"
+            imgHeight="97%"
             imgPosition="center center"
             labelColor="#0a0a0a"
           />
 
           {/* ── Card 8 ── */}
           <PhotoFrame
-            src="/gallary8.png"
+            src="/aboutGallary8.jpeg"
             date="January 2026"
             frameBg="#D1FF52"
             frameRotate="3deg"
-            imgRotate="6deg"
+            imgRotate="0deg"
             imgWidth="97%"
             imgHeight="95%"
             imgPosition="center center"
@@ -285,11 +285,11 @@ export default function Gallery() {
 
           {/* ── Card 9 ── */}
           <PhotoFrame
-            src="/gallary9.png"
+            src="/aboutGallary9.jpeg"
             date="January 2026"
             frameBg="#C01BFD"
             frameRotate="-2deg"
-            imgRotate="-7deg"
+            imgRotate="0deg"
             imgWidth="99%"
             imgHeight="95%"
             imgPosition="center center"

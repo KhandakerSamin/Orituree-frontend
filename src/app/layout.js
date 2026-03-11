@@ -14,8 +14,9 @@ export const metadata = {
     images: [
       {
         url: "/OritureCover.jpg",
-        width: 1200,
-        height: 630,
+        width: 3083,
+        height: 1360,
+        type: "image/jpeg",
         alt: "Oriture — UI/UX Design & Development Agency",
       },
     ],
