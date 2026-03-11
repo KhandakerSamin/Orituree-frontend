@@ -226,7 +226,7 @@ export default function WorkHero() {
       />
 
       {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-8 pt-14 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-5 sm:px-6 lg:px-8 pt-10 flex flex-col items-center">
 
         {/* Heading */}
         <div className="text-center mb-8">

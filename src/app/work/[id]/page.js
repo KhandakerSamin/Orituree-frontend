@@ -443,7 +443,7 @@ function MoreProjects({ currentProject }) {
       <div className="relative z-10 mx-auto max-w-[1370px] px-6 md:px-8">
         {/* Heading — matches screenshot: "See more of our works" */}
         <div className="mb-10 md:mb-14">
-          <h2 className="text-3xl md:text-4xl text-white font-normal font-newsreader leading-snug">
+          <h2 className="text-3xl md:text-5xl text-white font-normal font-newsreader leading-snug">
             See more
             <br />
             of our{" "}

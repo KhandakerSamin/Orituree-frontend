@@ -399,7 +399,7 @@ export default function ContactSection() {
             </div>
             <div>
               <p className="text-white font-newsreader italic text-sm sm:text-base leading-tight">Md Abul Hashem</p>
-              <p className="text-white/50 text-xs mt-0.5">Design Lead, Oriure</p>
+              <p className="text-white/50 text-xs mt-0.5">Design Lead, Oriture</p>
             </div>
           </div>
         </div>

@@ -3,21 +3,21 @@ import AnimatedFavicon from "@/components/Global/AnimatedFavicon"
 
 
 export const metadata = {
-  title: "Oriture — UI/UX Design & Development Agency",
-  description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
+  title: "Oriture: Powering Business Through Design & Development",
+  description: "Oriture is a global design and development studio with 30+ projects, 20+ clients, a team of 7, and work across 11 countries, building scalable digital products through design and technology.",
   metadataBase: new URL("https://www.oriture.co"),
   openGraph: {
-    title: "Oriture — UI/UX Design & Development Agency",
-    description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
+    title: "Oriture: Powering Business Through Design & Development",
+    description: "Oriture is a global design and development studio with 30+ projects, 20+ clients, a team of 7, and work across 11 countries, building scalable digital products through design and technology.",
     url: "https://www.oriture.co",
     siteName: "Oriture",
     images: [
       {
-        url: "/OritureCover.jpg",
-        width: 3083,
-        height: 1360,
-        type: "image/jpeg",
-        alt: "Oriture — UI/UX Design & Development Agency",
+        url: "/oritrueCover.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Oriture: Powering Business Through Design & Development",
       },
     ],
     type: "website",
@@ -25,9 +25,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oriture — UI/UX Design & Development Agency",
-    description: "Oriture is a full-service digital agency specialising in UI/UX design, branding, web development, and MVP builds. We turn ideas into impactful digital products.",
-    images: ["/OritureCover.jpg"],
+    title: "Oriture: Powering Business Through Design & Development",
+    description: "Oriture is a global design and development studio with 30+ projects, 20+ clients, a team of 7, and work across 11 countries, building scalable digital products through design and technology.",
+    images: ["/oritrueCover.png"],
   },
 }
 

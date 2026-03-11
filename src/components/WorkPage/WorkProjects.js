@@ -436,6 +436,7 @@ export default function WorkProjects() {
               <div className="flex items-center gap-2 group/cta mt-2">
                 <a
                   href="https://calendly.com/oriture-agency/30min"
+                  target="_blank"
                   className="border border-[#D1FF52]/50 text-white group-hover/cta:text-black group-hover/cta:bg-[#D1FF52] group-hover/cta:border-[#D1FF52] bg-transparent px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap"
                 >
                   Book a Quick Call

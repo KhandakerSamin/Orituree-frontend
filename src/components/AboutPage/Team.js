@@ -3,12 +3,23 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Linkedin,
-  Twitter,
   Globe,
   Github,
   Instagram,
   Dribbble,
 } from "lucide-react";
+
+const FacebookIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const BehanceIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.5 11.5c.9 0 1.5-.6 1.5-1.5S8.4 8.5 7.5 8.5H5v3h2.5zm.3 2.5H5v3.5h2.8c1 0 1.7-.7 1.7-1.75s-.7-1.75-1.7-1.75zM22 9.5h-5V8h5v1.5zM3 6h5.5C10.4 6 12 7.1 12 9.2c0 1.2-.6 2.1-1.6 2.6 1.3.4 2.1 1.5 2.1 2.9C12.5 17 10.8 18 8.7 18H3V6zm11.8 7c0-2.5 1.8-4.3 4.2-4.3C21.5 8.7 23 10.5 23 13v.8h-6c.2 1.1 1 1.7 2 1.7.7 0 1.3-.3 1.7-.9l1.7.9c-.7 1.2-2 1.9-3.4 1.9-2.5 0-4.2-1.7-4.2-4.4zm2.1-.9h3.8c-.2-.9-.9-1.5-1.9-1.5s-1.7.6-1.9 1.5z" />
+  </svg>
+);
 
 /* ─────────────────────────────────────
    TEAM DATA  — update photo/links here
@@ -18,34 +29,37 @@ const TEAM = [
     id: 1,
     name: "Md Abul Hashem",
     position: "Design Lead",
-    photo: "/mohon2.png",        // ← replace with real path
-    bg: "#C01BFD",                       // lime
+    photo: "/mohon2.png",
+    bg: "#C01BFD",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "dribbble", url: "https://dribbble.com/username" },
+      { type: "linkedin",  url: "https://rebrand.ly/30752c" },
+      { type: "instagram", url: "https://rebrand.ly/link-x2022-716fdb" },
+      { type: "behance",   url: "https://rebrand.ly/680223" },
+      { type: "dribbble",  url: "https://rebrand.ly/abul-hashem-f0eb88" },
     ],
   },
   {
     id: 2,
     name: "Md.Nafis",
     position: "COO",
-    photo: "/nafisAA.png",
-    bg: "#FFFFFF",                          // white
+    photo: "/nafisA.png",
+    bg: "#FFFFFF",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "github",   url: "https://github.com/username" },
-      { type: "twitter",  url: "https://twitter.com/username" },
+      { type: "linkedin",  url: "https://www.linkedin.com/in/nafis-ahmed-sayeem-121396149/" },
+      { type: "facebook",  url: "https://www.facebook.com/nafis.sayeem.2025" },
+      { type: "instagram", url: "https://www.instagram.com/between_biriani_and_iced_tea/" },
     ],
   },
   {
     id: 3,
     name: "Khandaker Samin Yeasar",
     position: "Development Lead",
-    photo: "/saminAA.png",
-    bg: "#D1FF52",                           // purple
+    photo: "/samin.png",
+    bg: "#D1FF52",
     socials: [
-      { type: "linkedin",  url: "https://linkedin.com/in/username" },
-      { type: "instagram", url: "https://instagram.com/username" },
+      { type: "linkedin", url: "https://www.linkedin.com/in/khandakersaminyeasar/" },
+      { type: "github",   url: "https://github.com/KhandakerSamin" },
+      { type: "facebook", url: "https://www.facebook.com/khandakersaminyeasar/" },
     ],
   },
   {
@@ -53,21 +67,23 @@ const TEAM = [
     name: "Sohan Sheikh",
     position: "Visualizer",
     photo: "/sohan.png",
-    bg: "#C01BFD",   
+    bg: "#C01BFD",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "dribbble", url: "https://dribbble.com/username" },
+      { type: "facebook",  url: "https://www.facebook.com/share/1BXYuuGyto/" },
+      { type: "instagram", url: "https://www.instagram.com/share/1BXYuuGyto/" },
+      { type: "behance",   url: "https://www.behance.net/sohansheikh23" },
     ],
   },
   {
     id: 5,
     name: "Md.Rahat Parvez",
     position: "Wordpress Developer",
-    photo: "/rahat.png",
+    photo: "/parvez.png",
     bg: "#FFFFFF",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "twitter",  url: "https://twitter.com/username" },
+      { type: "linkedin",  url: "https://www.linkedin.com/in/md-rahat-pervez" },
+      { type: "facebook",  url: "https://www.facebook.com/mdrahat.parvez.18" },
+      { type: "instagram", url: "https://www.instagram.com/md_r_pervez/" },
     ],
   },
   {
@@ -77,8 +93,8 @@ const TEAM = [
     photo: "/tanvir.png",
     bg: "#D1FF52",   
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "github",   url: "https://github.com/username" },
+      // { type: "linkedin", url: "https://linkedin.com/in/username" },
+      // { type: "github",   url: "https://github.com/username" },
     ],
   },
   {
@@ -86,10 +102,11 @@ const TEAM = [
     name: "Md.Hasibul Islam",
     position: "Ui/Ux Designer",
     photo: "/hasibul.png",
-    bg: "#C01BFD",   
+    bg: "#C01BFD",
     socials: [
-      { type: "linkedin", url: "https://linkedin.com/in/username" },
-      { type: "globe",    url: "https://yourwebsite.com" },
+      { type: "linkedin",  url: "https://www.linkedin.com/in/hasibuix15" },
+      { type: "facebook",  url: "https://www.facebook.com/share/1CVZD2ZS29/" },
+      { type: "instagram", url: "https://www.instagram.com/hasibuix15" },
     ],
   },
 ];
@@ -100,11 +117,12 @@ const TEAM = [
 const SocialIcon = ({ type, url }) => {
   const icons = {
     linkedin:  <Linkedin  className="w-4 h-4" />,
-    twitter:   <Twitter   className="w-4 h-4" />,
     github:    <Github    className="w-4 h-4" />,
     instagram: <Instagram className="w-4 h-4" />,
     dribbble:  <Dribbble  className="w-4 h-4" />,
     globe:     <Globe     className="w-4 h-4" />,
+    facebook:  <FacebookIcon />,
+    behance:   <BehanceIcon />,
   };
 
   return (

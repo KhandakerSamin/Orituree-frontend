@@ -348,7 +348,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-white/60 text-xs sm:text-sm text-center order-last sm:order-none">
-            © 2024–2026, Orituree , All Rights Reserved.
+            © 2024–2026, Oriture , All Rights Reserved.
           </p>
 
           {/* Socials */}
