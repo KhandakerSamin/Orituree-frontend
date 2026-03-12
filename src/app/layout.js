@@ -60,9 +60,9 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon1.png", type: "image/png" },
+      { url: "/fav.gif", type: "image/gif" },
     ],
-    shortcut: "/favicon1.png",
+    shortcut: "/fav.gif",
   },
   verification: {
     google: "",   // paste Google Search Console verification token here when available
@@ -157,7 +157,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="icon" href="/favicon1.png" type="image/png" />
+        <link rel="icon" href="/fav.gif" type="image/gif" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet" />
         <script
