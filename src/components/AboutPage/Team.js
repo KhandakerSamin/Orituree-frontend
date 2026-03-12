@@ -64,22 +64,10 @@ const TEAM = [
   },
   {
     id: 4,
-    name: "Sohan Sheikh",
-    position: "Visualizer",
-    photo: "/sohan.png",
-    bg: "#C01BFD",
-    socials: [
-      { type: "facebook",  url: "https://www.facebook.com/share/1BXYuuGyto/" },
-      { type: "instagram", url: "https://www.instagram.com/share/1BXYuuGyto/" },
-      { type: "behance",   url: "https://www.behance.net/sohansheikh23" },
-    ],
-  },
-  {
-    id: 5,
     name: "Md.Rahat Parvez",
     position: "Wordpress Developer",
     photo: "/parvez.png",
-    bg: "#FFFFFF",
+    bg: "#C01BFD",
     socials: [
       { type: "linkedin",  url: "https://www.linkedin.com/in/md-rahat-pervez" },
       { type: "facebook",  url: "https://www.facebook.com/mdrahat.parvez.18" },
@@ -87,33 +75,43 @@ const TEAM = [
     ],
   },
   {
-    id: 6,
-    name: "Md.Tanvir",
+    id: 5,
+    name: "Sohan Sheikh",
     position: "Visualizer",
-    photo: "/tanvir.png",
-    bg: "#D1FF52",   
+    photo: "/sohan.png",
+    bg: "#FFFFFF",
     socials: [
-      // { type: "linkedin", url: "https://linkedin.com/in/username" },
-      // { type: "github",   url: "https://github.com/username" },
+      { type: "facebook",  url: "https://www.facebook.com/share/1BXYuuGyto/" },
+      { type: "instagram", url: "https://www.instagram.com/share/1BXYuuGyto/" },
+      { type: "behance",   url: "https://www.behance.net/sohansheikh23" },
     ],
   },
   {
-    id: 7,
+    id: 6,
     name: "Md.Hasibul Islam",
     position: "Ui/Ux Designer",
     photo: "/hasibul.png",
-    bg: "#C01BFD",
+    bg: "#D1FF52",
     socials: [
       { type: "linkedin",  url: "https://www.linkedin.com/in/hasibuix15" },
       { type: "facebook",  url: "https://www.facebook.com/share/1CVZD2ZS29/" },
       { type: "instagram", url: "https://www.instagram.com/hasibuix15" },
     ],
   },
+  {
+    id: 7,
+    name: "Md.Tanvir",
+    position: "Visualizer",
+    photo: "/tanvir.png",
+    bg: "#C01BFD",   
+    socials: [
+      { type: "facebook",  url: "https://www.facebook.com/share/1EKfD62QTd/?mibextid=wwXIfr" },
+      { type: "instagram", url: "https://www.instagram.com/tanvirshariear?igsh=YXl4Z3dmeXlqcTB3" },
+    ],
+  },
 ];
 
-/* ─────────────────────────────────────
-   SOCIAL ICON MAP
-───────────────────────────────────── */
+
 const SocialIcon = ({ type, url }) => {
   const icons = {
     linkedin:  <Linkedin  className="w-4 h-4" />,

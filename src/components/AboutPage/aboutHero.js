@@ -1,5 +1,17 @@
 "use client";
 
+// ─────────────────────────────────────────────
+// HERO MEDIA CONFIG
+// To swap the media, change the two values below:
+//   type: "image"  → shows an <img>
+//   type: "video"  → shows a <video> (autoplay, loop, muted)
+//   file: filename in /public folder
+// ─────────────────────────────────────────────
+const heroMedia = {
+  type: "image",       // "image" or "video"
+  file: "/aboutHero.png",
+};
+
 export default function AboutHero() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center py-20 px-5">
@@ -157,7 +169,7 @@ export default function AboutHero() {
           design.
         </h1>
 
-        {/* Hero Image */}
+        {/* Hero Media */}
         <div
           className="w-full rounded-2xl overflow-hidden"
           style={{
@@ -166,12 +178,24 @@ export default function AboutHero() {
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <img
-            src="/aboutHero.png"
-            alt="Oriture team at Golden Gate Bridge"
-            className="w-full h-auto object-cover"
-            style={{ display: "block" }}
-          />
+          {heroMedia.type === "video" ? (
+            <video
+              src={heroMedia.file}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto object-cover"
+              style={{ display: "block" }}
+            />
+          ) : (
+            <img
+              src={heroMedia.file}
+              alt="Oriture about hero"
+              className="w-full h-auto object-cover"
+              style={{ display: "block" }}
+            />
+          )}
         </div>
 
         {/* Description */}

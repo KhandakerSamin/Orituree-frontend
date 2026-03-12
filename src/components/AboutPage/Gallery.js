@@ -166,9 +166,9 @@ export default function Gallery() {
 
         {/* Heading */}
         <div className="mb-12 md:mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal font-newsreader text-white leading-snug max-w-5xl mx-auto">
-            A look into our team, our creativity,
-            <br />
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal font-newsreader text-white leading-snug max-w-5xl mx-auto">
+            A look into our team, our creativity,{" "}
+            <span className="hidden sm:inline"><br /></span>
             and the moments that{" "}
             <em className="text-[#D1FF52] italic font-newsreader">
               make oriture what it is!
@@ -176,8 +176,8 @@ export default function Gallery() {
           </h2>
         </div>
 
-        {/* Photo grid — 3 columns, each card individually controlled */}
-        <div className="grid grid-cols-3 gap-6 md:gap-8 place-items-center">
+        {/* Photo grid — 1 col mobile, 2 col tablet, 3 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-8 md:gap-8 place-items-center px-4 sm:px-0">
 
           {/* ── Card 1 ── */}
           <PhotoFrame
@@ -194,7 +194,7 @@ export default function Gallery() {
 
           {/* ── Card 2 ── */}
           <PhotoFrame
-            src="/aboutGallary2.jpeg"
+            src="/aboutGallary8.jpeg"
             date="January 2026"
             frameBg="#C01BFD"
             frameRotate="2.5deg"
@@ -246,7 +246,7 @@ export default function Gallery() {
 
           {/* ── Card 6 ── */}
           <PhotoFrame
-            src="/aboutGallary6.jpeg"
+            src="/aboutGallary7.jpeg"
             date="January 2026"
             frameBg="#D1FF52"
             frameRotate="2deg"
@@ -259,7 +259,7 @@ export default function Gallery() {
 
           {/* ── Card 7 ── */}
           <PhotoFrame
-            src="/aboutGallary7.jpeg"
+            src="/aboutGallary6.jpeg"
             date="January 2026"
             frameBg="#FFFFFF"
             frameRotate="-3.5deg"
@@ -272,7 +272,7 @@ export default function Gallery() {
 
           {/* ── Card 8 ── */}
           <PhotoFrame
-            src="/aboutGallary8.jpeg"
+            src="/aboutGallary2.jpeg"
             date="January 2026"
             frameBg="#D1FF52"
             frameRotate="3deg"
