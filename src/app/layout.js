@@ -58,6 +58,12 @@ export const metadata = {
     creator: "@oriture_co",
     images: [ogImage],
   },
+  icons: {
+    icon: [
+      { url: "/favicon1.png", type: "image/png" },
+    ],
+    shortcut: "/favicon1.png",
+  },
   verification: {
     google: "",   // paste Google Search Console verification token here when available
   },
